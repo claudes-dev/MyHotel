@@ -1,6 +1,6 @@
 package br.com.start.myhotel.model;
 
-public class QuartoDao {
+public class Quarto {
 	
 	private int numQuarto;
 	private int andar;

@@ -29,13 +29,13 @@ public class OlaMundo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		PrintWriter out = response.getWriter();
 		
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Primeira	servlet");
+		out.println("<h1> DALE MEU CONSAGRADO </h1>");
 		out.println("</body>");
 		out.println("</html>");
 	}

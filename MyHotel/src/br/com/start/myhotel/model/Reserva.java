@@ -1,6 +1,6 @@
 package br.com.start.myhotel.model;
 
-public class ReservaDao {
+public class Reserva {
 
 	private int idReserva;
 	private String cpfCliente;

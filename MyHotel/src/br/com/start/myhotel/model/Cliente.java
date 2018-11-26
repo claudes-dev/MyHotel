@@ -1,6 +1,6 @@
 package br.com.start.myhotel.model;
 
-public class ClienteDao {
+public class Cliente {
 
 	private String cpfCliente;
 	private String rgCliente;
