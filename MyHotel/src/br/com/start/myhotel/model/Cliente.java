@@ -1,43 +1,41 @@
 package br.com.start.myhotel.model;
 
-public class Cliente {
+public class Cliente extends Pessoa{
+	
+	//ATRIBUTOS DA PROPRIA CLASSE CLIENTE
+	private String dataNascimento;
+	private String email;
+	private int idServicos;
+	
+	public Cliente(String nome, String cpf, String senha, String dataNascimento, String email, int idServicos) {
+		//CONSTRUTOR CONTENDO ATRIBUTOS DA CLASSE CLIENTE, E DA SUPER CLASSE PESSOA
+		super(nome, cpf);
+		this.dataNascimento = dataNascimento;
+		this.email = email;
+		this.idServicos = idServicos;
+	}
+	 
+	 //GETERS E SETERS
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	private String cpfCliente;
-	private String rgCliente;
-	private String nomeCliente;
-	private int numQuarto;
-//	private Date dataSaida;
-//	private Date dataEntrada;
-//	private Date dataNascimento;
-	
-	
-//	getters and setters
-	
-	public String getCpfCliente() {
-		return cpfCliente;
+	public int getIdServicos() {
+		return idServicos;
 	}
-	public void setCpfCliente(String cpfCliente) {
-		this.cpfCliente = cpfCliente;
+
+	public void setIdServicos(int idServicos) {
+		this.idServicos = idServicos;
 	}
-	public String getRgCliente() {
-		return rgCliente;
-	}
-	public void setRgCliente(String rgCliente) {
-		this.rgCliente = rgCliente;
-	}
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
-	}
-	public int getNumQuarto() {
-		return numQuarto;
-	}
-	public void setNumQuarto(int numQuarto) {
-		this.numQuarto = numQuarto;
-	}
-	
-	
-	
+	 
 }

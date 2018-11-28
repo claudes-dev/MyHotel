@@ -2,6 +2,7 @@ package br.com.start.myhotel.model;
 
 public class Quarto {
 	
+	//ATRIBUTOS DA PRÓRPIA CLASSE QUARTO
 	private int numQuarto;
 	private int andar;
 	private int quantidadeCama;
@@ -9,13 +10,11 @@ public class Quarto {
 	private double precoMensal;
 	private double precoDiaria;
 
-	//	ocupado ou não
+	//SE ESTARÁ OCULPA OU NÃO
 	private boolean status;
-//	private Date tempoReserva;
-
+	//private Date tempoReserva;
 	
-//	getters and setters
-	
+	//GETTERS E SETERS
 	public int getNumQuarto() {
 		return numQuarto;
 	}
