@@ -17,7 +17,7 @@ public class Conexao {
 			Class.forName(driver);
 			conexao = DriverManager.getConnection(url, user, password);
 
-		} catch (SQLException exe) {
+		} catch (SQLException ex) {
 			System.out.println("Sua conexão foi mal sucedida");
 		} catch (ClassNotFoundException excecao) {
 			System.out.println("Drive não encontrado");
@@ -31,7 +31,7 @@ public class Conexao {
 				conexao.close();
 			}
 		}catch(SQLException exe){
-			System.out.println("Conexão nao foi fechada"+ exe.getMessage());
+		System.out.println("Conexão nao foi fechada"+ exe.getMessage());
 			}
 	}
 
