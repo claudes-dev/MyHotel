@@ -4,15 +4,17 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
 <meta charset="ISO-8859-1">
 <title>Home</title>
 
 
-</head>
+</sau>
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,7 +29,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
+						<span class="sr-only"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Acomodações</a>
 				</li>
@@ -42,15 +44,19 @@
 			</ul>
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#exampleModal">Login</button>
+				data-target="#modalLogin">Login</button>
+
+
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#modalCadastro">Cadastro</button>
 
 		</div>
 	</nav>
 
 
-	<!-- Modal -->
+	<!-- Modal LOGIN -->
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
