@@ -14,7 +14,12 @@
 <title>Home</title>
 
 
-</sau>
+<style type="text/css">
+
+button{
+margin-right: 5px;
+}
+</style>
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,7 +49,7 @@
 			</ul>
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#modalLogin">Login</button>
+				data-target="#exampleModal">Login</button>
 
 
 			<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -56,7 +61,7 @@
 
 	<!-- Modal LOGIN -->
 
-	<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
