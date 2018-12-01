@@ -4,16 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao  {
+public class Conexao {
 	private final String driver = "com.mysql.jdbc.Driver";
-	private final String url = "jdbc:mysql://localhot:3306/dbmyhotel";
+	private final String url = "jdbc:mysql://localhost:3306/myhotel";
 	private final String user = "root";
 	private final String password = "123456";
-	
-	public static Connection conexao = null;
+
 	public Connection getConnection() {
 
-		
+		Connection conexao = null;
 		try {
 			Class.forName(driver);
 			conexao = DriverManager.getConnection(url, user, password);
