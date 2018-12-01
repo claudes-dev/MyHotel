@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ page import="java.io.*,java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 </head>
 <body>
 
-<form action="POST" >
+<form action="#" method="post">
 CPF : <input type="text" name="cpf" placeholder="Digite seu cpf"/>
 <br />
 

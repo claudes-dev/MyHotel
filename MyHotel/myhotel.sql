@@ -1,4 +1,4 @@
-create table Administrador (
+create table administrador (
 	cpf_adm VARCHAR(14) PRIMARY KEY,
 	senha VARCHAR(10) NOT NULL,
 	nome_adm VARCHAR(25) NOT NULL

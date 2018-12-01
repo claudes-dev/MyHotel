@@ -10,7 +10,7 @@ public class Singleton {
 	private static Connection instancia = null;
 	public static Connection getInstancia() {
 		if(instancia== null) {
-			instancia = new Conexao().getConnection();
+			instancia = new ConexaoFactory().getConnection();
 		}
 		return instancia;
 	}
