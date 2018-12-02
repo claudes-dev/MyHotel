@@ -7,6 +7,10 @@ public abstract class Pessoa {
 	
 	String senha;
 	
+	
+	public Pessoa() {
+		
+	}
 	//CONSTRUTOR QUE COMPLETO
 	public Pessoa(String nome, String cpf, String senha) {
 		this.nome = nome;
