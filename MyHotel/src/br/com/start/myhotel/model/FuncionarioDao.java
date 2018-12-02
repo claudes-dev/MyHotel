@@ -101,7 +101,7 @@ public class FuncionarioDao {
 		ResultSet resultado = comando.executeQuery();
 
 		Funcionario retorno = null;
-		// tras apenas um
+		// tras apenas  um
 		if (resultado.next()) {
 			retorno = new Funcionario();
 			retorno.setCpf(resultado.getString("cpf_func"));

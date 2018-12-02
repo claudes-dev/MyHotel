@@ -11,7 +11,7 @@ public class Funcionario extends Pessoa{
 		super(nome, cpf, senha);
 	}
 
-	// pra poder sair os dados no select, se n por o to string aparece o lugar do objeto na jvm
+	// pra poder sair os dados no select, se n por o to string aparece o lugar  do objeto na jvm
 	@Override
 	public String toString() {
 		String saida = this.cpf + "  " + this.nome;
