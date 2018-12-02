@@ -4,14 +4,14 @@ public abstract class Pessoa {
 	
 	String nome;
 	String cpf;
-	int id;
+	
 	String senha;
 	
 	//CONSTRUTOR QUE COMPLETO
-	public Pessoa(String nome, String cpf, int id, String senha) {
+	public Pessoa(String nome, String cpf, String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.id = id;
+		
 		this.senha = senha;
 	}
 	
@@ -34,12 +34,7 @@ public abstract class Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getSenha() {
 		return senha;
 	}

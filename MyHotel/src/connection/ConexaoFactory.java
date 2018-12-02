@@ -26,10 +26,11 @@ public class ConexaoFactory {
 		return conexao;
 	}
 
-	public static void main(String[] args) throws SQLException {
-		Connection conexao = ConexaoFactory.getConnection();
-		System.out.println("Conexao completa");
-	}
+//	Teste de conexão
+//	public static void main(String[] args) throws SQLException {
+//		Connection conexao = ConexaoFactory.getConnection();
+//		System.out.println("Conexao completa");
+//	}
 
 	public void closeConnection(Connection conexao) {
 		try {
