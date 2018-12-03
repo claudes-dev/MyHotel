@@ -106,26 +106,26 @@ public class FuncionarioDao {
 			retorno = new Funcionario();
 			retorno.setCpf(resultado.getString("cpf_func"));
 			retorno.setNome(resultado.getString("nome_func"));
-
+			
 		}
 		return retorno;
 
 	}
 
 //	teste de inserção no banco
-	public static void main(String[] args) {
-		Funcionario f1 = new Funcionario();
-		Funcionario f2 = new Funcionario();
-		FuncionarioDao fdao = new FuncionarioDao();
-		
-		f2.setCpf("025.482.640-40");
-		try {
-			f1 = fdao.buscarTudo(f2);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(f1.toString());
-	}
+//	public static void main(String[] args) {
+//		Funcionario f1 = new Funcionario();
+//		Funcionario f2 = new Funcionario();
+//		FuncionarioDao fdao = new FuncionarioDao();
+//		
+//		f2.setCpf("025.482.640-40");
+//		try {
+//			f1 = fdao.buscarTudo(f2);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(f1.toString());
+//	}
 
 }
