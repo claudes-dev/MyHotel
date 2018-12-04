@@ -29,7 +29,7 @@ public class AdministradorDao {
 
 			System.out.println("Administrador criado com sucesso");
 		} catch (SQLException excecao) {
-			System.out.println("Falha ao inserir dministrador");
+			System.out.println("Falha ao inserir administrador");
 			excecao.printStackTrace();
 		}
 
@@ -136,7 +136,7 @@ public class AdministradorDao {
 
 	}
 	
-	
+	// 7- FUNÇÃO QUE EDITA/ALTERA FUNCIONARIO
 	public void editarFuncionario(Funcionario pessoa) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("update funcionario ");
@@ -152,14 +152,14 @@ public class AdministradorDao {
 
 			comando.executeUpdate();
 
-			System.out.println("Administrador alterado");
+			System.out.println("Funcionario alterado alterado");
 		} catch (SQLException excecao) {
-			System.out.println("Falha ao alterado");
+			System.out.println("Falha ao alter funcionario");
 			excecao.printStackTrace();
 		}
 
 	}
-	//FUNÇÃO EXCLUIR FUNCIONÁRIO
+	// 8-FUNÇÃO EXCLUIR FUNCIONÁRIO
 	public void excluir(Funcionario pessoa) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("delete from funcionario ");
@@ -182,7 +182,7 @@ public class AdministradorDao {
 	}
 	
 	
-	// BUSCAR TODOS FUNCIONARIOS
+	// 9-BUSCAR TODOS FUNCIONARIOS
 			public Funcionario buscarTudoFunc(Funcionario pessoa) throws SQLException {
 				StringBuilder sql = new StringBuilder();
 				sql.append("select cpf_func, nome_func ");
@@ -197,11 +197,11 @@ public class AdministradorDao {
 				ResultSet resultado = comando.executeQuery();
 
 				Funcionario retorno = null;
-				// 5-BUSCA UM ADM
+				// 10-BUSCA UM ADM
 				if (resultado.next()) {
 					retorno = new Funcionario();
-					retorno.setCpf(resultado.getString("cpf_adm"));
-					retorno.setNome(resultado.getString("nome_adm"));
+					retorno.setCpf(resultado.getString("cpf_func"));
+					retorno.setNome(resultado.getString("nome_func"));
 				}
 				return retorno;
 			}
