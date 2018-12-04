@@ -9,8 +9,8 @@ import connection.ConexaoFactory;
 
 public class AdministradorDao {
 
-	//MÉTODO PARA ADICIONAR ADMINISTRADOR
-	public void salvarAdm(Administrador f) {
+	// 1-MÉTODO PARA CRIAR ADMINISTRADOR
+	public void criarAdm(Administrador pessoa) {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into administrador ");
@@ -21,23 +21,97 @@ public class AdministradorDao {
 
 		try {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
-			comando.setString(1, f.getCpf());
-			comando.setString(2, f.getSenha());
-			comando.setString(3, f.getNome());
+			comando.setString(1, pessoa.getCpf());
+			comando.setString(2, pessoa.getSenha());
+			comando.setString(3, pessoa.getNome());
 
 			comando.executeUpdate();
 
-			System.out.println("Inserido no banco");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Não foi inserido");
-			e.printStackTrace();
+			System.out.println("Administrador criado com sucesso");
+		} catch (SQLException excecao) {
+			System.out.println("Falha ao inserir dministrador");
+			excecao.printStackTrace();
 		}
 
 	}
+	
+	// 2-MÉTODO PARA EXCLUIR ADMINISTRADOR
+		public void excluirAdm(Administrador pessoa) {
 
-	//MÉTODO PARA ADICIONAR FUNCIOÁRIO
-	public void salvarFunc(Funcionario f) {
+			StringBuilder sql = new StringBuilder();
+			sql.append("select * from administrador ");
+			sql.append("(id_adm,nome_adm) ");
+			sql.append("where cpf_adm = ?");
+
+			Connection conexao = ConexaoFactory.getConnection();
+
+			try {
+				PreparedStatement comando = conexao.prepareStatement(sql.toString());
+				comando.setString(1, pessoa.getCpf());
+
+				comando.executeUpdate();
+
+				System.out.println("Administrador deletado com sucesso");
+			} catch (SQLException excecao) {
+				System.out.println("Falha ao excluir dministrador");
+				excecao.printStackTrace();
+			}
+
+		}
+		
+	// 3-FUNÇÃO, ATUALIZAR ADM
+		
+		public void editarAdm(Administrador pessoa) {
+			StringBuilder sql = new StringBuilder();
+			sql.append("update administrador ");
+			sql.append("set senha = ? ");
+			sql.append("where nome_adm = ? ");
+
+			Connection conexao = ConexaoFactory.getConnection();
+
+			try {
+				PreparedStatement comando = conexao.prepareStatement(sql.toString());
+				comando.setString(1, pessoa.getSenha());
+				comando.setString(2, pessoa.getNome());
+
+				comando.executeUpdate();
+
+				System.out.println("Administrador alterado");
+			} catch (SQLException excecao) {
+				System.out.println("Falha ao alterado");
+				excecao.printStackTrace();
+			}
+
+		}
+		
+		
+		
+		// 4-BUSCAR TODOS ADMS
+		public Administrador buscarTudo(Administrador pessoa) throws SQLException {
+			StringBuilder sql = new StringBuilder();
+			sql.append("select cpf_adm, nome_adm ");
+			sql.append("from administrador ");
+			sql.append("where cpf_func = ? ");
+
+			Connection conexao = ConexaoFactory.getConnection();
+
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, pessoa.getCpf());
+
+			ResultSet resultado = comando.executeQuery();
+
+			Administrador retorno = null;
+			// 5-BUSCA UM ADM
+			if (resultado.next()) {
+				retorno = new Administrador();
+				retorno.setCpf(resultado.getString("cpf_adm"));
+				retorno.setNome(resultado.getString("nome_adm"));
+			}
+			return retorno;
+		}
+
+	// 6-MÉTODO PARA CRIAR FUNCIONÁRIO
+	public void criarFuncionario(Funcionario pessoa) {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into funcionario ");
@@ -48,94 +122,89 @@ public class AdministradorDao {
 
 		try {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
-			comando.setString(1, f.getCpf());
-			comando.setString(2, f.getSenha());
-			comando.setString(3, f.getNome());
+			comando.setString(1, pessoa.getCpf());
+			comando.setString(2, pessoa.getSenha());
+			comando.setString(3, pessoa.getNome());
 
 			comando.executeUpdate();
 
-			System.out.println("Inserido no banco");
+			System.out.println("Funcionário criado com sucesso");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Não foi inserido");
+			System.out.println("Falha, o sistema não conseguiu criar o funcionário");
 			e.printStackTrace();
 		}
 
 	}
-	// Função excluir
-
-	public void excluir(Administrador f) {
+	
+	
+	public void editarFuncionario(Funcionario pessoa) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("delete from administrador ");
-		sql.append("where cpf_adm = ? ");
-
-		Connection conexao = ConexaoFactory.getConnection();
-
-		try {
-			PreparedStatement comando = conexao.prepareStatement(sql.toString());
-			comando.setString(1, f.getCpf());
-
-			comando.executeUpdate();
-
-			System.out.println("usuário deletado");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Não foi deletado");
-			e.printStackTrace();
-		}
-
-	}
-
-//	Função de editar com base no nome
-
-	public void editar(Administrador f) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("update administrador ");
+		sql.append("update funcionario ");
 		sql.append("set senha = ? ");
-		sql.append("where nome_adm = ? ");
+		sql.append("where nome_func = ? ");
 
 		Connection conexao = ConexaoFactory.getConnection();
 
 		try {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
-			comando.setString(1, f.getSenha());
-			comando.setString(2, f.getNome());
+			comando.setString(1, pessoa.getSenha());
+			comando.setString(2, pessoa.getNome());
 
 			comando.executeUpdate();
 
-			System.out.println("alterado");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("alterado");
-			e.printStackTrace();
+			System.out.println("Administrador alterado");
+		} catch (SQLException excecao) {
+			System.out.println("Falha ao alterado");
+			excecao.printStackTrace();
 		}
 
 	}
-
-	// Função pra buscar
-
-	public Administrador buscarTudo(Administrador f) throws SQLException {
+	//FUNÇÃO EXCLUIR FUNCIONÁRIO
+	public void excluir(Funcionario pessoa) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select cpf_adm, nome_adm ");
-		sql.append("from administrador ");
+		sql.append("delete from funcionario ");
 		sql.append("where cpf_func = ? ");
 
 		Connection conexao = ConexaoFactory.getConnection();
 
-		PreparedStatement comando = conexao.prepareStatement(sql.toString());
-		comando.setString(1, f.getCpf());
+		try {
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, pessoa.getCpf());
 
-		ResultSet resultado = comando.executeQuery();
+			comando.executeUpdate();
 
-		Administrador retorno = null;
-		// tras apenas um
-		if (resultado.next()) {
-			retorno = new Administrador();
-			retorno.setCpf(resultado.getString("cpf_adm"));
-			retorno.setNome(resultado.getString("nome_adm"));
-
+			System.out.println("Funcionário deletado");
+		} catch (SQLException e) {
+			System.out.println("Erro ao deletar funcionário");
+			e.printStackTrace();
 		}
-		return retorno;
 
 	}
+	
+	
+	// BUSCAR TODOS FUNCIONARIOS
+			public Funcionario buscarTudoFunc(Funcionario pessoa) throws SQLException {
+				StringBuilder sql = new StringBuilder();
+				sql.append("select cpf_func, nome_func ");
+				sql.append("from funcionario ");
+				sql.append("where cpf_func = ? ");
+
+				Connection conexao = ConexaoFactory.getConnection();
+
+				PreparedStatement comando = conexao.prepareStatement(sql.toString());
+				comando.setString(1, pessoa.getCpf());
+
+				ResultSet resultado = comando.executeQuery();
+
+				Funcionario retorno = null;
+				// 5-BUSCA UM ADM
+				if (resultado.next()) {
+					retorno = new Funcionario();
+					retorno.setCpf(resultado.getString("cpf_adm"));
+					retorno.setNome(resultado.getString("nome_adm"));
+				}
+				return retorno;
+			}
+
+	
 }
