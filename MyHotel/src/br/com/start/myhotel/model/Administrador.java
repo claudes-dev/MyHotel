@@ -1,7 +1,7 @@
 package br.com.start.myhotel.model;
 
 public class Administrador extends Pessoa {
-
+	private int id_adm;
 	public Administrador() {
 
 	}
@@ -18,5 +18,13 @@ public class Administrador extends Pessoa {
 	public String toString() {
 		String saida = this.cpf + "  " + this.nome;
 		return saida;
+	}
+
+	public int getId_adm() {
+		return id_adm;
+	}
+
+	public void setId_adm(int id_adm) {
+		this.id_adm = id_adm;
 	}
 }
