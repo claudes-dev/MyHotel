@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import connection.ConexaoFactory;
 
 public class AdministradorDao {
-	public void salvar(Administrador f) {
+
+	//MÉTODO PARA ADICIONAR ADMINISTRADOR
+	public void salvarAdm(Administrador f) {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into administrador ");
@@ -34,6 +36,32 @@ public class AdministradorDao {
 
 	}
 
+	//MÉTODO PARA ADICIONAR FUNCIOÁRIO
+	public void salvarFunc(Funcionario f) {
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("insert into funcionario ");
+		sql.append("(cpf_func,senha,nome_func) ");
+		sql.append("values (?,?,?)");
+
+		Connection conexao = ConexaoFactory.getConnection();
+
+		try {
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, f.getCpf());
+			comando.setString(2, f.getSenha());
+			comando.setString(3, f.getNome());
+
+			comando.executeUpdate();
+
+			System.out.println("Inserido no banco");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Não foi inserido");
+			e.printStackTrace();
+		}
+
+	}
 	// Função excluir
 
 	public void excluir(Administrador f) {
