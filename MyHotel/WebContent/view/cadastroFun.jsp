@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="#" method="post">
+<form action="<%= request.getContextPath() + "/CadastroFuncionario" %>" method="post">
 CPF : <input type="text" name="cpf" placeholder="Digite seu cpf"/>
 <br />
 
