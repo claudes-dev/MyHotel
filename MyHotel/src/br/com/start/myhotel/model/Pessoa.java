@@ -2,15 +2,25 @@ package br.com.start.myhotel.model;
 
 public abstract class Pessoa {
 	
-	String nome;
-	String cpf;
-	String senha;
+	private int status;
+	private String nome;
+	private String cpf;
+	private String senha;
+	private String tipoConta;
 	
 	
 	public Pessoa() {
 		
 	}
 	//CONSTRUTOR QUE COMPLETO
+
+	public Pessoa(String nome, String cpf, String senha, String tipoConta) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.tipoConta = tipoConta;
+		this.senha = senha;
+	}
+	
 	public Pessoa(String nome, String cpf, String senha) {
 		this.nome = nome;
 		this.cpf = cpf;
@@ -43,6 +53,20 @@ public abstract class Pessoa {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getTipoConta() {
+		return tipoConta;
+	}
+	public void setTipoConta(String tipoConta) {
+		this.tipoConta = tipoConta;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

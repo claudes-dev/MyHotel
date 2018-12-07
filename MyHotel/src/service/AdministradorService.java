@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.start.myhotel.controller.AdministradorController;
 import br.com.start.myhotel.model.Administrador;
-import br.com.start.myhotel.model.AdministradorDao;
+import dao.AdministradorDao;
 
 public class AdministradorService extends HttpServlet {
 	AdministradorDao daoAdministrador = new AdministradorDao();

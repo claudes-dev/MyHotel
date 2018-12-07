@@ -1,11 +1,15 @@
-package br.com.start.myhotel.model;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.com.start.myhotel.model.Administrador;
+import br.com.start.myhotel.model.Funcionario;
 import connection.ConexaoFactory;
+import excecoes.ExcecaoCadastro;
+import excecoes.ExcecaoEdicao;
 
 public class AdministradorDao {
 
@@ -111,7 +115,7 @@ public class AdministradorDao {
 		}
 
 	// 6-MÉTODO PARA CRIAR FUNCIONÁRIO
-	public void criarFuncionario(Funcionario pessoa) {
+	public void criarFuncionario(Funcionario pessoa) throws ExcecaoCadastro {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into funcionario ");
@@ -131,7 +135,7 @@ public class AdministradorDao {
 			System.out.println("Funcionário criado com sucesso");
 		} catch (SQLException e) {
 			System.out.println("Falha, o sistema não conseguiu criar o funcionário");
-			e.printStackTrace();
+			throw new ExcecaoCadastro("Erro ao cadastrar funcionanrio");
 		}
 
 	}
@@ -204,6 +208,27 @@ public class AdministradorDao {
 					retorno.setNome(resultado.getString("nome_func"));
 				}
 				return retorno;
+			}
+
+			public void gerenciarStatus(Funcionario f) throws ExcecaoEdicao {
+				StringBuilder sql = new StringBuilder();
+				sql.append("update funcionario ");
+				sql.append("set status = ? ");
+				sql.append("where cpf = ? ");
+
+				Connection conexao = ConexaoFactory.getConnection();
+
+				try {
+					PreparedStatement comando = conexao.prepareStatement(sql.toString());
+					comando.setInt(1, f.getStatus());
+					comando.setString(2, f.getCpf());
+
+					comando.executeUpdate();
+
+					System.out.println("Funcionario alterado alterado");
+				} catch (SQLException excecao) {
+					throw new ExcecaoEdicao("Erro ao editar o status do funcionario");
+				}
 			}
 
 	

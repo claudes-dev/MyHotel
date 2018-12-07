@@ -6,7 +6,7 @@
 <%@ page import="connection.ConexaoFactory"%>
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
 <%@ page import="br.com.start.myhotel.model.Funcionario"%>
-<%@ page import="br.com.start.myhotel.model.FuncionarioDao"%>
+<%@ page import="dao.FuncionarioDao"%>
 
 <!DOCTYPE html>
 <html>

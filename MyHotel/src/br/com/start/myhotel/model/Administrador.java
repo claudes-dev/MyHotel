@@ -16,7 +16,7 @@ public class Administrador extends Pessoa {
 	// objeto na jvm
 	@Override
 	public String toString() {
-		String saida = this.cpf + "  " + this.nome;
+		String saida = this.getCpf() + "  " + this.getNome();
 		return saida;
 	}
 
