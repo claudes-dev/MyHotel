@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import connection.ConexaoFactory;
 
@@ -87,28 +88,40 @@ public class FuncionarioDao {
 
 	// Função pra buscar
 
-	public Funcionario buscarTudo(Funcionario f) throws SQLException {
+	public ArrayList<Funcionario> listar() throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select cpf_func, nome_func ");
-		sql.append("from funcionario ");
-		sql.append("where cpf_func = ? ");
+		sql.append("select cpf_func,senha, nome_func ");
+		sql.append("from funcionario");
+		
 
 		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+		
+	 comando = conexao.prepareStatement(sql.toString());
+		
+	 resultado = comando.executeQuery();
 
-		PreparedStatement comando = conexao.prepareStatement(sql.toString());
-		comando.setString(1, f.getCpf());
-
-		ResultSet resultado = comando.executeQuery();
-
-		Funcionario retorno = null;
-		// tras apenas  um
-		if (resultado.next()) {
-			retorno = new Funcionario();
-			retorno.setCpf(resultado.getString("cpf_func"));
-			retorno.setNome(resultado.getString("nome_func"));
+//		Funcionario retorno = null;
+// tras apenas  um
+//		if (resultado.next()) {
+//			retorno = new Funcionario();
+//			retorno.setCpf(resultado.getString("cpf_func"));
+//			retorno.setNome(resultado.getString("nome_func"));
+//			
+//		}
+		
+		ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+//		 List a1 = new ArrayList();
+		while(resultado.next()) {
+			Funcionario f = new Funcionario();
+			f.setCpf(resultado.getString("cpf_func"));
+			f.setSenha(resultado.getString("senha"));
+			f.setNome(resultado.getString("nome_func"));
 			
+			lista.add(f);
 		}
-		return retorno;
+		return lista;
 
 	}
 
@@ -118,14 +131,20 @@ public class FuncionarioDao {
 //		Funcionario f2 = new Funcionario();
 //		FuncionarioDao fdao = new FuncionarioDao();
 //		
-//		f2.setCpf("025.482.640-40");
 //		try {
-//			f1 = fdao.buscarTudo(f2);
+//			ArrayList<Funcionario> f = fdao.listar();
+//			
+//			for (Funcionario funcionario : f) {
+//				System.out.println("Resultado: " + funcionario);
+//			}
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
+//			System.out.println("Ocorreu um erro!");
 //			e.printStackTrace();
 //		}
-//		System.out.println(f1.toString());
+//		
+//		
+//		
 //	}
 
 }
