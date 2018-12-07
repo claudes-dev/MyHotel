@@ -15,5 +15,8 @@ public class AdministradorBO {
 	public void gerenciarStatus(Funcionario f) throws ExcecaoEdicao {
 		dao.gerenciarStatus(f);
 	}
+	public void cadastrarAdm(Administrador adm) throws ExcecaoCadastro{
+		dao.editarAdm(adm);
+	}
 
 }

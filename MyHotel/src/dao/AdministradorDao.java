@@ -10,11 +10,12 @@ import br.com.start.myhotel.model.Funcionario;
 import connection.ConexaoFactory;
 import excecoes.ExcecaoCadastro;
 import excecoes.ExcecaoEdicao;
+import excecoes.ExcecaoExclusao;
 
 public class AdministradorDao {
 
 	// 1-MÉTODO PARA CRIAR ADMINISTRADOR
-	public void criarAdm(Administrador pessoa) {
+	public void criarAdm(Administrador pessoa) throws ExcecaoCadastro  {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into administrador ");
@@ -33,14 +34,13 @@ public class AdministradorDao {
 
 			System.out.println("Administrador criado com sucesso");
 		} catch (SQLException excecao) {
-			System.out.println("Falha ao inserir administrador");
-			excecao.printStackTrace();
+			throw new ExcecaoCadastro("Erro ao inserir administrador");
 		}
 
 	}
 	
 	// 2-MÉTODO PARA EXCLUIR ADMINISTRADOR
-		public void excluirAdm(Administrador pessoa) {
+		public void excluirAdm(Administrador pessoa) throws ExcecaoExclusao{
 
 			StringBuilder sql = new StringBuilder();
 			sql.append("select * from administrador ");
@@ -57,8 +57,7 @@ public class AdministradorDao {
 
 				System.out.println("Administrador deletado com sucesso");
 			} catch (SQLException excecao) {
-				System.out.println("Falha ao excluir dministrador");
-				excecao.printStackTrace();
+				throw new ExcecaoExclusao("erro ao excluir");
 			}
 
 		}
@@ -225,7 +224,7 @@ public class AdministradorDao {
 
 					comando.executeUpdate();
 
-					System.out.println("Funcionario alterado alterado");
+					System.out.println("Funcionario alterado");
 				} catch (SQLException excecao) {
 					throw new ExcecaoEdicao("Erro ao editar o status do funcionario");
 				}
