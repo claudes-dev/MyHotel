@@ -2,6 +2,9 @@ package br.com.start.myhotel.model;
 
 public class Administrador extends Pessoa {
 	private int id_adm;
+	private String tiPoConta;
+	
+	
 	public Administrador() {
 
 	}
@@ -27,4 +30,5 @@ public class Administrador extends Pessoa {
 	public void setId_adm(int id_adm) {
 		this.id_adm = id_adm;
 	}
+
 }
