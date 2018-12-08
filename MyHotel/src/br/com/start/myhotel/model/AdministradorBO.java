@@ -3,6 +3,7 @@ package br.com.start.myhotel.model;
 import dao.AdministradorDao;
 import excecoes.ExcecaoCadastro;
 import excecoes.ExcecaoEdicao;
+import excecoes.ExcecaoExclusao;
 
 public class AdministradorBO {
 
@@ -17,6 +18,9 @@ public class AdministradorBO {
 	}
 	public void cadastrarAdm(Administrador adm) throws ExcecaoCadastro{
 		dao.editarAdm(adm);
+	}
+	public void excluirAdm(Administrador adm)throws ExcecaoExclusao {
+		dao.excluirAdm(adm);
 	}
 
 }

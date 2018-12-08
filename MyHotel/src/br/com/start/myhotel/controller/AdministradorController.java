@@ -12,6 +12,7 @@ import br.com.start.myhotel.model.AdministradorBO;
 import br.com.start.myhotel.model.Funcionario;
 import excecoes.ExcecaoCadastro;
 import excecoes.ExcecaoEdicao;
+import excecoes.ExcecaoExclusao;
 
 
 public class AdministradorController extends HttpServlet{
@@ -74,44 +75,19 @@ public class AdministradorController extends HttpServlet{
 			//mandar mensagem de erro para a tela 
 		}
 		
+		
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public boolean ValidarInclusaoAdm(Administrador administrador) {
-		boolean retorno = true;
+	private void excluirAdm(HttpServletRequest req, HttpServletResponse res) {
+		String cpf = req.getParameter("cpf");
 		
-		if(administrador.getCpf()=="") {
-			retorno = false;
-		}if(administrador.getSenha() == "") {
-			retorno = false;
-		}if(administrador.getNome() == "") {
-			retorno = false;
+		Administrador adm = new Administrador();
+		adm.setCpf(cpf);
+		try {
+			admBO.excluirAdm(adm);
+		} catch(ExcecaoExclusao e){
+			
 		}
-		
-		return retorno;
-	}
-	public boolean ValidarExclusaoAdm(Administrador administrador) {
-		boolean retorno = true;
-		
-		if(administrador.getId_adm() == 0) {
-			retorno = false;
-		}
-		return retorno;
 	}
 	
 	
