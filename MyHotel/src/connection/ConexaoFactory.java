@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class ConexaoFactory {
 
 	private final static String driver = "com.mysql.jdbc.Driver";
-	private final static String url = "jdbc:mysql://localhost:3306/myhotel";
+	private final static String url = "jdbc:mysql://localhost:3306/myhotel?autoReconnect=true";
 	private final static String user = "root";
-	private final static String password = "root";
+	private final static String password = "123456";
 
 	public static Connection getConnection() {
 

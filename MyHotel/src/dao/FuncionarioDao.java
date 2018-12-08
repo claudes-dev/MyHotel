@@ -15,7 +15,7 @@ public class FuncionarioDao {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into funcionario ");
-		sql.append("(cpf_func,senha,nome_func) ");
+		sql.append("(cpf_func,senha,nome_func,tipo_conta) ");
 		sql.append("values (?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
@@ -25,6 +25,7 @@ public class FuncionarioDao {
 			comando.setString(1, f.getCpf());
 			comando.setString(2, f.getSenha());
 			comando.setString(3, f.getNome());
+			comando.setString(4, f.getTipoConta());
 
 			comando.executeUpdate();
 
@@ -33,6 +34,12 @@ public class FuncionarioDao {
 			// TODO Auto-generated catch block
 			System.out.println("Não foi inserido");
 			e.printStackTrace();
+
+		} finally {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+			}
 		}
 
 	}
@@ -57,6 +64,12 @@ public class FuncionarioDao {
 			// TODO Auto-generated catch block
 			System.out.println("Não foi deletado");
 			e.printStackTrace();
+
+		} finally {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+			}
 		}
 
 	}
@@ -83,6 +96,11 @@ public class FuncionarioDao {
 			// TODO Auto-generated catch block
 			System.out.println("alterado");
 			e.printStackTrace();
+		} finally {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+			}
 		}
 
 	}
@@ -91,7 +109,7 @@ public class FuncionarioDao {
 
 	public ArrayList<Funcionario> listar() throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select cpf_func,senha, nome_func ");
+		sql.append("select cpf_func,senha, nome_func, tipo_conta ");
 		sql.append("from funcionario");
 		
 
@@ -119,31 +137,28 @@ public class FuncionarioDao {
 			f.setCpf(resultado.getString("cpf_func"));
 			f.setSenha(resultado.getString("senha"));
 			f.setNome(resultado.getString("nome_func"));
+			f.setTipoConta(resultado.getString("tipo_conta"));
 			
 			lista.add(f);
 		}
+		
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+		
 		return lista;
 
 	}
 
 //	teste de inserção no banco
 //	public static void main(String[] args) {
-//		Funcionario f1 = new Funcionario();
+//		Funcionario f1 = new Funcionario("Saulo", "031.123.123-30","123");
 //		Funcionario f2 = new Funcionario();
 //		FuncionarioDao fdao = new FuncionarioDao();
 //		
-//		try {
-//			ArrayList<Funcionario> f = fdao.listar();
-//			
-//			for (Funcionario funcionario : f) {
-//				System.out.println("Resultado: " + funcionario);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("Ocorreu um erro!");
-//			e.printStackTrace();
-//		}
-//		
+//		fdao.salvar(f1);
 //		
 //		
 //	}
