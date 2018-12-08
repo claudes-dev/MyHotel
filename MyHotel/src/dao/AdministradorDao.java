@@ -122,7 +122,7 @@ public class AdministradorDao {
 			ResultSet resultado = comando.executeQuery();
 
 		} catch (SQLException excecao) {
-			throw new ExcecaoBusca("Erro ao busca funcionario");
+			throw new ExcecaoBusca("Erro ao busca administrador");
 		}
 	}
 
@@ -146,7 +146,6 @@ public class AdministradorDao {
 
 			System.out.println("Funcionário criado com sucesso");
 		} catch (SQLException e) {
-			System.out.println("Falha, o sistema não conseguiu criar o funcionário");
 			throw new ExcecaoCadastro("Erro ao cadastrar funcionanrio");
 		}
 

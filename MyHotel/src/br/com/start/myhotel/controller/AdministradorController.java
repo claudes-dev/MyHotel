@@ -41,12 +41,15 @@ public class AdministradorController extends HttpServlet {
 			buscarAdms(req, res);
 		//5
 		}else if(operacao.equals("BUSCAR_ADM")){
-			buscarAdm(req,res);
+			buscarAdm(req, res);
 		//6	
-		} if (operacao.equals("CADASTRAR_FUNCIONARIO")) {
+		} else if (operacao.equals("CADASTRAR_FUNCIONARIO")) {
 			cadastrarFuncionario(req, res);
 		//7
-		}else if(operacao.equals("BUSCAR_FUNCIONARIO")){
+		}else if(operacao.equals("EDITAR_FUNCIONARIO")) {
+			editarFuncionario(req, res);
+		//8	
+		} else if(operacao.equals("BUSCAR_FUNCIONARIO")){
 			buscarFuncionario(req, res);
 		//8	
 		}else if(operacao.equals("BUSCAR_FUNCIONARIO")){
@@ -64,8 +67,12 @@ public class AdministradorController extends HttpServlet {
 		
 	}
 		
-	private void buscarFuncionarios(HttpServletRequest req, HttpServletResponse res) {
+	private void editarFuncionario(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	private void buscarFuncionarios(HttpServletRequest req, HttpServletResponse res) {
 		
 	}
 
@@ -78,6 +85,9 @@ public class AdministradorController extends HttpServlet {
 		String cpf = req.getParameter("cpf");
 		String senha = req.getParameter("senha");
 		String nome = req.getParameter("senha");
+		
+		Administrador adm = new Administrador(cpf,senha,nome);
+		
 
 	}
 	
@@ -89,8 +99,11 @@ public class AdministradorController extends HttpServlet {
 		adm.setCpf(cpf);
 		try {
 			admBO.excluirAdm(adm);
+			req.setAttribute("mensagem", "Administrador exluído com sucesso");
+			
 		} catch (ExcecaoExclusao e) {
-
+			req.setAttribute("mensagem", "erro ao excluir o administrador");
+			
 		}
 	}
 	
@@ -108,22 +121,29 @@ public class AdministradorController extends HttpServlet {
 		adm.setTipoConta(tipoConta);
 		try {
 			admBO.buscarAdms(adm);
+			req.setAttribute("mensagem", "Administradores encontrados com sucesso");
+			
 		} catch (ExcecaoBusca e) {
-
+			req.setAttribute("mensagem", "Administradores não encontrados");
+			
 		}
 
 	}
 	// 5-BUSCAS UM ADM
-	private void buscarAdm(HttpServletRequest req, HttpServletResponse res) {
-		String tipoConta = req.getParameter("");
+	private void buscarAdm(HttpServletRequest req, HttpServletResponse res) throws ExcecaoBusca{
+		String cpf = req.getParameter("cpf");
+		
+		Administrador adm = new Administrador();
+		adm.setCpf(cpf);
+		try {
+			admBO.buscarAdm(adm);
+			req.setAttribute("mensagem", "Administrador encontrado com sucesso" );
+		}catch(ExcecaoBusca exception) {
+			req.setAttribute("mensagem", "Administrador não esncontrado" );
+		}
 
 	}
-	
-	
-	private void adicionarQuarto(HttpServletRequest req, HttpServletResponse res) {
-		String nome = req.getParameter("nome");
-	}
-
+	// 6-MÉTODO PARA CRIAR FUNCIONÁRIO
 	private void cadastrarFuncionario(HttpServletRequest req, HttpServletResponse res) {
 
 		String nome = req.getParameter("nome");
@@ -136,10 +156,15 @@ public class AdministradorController extends HttpServlet {
 
 		try {
 			admBO.cadastrarFuncionario(f);
-			// mandar mensagem de sucesso para a tela
+			req.setAttribute("mensagem", "Funcionário cadastrado com sucesso");
+			
 		} catch (ExcecaoCadastro e) {
-			// mandar mensagem de erro para a tela
+			req.setAttribute("mensagem", "Erro no cadastro, por favor");
 		}
+	}
+	
+	private void adicionarQuarto(HttpServletRequest req, HttpServletResponse res) {
+		String nome = req.getParameter("nome");
 	}
 
 	private void gerenciarStatus(HttpServletRequest req, HttpServletResponse res) {

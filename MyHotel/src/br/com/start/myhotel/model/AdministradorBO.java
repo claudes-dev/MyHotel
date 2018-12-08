@@ -33,7 +33,7 @@ public class AdministradorBO {
 	}
 	// 5-BUSCAS UM ADM
 	public void buscarAdm(Administrador adm) throws ExcecaoBusca{
-		dao.buscarAdms(adm);
+		dao.buscarAdm(adm);
 	}
 	// 6-MÉTODO PARA CRIAR FUNCIONÁRIO
 	public void cadastrarFuncionario(Funcionario f) throws ExcecaoCadastro {
