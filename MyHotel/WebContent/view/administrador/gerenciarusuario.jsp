@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.*,java.sql.*"%>
 <%@ page import="java.util.*"%>
@@ -17,7 +16,7 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
-<title>MyHotel - Gerenciar Usu·rios</title>
+<title>MyHotel - Gerenciar Usu√°rios</title>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -32,9 +31,10 @@
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/animate.css"
 	rel="stylesheet" />
-<link
-	href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
+<link href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
 	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/css/dropzone.css" 
+    rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/sweetalert.css"
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
@@ -84,7 +84,7 @@
 					data-toggle="collapse" data-target="#navbar-collapse"
 					aria-expanded="false"></a> <a href="javascript:void(0);"
 					class="bars"></a> <a class="navbar-brand" href="index.html">MyHotel
-					- Gerencie seu negÛcio!</a>
+					- Gerencie seu neg√≥cio!</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -127,7 +127,7 @@
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
 					<li><a href="index.html"> <i class="material-icons">home</i>
-							<span>InÌcio</span>
+							<span>In√≠cio</span>
 					</a></li>
 					<li><a href="javascript:void(0);" class="menu-toggle"> <i
 							class="material-icons">hotel</i> <span>Hospedagem</span>
@@ -135,11 +135,11 @@
 						<ul class="ml-menu">
 							<li><a href="javascript:void(0);"> <span>Quartos</span>
 							</a></li>
-							<li><a href="javascript:void(0);"> <span>ServiÁos</span>
+							<li><a href="javascript:void(0);"> <span>Servi√ßos</span>
 							</a></li>
 						</ul></li>
 					<li class="active"><a href="javascript:void(0);"> <i
-							class="material-icons">person</i> <span>Usu·rios</span>
+							class="material-icons">person</i> <span>Usu√°rios</span>
 					</a></li>
 					<li><a href="index.html"> <i class="material-icons">attach_money</i>
 							<span>Faturamento</span>
@@ -150,21 +150,21 @@
 					</a>
 						<ul class="ml-menu">
 							<li><a href="pages/ui/alerts.html">Hospedados</a></li>
-							<li><a href="pages/ui/animations.html">HistÛrico</a></li>
+							<li><a href="pages/ui/animations.html">Hist√≥rico</a></li>
 						</ul></li>
 				</ul>
 			</div>
 			<!-- #Menu -->
-			<!-- RodapÈ -->
+			<!-- RodapÔøΩ -->
 			<div class="legal">
 				<div class="copyright">
 					&copy; 2018 <a href="javascript:void(0);">HyHotel</a>.
 				</div>
 				<div class="version">
-					<b>Vers„o: </b> 1.0.0
+					<b>Vers√£o: </b> 1.0.0
 				</div>
 			</div>
-			<!-- #RodapÈ -->
+			<!-- #RodapÔøΩ -->
 		</aside>
 
 	</section>
@@ -172,12 +172,12 @@
 	<section class="content">
 		<div class="container-fluid">
 
-			<!-- Tabela de usu·rios -->
+			<!-- Tabela de usuÔøΩrios -->
 			<div class="row clearfix">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="card">
 						<div class="header">
-							<h2>LISTAGEM DE USU¡RIOS CADASTRADOS</h2>
+							<h2>LISTAGEM DE USU√ÅRIOS CADASTRADOS</h2>
 							<ul class="header-dropdown">
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
@@ -237,7 +237,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- #FIM# Tabela de usu·rios -->
+			<!-- #FIM# Tabela de usuÔøΩrios -->
 		</div>
 		</div>
 	</section>
@@ -250,7 +250,7 @@
 
 				<div class="card">
 					<div class="header">
-						<h2>ADICIONAR NOVO USU¡RIO AO SISTEMA</h2>
+						<h2>ADICIONAR NOVO USU√ÅRIO AO SISTEMA</h2>
 						<ul class="header-dropdown">
 
 							<a style="margin-right: 5px;" data-dismiss="modal" role="button"
@@ -262,7 +262,7 @@
 					</div>
 					<div class="body">
 						<form id="wizard_with_validation" method="POST">
-							<h3>InformaÁıes de login</h3>
+							<h3>INFORMA√á√ïES DE LOGIN</h3>
 							<fieldset>
 								<div class="form-group form-float">
 									<div class="form-line">
@@ -286,7 +286,7 @@
 								</div>
 							</fieldset>
 
-							<h3>InformaÁıes de perfil</h3>
+							<h3>INFORMA√á√ïES DE PERFIL</h3>
 							<fieldset>
 								<div class="form-group form-float">
 									<div class="form-line">
@@ -300,33 +300,33 @@
 											class="form-control" required> <label
 											class="form-label">CPF*</label>
 									</div>
-									<div class="help-info">Digite apenas os n˙meros do seu
+									<div class="help-info">Digite apenas os n√∫meros do seu
 										CPF.</div>
 								</div>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input min="18" type="number" name="age" class="form-control"
-											required> <label class="form-label">Idade*</label>
-									</div>
-									<div class="help-info">Note que o usu·rio deve ser maior
-										de idade.</div>
-								</div>
+								<div class="demo-masked-input">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="text" name="dataNascimento" class="form-control date" placeholder="Ex.: 30/07/2016">
+                                            </div>
+                                            <div class="help-info">Data de nascimento.</div>
+                                        </div>
+                                </div>
 							</fieldset>
 
-							<h3>Termos & Tipo da Conta</h3>
+							<h3>TERMOS & TIPO DA CONTA</h3>
 							<fieldset>
 								<div class="form-group">
-									<input type="radio" name="tipoDaConta" id="ContaAdm"
+									<input type="radio" name="tipoConta" id="ContaAdm"
 										class="with-gap"> <label for="ContaAdm">Esse
-										usu·rio ter· permissıes administrativas.</label> <input type="radio"
-										name="tipoDaConta" id="ContaFunc" class="with-gap"> <label
-										for="ContaFunc" class="m-l-20">Esse usu·rio N√O ter·
-										permissıes administrativas.</label>
+										usu√°rio ter√° permiss√µes administrativas.</label> <input type="radio"
+										name="tipoConta" id="ContaFunc" class="with-gap"> <label
+										for="ContaFunc" class="m-l-20">Esse
+										usu√°rio N√ÉO ter√° permiss√µes administrativas.</label>
 								</div>
 								<input id="acceptTerms-2" name="acceptTerms" type="checkbox"
 									required> <label for="acceptTerms-2">Estou
-									ciente que n„o poderei excluir o usu·rio criado caso ele
-									realize ao menos uma alteraÁ„o dentro do sistema.</label>
+									ciente que n√£o poderei excluir o usu√°rio criado caso ele
+									realize ao menos uma altera√ß√£o dentro do sistema.</label>
 							</fieldset>
 						</form>
 					</div>
@@ -341,7 +341,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="defaultModalLabel">Gerenciar
-						contas de usu·rios:</h4>
+						contas de usu√°rios:</h4>
 				</div>
 				<div class="modal-body">
 					<div class="body">
@@ -362,7 +362,7 @@
 							</div>
 							<div class="form-group">
 								<input type="checkbox" id="checkbox" name="checkbox"> <label
-									for="checkbox">Estou ciente que a conta poder· ser
+									for="checkbox">Estou ciente que a conta poder√° ser
 									desativada/reativada a qualquer momento.</label>
 							</div>
 							<div class="modal-footer">
@@ -386,10 +386,16 @@
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.inputmask.bundle.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/tabelas/jquery.dataTables.js"></script>
 	<script
@@ -400,13 +406,18 @@
 	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
-
-	<script src="js/demo.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+	<script 
+	    src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+	<script 
+	    src="js/demo.js"></script>
 </body>
 
 </html>
