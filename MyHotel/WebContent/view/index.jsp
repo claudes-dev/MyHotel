@@ -1,104 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="java.io.*,java.sql.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="connection.ConexaoFactory"%>
+<%@ page import="br.com.start.myhotel.model.Pessoa"%>
+<%@ page import="br.com.start.myhotel.model.Funcionario"%>
+<%@ page import="dao.FuncionarioDao"%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>MyHotel - Entrar</title>
+  
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/waves.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/resources/css/animate.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/resources/css/style.css" rel="stylesheet">
+</head>
 
+<body class="login-page">
+    <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);">My<b>Hotel</b></a>
+            <small>Start 2018 - Material Design</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_in" method="POST">
+                    <div class="msg">Insira suas credenciais para iniciar a sessÃ£o.</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                        </div>
+                    </div>
+                    <div class="row">
 
-<meta charset="ISO-8859-1">
-<title>Home</title>
-
-
-<style type="text/css">
-
-button{
-margin-right: 5px;
-}
-</style>
-<body>
-
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Logo</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only"></span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Acomodações</a>
-				</li>
-				<li class="nav-item"><a class="nav-link disabled" href="#">Tarifas</a>
-				</li>
-
-
-				<li class="nav-item"><a class="nav-link disabled" href="#">Contato</a>
-				</li>
-
-
-			</ul>
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#exampleModal">Login</button>
-
-
-			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#modalCadastro">Cadastro</button>
-
-		</div>
-	</nav>
+                        <div class="col-xs-12">
+                            <button href="index.html" class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-	<!-- Modal LOGIN -->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Login</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email address</label> <input
-								type="email" class="form-control" name="email" id="exampleInputEmail1" 
-								aria-describedby="emailHelp" placeholder="Enter email">
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
 
-						</div>
+    <script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
 
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label> <input
-								type="password" class="form-control" id="exampleInputPassword1"
-								placeholder="Password">
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Fechar</button>
-							<input type="submit" name="" class="btn btn-secondary"
-								value="Entrar">
-						</div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
+    <script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/login.js"></script>
 </body>
+
 </html>
