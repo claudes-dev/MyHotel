@@ -264,7 +264,7 @@
 						</ul>
 					</div>
 					<div class="body">
-						<form id="wizard_with_validation" method="POST">
+						<form id="wizard_with_validation" action="AdministradorController" method="POST">
 							<h3>INFORMAÇÕES DE LOGIN</h3>
 							<fieldset>
 								<div class="form-group form-float">

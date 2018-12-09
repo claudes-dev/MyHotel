@@ -139,12 +139,10 @@ public class AdministradorController extends HttpServlet {
 		String nome = req.getParameter("nome");
 		String cpf = req.getParameter("cpf");
 		String senha = req.getParameter("senha");
-		String tipoConta = req.getParameter("tipoConta");
 		String email = req.getParameter("email");
 
 		Funcionario f = new Funcionario(nome, cpf, senha, email);
-		f.setTipoConta(tipoConta);
-
+		
 		try {
 			admBO.cadastrarFuncionario(f);
 			req.setAttribute("mensagem", "Funcionário cadastrado com sucesso");
