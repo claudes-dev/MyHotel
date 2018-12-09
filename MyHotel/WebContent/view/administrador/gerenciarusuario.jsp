@@ -196,7 +196,9 @@
 											<th>Nome Completo</th>
 											<th>CPF</th>
 											<th>E-mail</th>
-											<th>Cargo</th>
+											<th>Função</th>
+											<th>Status</th>
+											
 										</tr>
 									</thead>
 									<tfoot>
@@ -204,7 +206,8 @@
 											<th>Nome Completo</th>
 											<th>CPF</th>
 											<th>E-mail</th>
-											<th>Cargo</th>
+											<th>Função</th>
+											<th>Status</th>
 										</tr>
 									</tfoot>
 									<tbody>
