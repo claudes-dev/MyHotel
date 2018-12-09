@@ -114,7 +114,7 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="perfil.html"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="login.html"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
@@ -126,22 +126,14 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="index.html"> <i class="material-icons">home</i>
+					<li><a href="paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
-					<li><a href="javascript:void(0);" class="menu-toggle"> <i
-							class="material-icons">hotel</i> <span>Hospedagem</span>
-					</a>
-						<ul class="ml-menu">
-							<li><a href="javascript:void(0);"> <span>Quartos</span>
-							</a></li>
-							<li><a href="javascript:void(0);"> <span>Serviços</span>
-							</a></li>
-						</ul></li>
+					
 					<li class="active"><a href="javascript:void(0);"> <i
 							class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
-					<li><a href="index.html"> <i class="material-icons">attach_money</i>
+					<li><a href="javascript:void(0);"> <i class="material-icons">attach_money</i>
 							<span>Faturamento</span>
 					</a></li>
 					<li class="header">GERENCIAR CLIENTES</li>
@@ -149,8 +141,8 @@
 							class="material-icons">people</i> <span>Clientes</span>
 					</a>
 						<ul class="ml-menu">
-							<li><a href="pages/ui/alerts.html">Hospedados</a></li>
-							<li><a href="pages/ui/animations.html">Histórico</a></li>
+							<li><a href="javascript:void(0);">Hospedados</a></li>
+							<li><a href="javascript:void(0);">Histórico</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -241,7 +233,6 @@
 				</div>
 			</div>
 			<!-- #FIM# Tabela de usu�rios -->
-		</div>
 		</div>
 	</section>
 
@@ -372,7 +363,7 @@
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-primary waves-effect"
-									type="submit button">CONFIRMAR</button>
+									type="submit">CONFIRMAR</button>
 								<button type="button" class="btn btn-default waves-effect"
 									data-dismiss="modal">FECHAR</button>
 							</div>
@@ -382,7 +373,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+
 
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
