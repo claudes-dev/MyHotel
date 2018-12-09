@@ -349,12 +349,14 @@
 				<div class="modal-body">
 					<div class="body">
 						<form id="form_validation" method="POST">
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="email" class="form-control" name="emailDesativar"
-										required> <label class="form-label">Email</label>
+								<div class="form-group form-float">
+									 <div class="form-line">
+										<input minlength="11" type="number" maxlength="11" name="cpf"
+											class="form-control" required> <label
+											class="form-label">CPF*</label>
+									 </div>
+									  <div class="help-info">Digite apenas os números do seu CPF.</div>
 								</div>
-							</div>
 							<div class="form-group">
 								<input type="radio" name="escolhaConta" id="desativarConta"
 									class="with-gap" required> <label for="desativarConta">Desejo
