@@ -264,7 +264,7 @@
 										<label class="form-label">E-mail*</label>
 									</div>
 								</div>
-								<div class="form-group form-float">
+								<div class="form-group form-float"> 
 									<div class="form-line">
 										<input type="password" minlength="6" class="form-control"
 											name="password" id="password" required> <label
