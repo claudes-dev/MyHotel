@@ -107,7 +107,7 @@ public class AdministradorDao {
 		}
 	}
 
-	// 5-BUSCAS UM ADM
+	// 5-BUSCAR UM ADM
 	public void buscarAdm(Administrador pessoa) throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_adm ");
@@ -190,7 +190,7 @@ public class AdministradorDao {
 
 			System.out.println("Funcionário deletado");
 		} catch (SQLException excecao) {
-			throw new ExcecaoEdicao("Funcionário não foi deletado");
+			throw new ExcecaoExclusao("Funcionário não foi deletado");
 		}
 
 	}

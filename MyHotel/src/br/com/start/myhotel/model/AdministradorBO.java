@@ -1,7 +1,6 @@
 package br.com.start.myhotel.model;
 
 import java.sql.SQLException;
-
 import dao.AdministradorDao;
 import excecoes.ExcecaoBusca;
 import excecoes.ExcecaoCadastro;
