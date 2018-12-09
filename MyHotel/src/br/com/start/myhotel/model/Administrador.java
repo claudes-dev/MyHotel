@@ -9,9 +9,9 @@ public class Administrador extends Pessoa {
 
 	}
 
-	public Administrador(String nome, String cpf, String senha) {
+	public Administrador(String nome, String cpf, String senha, String email) {
 		// CONSTRUTOR CONTENDO ATRIBUTOS DA CLASSE CLIENTE, E DA SUPER CLASSE PESSOA
-		super(nome, cpf, senha);
+		super(nome, cpf, senha, email);
 
 	}
 

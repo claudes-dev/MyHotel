@@ -6,6 +6,7 @@ public abstract class Pessoa {
 	private String nome;
 	private String cpf;
 	private String senha;
+	private String email;
 	private String tipoConta;
 	
 	
@@ -14,18 +15,21 @@ public abstract class Pessoa {
 	}
 	//CONSTRUTOR QUE COMPLETO
 
-	public Pessoa(String nome, String cpf, String senha, String tipoConta) {
+	public Pessoa(String nome, String cpf, String senha, String email ,String tipoConta) {
 		this.nome = nome;
 		this.cpf = cpf;
+		this.email = email;
 		this.tipoConta = tipoConta;
 		this.senha = senha;
 	}
 	
-	public Pessoa(String nome, String cpf, String senha) {
+
+
+	public Pessoa(String nome, String cpf, String senha, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
-		
 		this.senha = senha;
+		this.email = email;
 	}
 	
 	//CONSTRUTOR SEM O ATRIBUTO ID
@@ -69,7 +73,13 @@ public abstract class Pessoa {
 		this.status = status;
 	}
 	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	
 	

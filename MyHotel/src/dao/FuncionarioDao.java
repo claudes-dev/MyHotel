@@ -15,8 +15,8 @@ public class FuncionarioDao {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into funcionario ");
-		sql.append("(cpf_func,senha,nome_func,tipo_conta) ");
-		sql.append("values (?,?,?)");
+		sql.append("(cpf_func,senha,nome_func,tipo_conta,email) ");
+		sql.append("values (?,?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
 
@@ -26,6 +26,7 @@ public class FuncionarioDao {
 			comando.setString(2, f.getSenha());
 			comando.setString(3, f.getNome());
 			comando.setString(4, f.getTipoConta());
+			comando.setString(5,f.getEmail());
 
 			comando.executeUpdate();
 
