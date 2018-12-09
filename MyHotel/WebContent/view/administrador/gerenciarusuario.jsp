@@ -375,13 +375,16 @@
 	</div>
 
 
-	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
 	<script 
 	    src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
 	<script 
@@ -398,8 +401,8 @@
 		src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
-
-	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
 	<script 

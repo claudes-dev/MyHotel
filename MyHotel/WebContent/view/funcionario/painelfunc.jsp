@@ -118,7 +118,7 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">GERENCIAR HOTEL</li>
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
                     <li class="active">
                         <a href="javascript:void(0);">
                             <i class="material-icons">home</i>
@@ -126,22 +126,31 @@
                         </a>
                     </li>
                     <li>
-                        <a href="gerenciarusuarios.html">
-                            <i class="material-icons">person</i>
-                            <span>Contas de usuário</span>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">hotel</i>
+                            <span>Hospedagem</span>
                         </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);">
+
+                                    <span>Reserva</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Histórico</span>
+                                </a>
+
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="index.html">
-                            <i class="material-icons">attach_money</i>
-                            <span>Faturamento</span>
-                        </a>
-                    </li>
-                    <li class="header">GERENCIAR CLIENTES</li>
+                    <li class="header">MINHA CONTA</li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">people</i>
-                            <span>Clientes</span>
+                            <span>Registros</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
@@ -244,6 +253,9 @@
 					<div class="card">
 						<div class="header">
 							<h2>ÚLTIMOS HÓSPEDES</h2>
+							<ul class="header-dropdown">
+								<button onclick="location.href='gerenciarusuario.jsp'" type="button"class="btn btn-primary waves-effect m-r-20">ADICIONAR</button>
+							</ul>
 						</div>
 						<div class="body">
 							<div class="table-responsive">
