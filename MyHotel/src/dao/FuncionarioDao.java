@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
 import excecoes.ExcecaoBusca;
@@ -23,7 +24,7 @@ public class FuncionarioDao {
 		sql.append("values (?,?,?,?,?,?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
-			try {
+		try {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setInt(1, r.getIdReserva());
 			comando.setString(2, r.getIdFuncionario());
@@ -32,88 +33,91 @@ public class FuncionarioDao {
 			comando.setDouble(5, r.getValor());
 			comando.setString(6, r.getIdCliente());
 			comando.setInt(7, r.getIdServico());
-			comando.setInt(8 , r.getNumQuarto());
+			comando.setInt(8, r.getNumQuarto());
 
 			comando.executeUpdate();
 
 			System.out.println("Inserido no banco");
-			}catch(SQLException excecao) {
-				throw new ExcecaoCadastro("Não foi inserido");
-			}
+		} catch (SQLException excecao) {
+			throw new ExcecaoCadastro("Não foi inserido");
+		}
 	}
 
 	// 2- FUNÇÃO PARA SUSPENDER RESERVA
-	public void suspenderReserva(Reserva r) throws ExcecaoExclusao{
-		
+	public void suspenderReserva(Reserva r) throws ExcecaoExclusao {
+
 		StringBuilder sql = new StringBuilder();
 		sql.append("delete from reserva ");
 		sql.append("where id_reserva = ?");
-		
+
 		Connection conexao = ConexaoFactory.getConnection();
 		try {
-		PreparedStatement comando = conexao.prepareStatement(sql.toString());
-		comando.setInt(1, r.getIdReserva());
-		
-		comando.executeUpdate();
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setInt(1, r.getIdReserva());
 
-		System.out.println("Reserva suspensa");
-		}catch(SQLException excecao) {
+			comando.executeUpdate();
+
+			System.out.println("Reserva suspensa");
+		} catch (SQLException excecao) {
 			throw new ExcecaoExclusao("Reserva não foi suspensa");
 		}
 	}
-	
-	
-	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
 
-	public  ArrayList<Reserva> listarTodosClientes() throws ExcecaoBusca {
-		
+	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
+	public ArrayList<Reserva> listar() throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select id_cliente, id_reserva ");
+		sql.append("select id_reserva, id_cliente ");
 		sql.append("from reserva");
-		
 
 		Connection conexao = ConexaoFactory.getConnection();
-		
+
 		PreparedStatement comando = null;
 		ResultSet resultado = null;
-		
-	 comando = conexao.prepareStatement(sql.toString());
-		
-	 resultado = comando.executeQuery();
+		try {
+			comando = conexao.prepareStatement(sql.toString());
 
-		Reserva retorno = null;
-		return null;
+			resultado = comando.executeQuery();
+			System.out.println("Conexão para inseriri no banco, executada com sucesso");
+		} catch (SQLException excecao) {
+			throw new ExcecaoBusca("Execução da conexão não concluída");
+		}
+		ArrayList<Reserva> lista = new ArrayList<Reserva>();
+		try {
+			while (resultado.next()) {
+				Reserva r = new Reserva();
+				r.setIdReserva(resultado.getInt("id_reserva"));
+				r.setIdCliente(resultado.getString("id_cliente"));
+
+				lista.add(r);
+			}
+			conexao.close();
+			System.out.println("Lista buscada com sucesso");
+		} catch (SQLException e) {
+			throw new ExcecaoBusca("Erro ao buscar lista");
+		}
+
+		return lista;
+
 	}
 	
-}
-	
-
-/**tras apenas  um
-//	if (resultado.next()) {
-//		retorno = new Funcionario();
-//		retorno.setCpf(resultado.getString("cpf_func"));
-//		retorno.setNome(resultado.getString("nome_func"));
-//		
-//	}
-	
-	ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
-//	 List a1 = new ArrayList();
-	while(resultado.next()) {
-		Funcionario f = new Funcionario();
-		f.setCpf(resultado.getString("cpf_func"));
-		f.setSenha(resultado.getString("senha"));
-		f.setNome(resultado.getString("nome_func"));
-		f.setTipoConta(resultado.getString("tipo_conta"));
+	// 4- FUNÇÃO PARA BUSCAR UMA RESERVA
+	public void buscarReserva(Reserva reserva) throws ExcecaoBusca {
 		
-		lista.add(f);
-	}
-	
+			StringBuilder sql = new StringBuilder();
+			sql.append("select id_reserva,id_cliente ");
+			sql.append("from reserva");
 
-	try {
-		conexao.close();
-	} catch (SQLException e) {
-	}
-	
-	return lista;
+			try {
+				Connection conexao = ConexaoFactory.getConnection();
 
-*/
+				PreparedStatement comando = conexao.prepareStatement(sql.toString());
+				comando.setInt(1, reserva.getIdReserva());
+				comando.setString(2, reserva.getIdCliente());
+
+				ResultSet resultado = comando.executeQuery();
+
+			} catch (SQLException excecao) {
+				throw new ExcecaoBusca("Erro ao busca administrador");
+			}
+		}
+	}
