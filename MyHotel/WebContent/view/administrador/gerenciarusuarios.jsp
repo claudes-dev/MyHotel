@@ -291,21 +291,19 @@
 										<label class="form-label">Nome*</label>
 									</div>
 								</div>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input minlength="11" type="number" maxlength="11" name="cpf"
-											class="form-control" required> <label
-											class="form-label">CPF*</label>
-									</div>
-									<div class="help-info">Digite apenas os números do seu
-										CPF.</div>
-								</div>
 								<div class="demo-masked-input">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="dataNascimento" class="form-control date" placeholder="Ex.: 30/07/2016">
+                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
                                             </div>
-                                            <div class="help-info">Data de nascimento.</div>
+                                        </div>
+                                </div>
+								<div class="demo-masked-input">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="text" name="dataNascimento" class="form-control date" placeholder="Data de nascimento*" required>
+                                            </div>
+                                            <div class="help-info">Ex.: dd/mm/aaaa</div>
                                         </div>
                                 </div>
 							</fieldset>

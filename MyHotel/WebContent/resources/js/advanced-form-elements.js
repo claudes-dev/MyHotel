@@ -13,9 +13,11 @@ $(function () {
     //Date
     $demoMaskedInput.find('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
 
+    //CPF
+    $demoMaskedInput.find('.cpf').inputmask('999.999.999-99', { placeholder: '___.___.___-__' });
     //Time
     $demoMaskedInput.find('.time12').inputmask('hh:mm t', { placeholder: '__:__ _m', alias: 'time12', hourFormat: '12' });
-    $demoMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+    $demoMaskedInput.find('.time24').inputmask('hh:mm', { placehoslder: '__:__ _m', alias: 'time24', hourFormat: '24' });
 
     //Date Time
     $demoMaskedInput.find('.datetime').inputmask('d/m/y h:s', { placeholder: '__/__/____ __:__', alias: "datetime", hourFormat: '24' });
