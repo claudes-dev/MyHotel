@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<title>MyHotel - Gerenciar Usuários</title>
+<title>MyHotel - Painel Administrativo</title>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -96,25 +96,28 @@
     <section>
         <!-- Sidebar esquerda -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="<%=request.getContextPath()%>/resources/images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Saulo Lessa</div>
-                    <div class="email">exemplo@exemplo.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="perfil.html"><i class="material-icons">person</i>Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="login.html"><i class="material-icons">input</i>Sair</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
+<!-- User Info -->
+			<div class="user-info">
+				<div class="image">
+					<img src="<%=request.getContextPath()%>/resources/images/user.png"
+						width="48" height="48" alt="User" />
+				</div>
+				<div class="info-container">
+					<div class="name" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Saulo Lessa</div>
+					<div class="email">exemplo@exemplo.com</div>
+					<div class="btn-group user-helper-dropdown">
+						<i class="material-icons" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
@@ -126,13 +129,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="gerenciarusuarios.html">
+                        <a href="gerenciarusuarios.jsp">
                             <i class="material-icons">person</i>
                             <span>Contas de usuário</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index.html">
+                        <a href="javascript:void(0);">
                             <i class="material-icons">attach_money</i>
                             <span>Faturamento</span>
                         </a>
@@ -145,10 +148,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Hospedados</a>
+                                <a href="javascript:void(0);">Hospedados</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Histórico</a>
+                                <a href="javascript:void(0);">Histórico</a>
                             </li>
                         </ul>
                     </li>

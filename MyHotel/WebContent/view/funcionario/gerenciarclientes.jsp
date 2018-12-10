@@ -16,7 +16,7 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
-<title>MyHotel - Gerenciar Usuários</title>
+<title>MyHotel - Gerenciar Clientes</title>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -116,37 +116,47 @@
 						<ul class="dropdown-menu pull-right">
 							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="login.html"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- #User Info -->
 			<!-- Menu -->
-			<div class="menu">
-				<ul class="list">
-					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="paineladmin.jsp"> <i class="material-icons">home</i>
-							<span>Início</span>
-					</a></li>
-					
-					<li class="active"><a href="javascript:void(0);"> <i
-							class="material-icons">person</i> <span>Usuários</span>
-					</a></li>
-					<li><a href="javascript:void(0);"> <i class="material-icons">attach_money</i>
-							<span>Faturamento</span>
-					</a></li>
-					<li class="header">GERENCIAR CLIENTES</li>
-					<li><a href="javascript:void(0);" class="menu-toggle"> <i
-							class="material-icons">people</i> <span>Clientes</span>
-					</a>
-						<ul class="ml-menu">
-							<li><a href="javascript:void(0);">Hospedados</a></li>
-							<li><a href="javascript:void(0);">Histórico</a></li>
-						</ul></li>
-				</ul>
-			</div>
-			<!-- #Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                    <li>
+                        <a href="painelfunc.jsp">
+                            <i class="material-icons">home</i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">hotel</i>
+                            <span>Hospedagem</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="active">
+                                <a href="javascript:void(0);">
+
+                                    <span>Reservas</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Histórico</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                </ul>
+            </div>
+            <!-- #Menu -->
 			<!-- Rodap� -->
 			<div class="legal">
 				<div class="copyright">
@@ -169,11 +179,11 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="card">
 						<div class="header">
-							<h2>LISTAGEM DE USUÁRIOS CADASTRADOS</h2>
+							<h2>LISTAGEM DE TODAS AS RESERVAS</h2>
 							<ul class="header-dropdown">
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
-									data-target="#adicionar">ADICIONAR</button>
+									data-target="#adicionar">NOVA RESERVA</button>
 								<button type="button"
 									class="btn btn-default waves-effect m-r-20" data-toggle="modal"
 									data-target="#gerenciar">GERENCIAR</button>
