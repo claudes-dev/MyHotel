@@ -44,8 +44,7 @@ public class AdministradorDao {
 	public void excluirAdm(Administrador pessoa) throws ExcecaoExclusao {
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("select * from administrador ");
-		sql.append("(id_adm,nome_adm) ");
+		sql.append("delete from administrador ");
 		sql.append("where cpf_adm = ?");
 
 		Connection conexao = ConexaoFactory.getConnection();
