@@ -54,7 +54,7 @@
                     <div class="row">
 
                         <div class="col-xs-12">
-                            <button href="index.html" class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
+                            <button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
                         </div>
                     </div>
                 </form>

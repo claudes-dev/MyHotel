@@ -22,17 +22,5 @@
 		<url-pattern>/oi</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>AdministradorController</servlet-name>
-		<servlet-class>br.com.start.myhotel.controller.AdministradorController</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>AdministradorController</servlet-name>
-		<url-pattern>/view/administrador/gerenciarusuario.jsp</url-pattern>
-	</servlet-mapping>
-
-
-
 
 </web-app>
