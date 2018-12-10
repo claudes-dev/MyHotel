@@ -10,6 +10,7 @@ public abstract class Pessoa {
 	private String tipoConta;
 	
 	
+	
 	public Pessoa() {
 		
 	}
