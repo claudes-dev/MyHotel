@@ -293,21 +293,23 @@
 										<label class="form-label">Nome*</label>
 									</div>
 								</div>
-								<div class="demo-masked-input">
-                                        <div class="input-group">
+								
+                                    <div class="input-group">
+                                        <div class="demo-masked-input">
                                             <div class="form-line">
                                                 <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
                                             </div>
                                         </div>
-                                </div>
-								<div class="demo-masked-input">
-                                        <div class="input-group">
+                                    </div>
+					
+                                    <div class="input-group">
+                                        <div class="demo-masked-input">
                                             <div class="form-line">
                                                 <input type="text" name="dataNascimento" class="form-control date" placeholder="Data de nascimento*" required>
                                             </div>
                                             <div class="help-info">Ex.: dd/mm/aaaa</div>
                                         </div>
-                                </div>
+                                    </div>
 							</fieldset>
 
 							<h3>TERMOS & TIPO DA CONTA</h3>

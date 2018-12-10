@@ -132,7 +132,7 @@
 							class="material-icons">home</i> <span>Início</span>
 					</a></li>
 					<li><a href="gerenciarusuarios.jsp"> <i
-							class="material-icons">person</i> <span>Contas de usuário</span>
+							class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
 					<li><a href="javascript:void(0);"> <i
 							class="material-icons">attach_money</i> <span>Faturamento</span>
