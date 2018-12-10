@@ -127,7 +127,7 @@
 			<!-- Menu -->
 			<div class="menu">
 				<ul class="list">
-					<li class="header">GERENCIAR HOTEL</li>
+					<li class="header">cu seco</li>
 					<li><a href="paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
