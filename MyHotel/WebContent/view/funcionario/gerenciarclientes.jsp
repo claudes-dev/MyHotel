@@ -214,12 +214,12 @@
 									</tfoot>
 									<tbody>
 										<%
-											FuncionarioDao dao = new FuncionarioDao();
+										FuncionarioDao dao = new FuncionarioDao();
 
-											List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+										List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
 
-											listaFuncionario = dao.listar();
-											for (Funcionario f : listaFuncionario) {
+										listaFuncionario = dao.listarFunc();
+										for (Funcionario f : listaFuncionario) {
 										%>
 										
 										

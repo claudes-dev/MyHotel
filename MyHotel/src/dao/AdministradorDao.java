@@ -213,6 +213,7 @@ public class AdministradorDao {
 			throw new ExcecaoBusca("Funcionários não listados");	
 		}
 	}
+	
 	// 10-BUSCAR UM FUNCIONARIO
 	public void buscarFuncionario(Funcionario f)  throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();

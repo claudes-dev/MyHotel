@@ -47,11 +47,11 @@ public class AdministradorBO {
 		dao.excluirFuncionario(f);
 	}
 	// 9-BUSCAR TODOS FUNCIONARIOS
-	public void buscarFunc(Funcionario f) throws ExcecaoBusca {
+	public void buscarFuncionarios(Funcionario f) throws ExcecaoBusca {
 		dao.buscarFuncionarios(f);
 	}
 	// 10-BUSCAR UM FUNCIONARIO
-	public void buscarFuncs(Funcionario f) throws ExcecaoBusca{
+	public void buscarFunc(Funcionario f) throws ExcecaoBusca{
 		dao.buscarFuncionario(f);
 	}
 	

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.start.myhotel.model.Administrador;
+import br.com.start.myhotel.model.Funcionario;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
 import excecoes.ExcecaoBusca;
@@ -120,4 +121,42 @@ public class FuncionarioDao {
 				throw new ExcecaoBusca("Erro ao busca administrador");
 			}
 		}
+	
+	public ArrayList<Funcionario> listarFunc() throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select cpf_func,senha, nome_func, tipo_conta ");
+		sql.append("from funcionario");
+		
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+		
+	 comando = conexao.prepareStatement(sql.toString());
+		
+	 resultado = comando.executeQuery();
+
+
+		
+		ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+
+		while(resultado.next()) {
+			Funcionario f = new Funcionario();
+			f.setCpf(resultado.getString("cpf_func"));
+			f.setSenha(resultado.getString("senha"));
+			f.setNome(resultado.getString("nome_func"));
+			f.setTipoConta(resultado.getString("tipo_conta"));
+			
+			lista.add(f);
+		}
+		
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+		
+		return lista;
+
+	}
 	}

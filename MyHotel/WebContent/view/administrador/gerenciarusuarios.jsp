@@ -7,6 +7,8 @@
 <%@ page import="br.com.start.myhotel.model.Funcionario"%>
 <%@ page import="dao.FuncionarioDao"%>
 
+
+
 <!DOCTYPE html>
 <html>
 
@@ -208,7 +210,7 @@
 
 											List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
 
-											listaFuncionario = dao.listar();
+											listaFuncionario = dao.listarFunc();
 											for (Funcionario f : listaFuncionario) {
 										%>
 										
@@ -217,8 +219,9 @@
 										<tr>
 											<td><%=f.getNome()%></td>
 											<td><%=f.getCpf()%></td>
-											<td><%=f.getSenha() %></td>
+											<td><%=f.getEmail() %></td>
 											<td><%=f.getTipoConta() %></td>
+											<td><%=f.getStatus() %> </td>
 										</tr>
 										
 										<%

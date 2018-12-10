@@ -195,7 +195,7 @@ public class AdministradorController extends HttpServlet {
 		f.setCpf(cpf);
 
 		try {
-			admBO.buscarFuncs(f);
+			admBO.buscarFuncionarios(f);
 			req.setAttribute("mensagem", "Funcionários encontrados");
 		} catch (ExcecaoBusca excecao) {
 			req.setAttribute("mensagem", "Funcionários não encontrados");
@@ -212,7 +212,7 @@ public class AdministradorController extends HttpServlet {
 		f.setCpf(cpf);
 
 		try {
-			admBO.buscarFuncs(f);
+			admBO.buscarFunc(f);
 			req.setAttribute("mensagem", "Funcionário encontrado");
 		} catch (ExcecaoBusca excecao) {
 			req.setAttribute("mensagem", "Funcionário não encontrado");
