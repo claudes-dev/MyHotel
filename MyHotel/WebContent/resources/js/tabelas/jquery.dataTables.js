@@ -11416,7 +11416,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Exibindo 0 to 0 of 0 registros",
+			"sInfoEmpty": "Exibindo 0 de 0 registros",
 	
 	
 			/**
