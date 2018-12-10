@@ -104,7 +104,7 @@
                 </div>
             </div>
             <!-- #User Info -->
-                        <!-- Menu -->
+            <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">GERENCIAR HOSPEDAGENS</li>

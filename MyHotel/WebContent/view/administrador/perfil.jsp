@@ -98,7 +98,7 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons active">person</i>Perfil</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="login.html"><i class="material-icons">input</i>Sair</a></li>
+                            <li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
                         </ul>
                     </div>
                 </div>
