@@ -31,6 +31,7 @@ public class AdministradorController extends HttpServlet {
 		// 1
 		if (operacao.equals("CADASTRAR_ADM")) {
 			cadastrarAdm(req, res);
+			redirecionar(req, res, "administrador/gerenciarusuarios.jsp");
 			// 2
 		} else if (operacao.equals("EXCLUIR_ADM")) {
 			excluirAdm(req, res);
@@ -46,7 +47,7 @@ public class AdministradorController extends HttpServlet {
 			// 6
 		} else if (operacao.equals("CADASTRAR_FUNCIONARIO")) {
 			cadastrarFuncionario(req, res);
-			redirecionar(req, res, "administrador/perfil.jsp");
+			redirecionar(req, res, "administrador/gerenciarusuarios.jsp");
 			// 7
 		} else if (operacao.equals("EDITAR_FUNCIONARIO")) {
 			editarFuncionario(req, res);
@@ -76,12 +77,12 @@ public class AdministradorController extends HttpServlet {
 	
 	// 1-MÉTODO PARA CRIAR ADMINISTRADOR
 	private void cadastrarAdm(HttpServletRequest req, HttpServletResponse res) {
-		String cpf = req.getParameter("cpf");
-		String senha = req.getParameter("password");
 		String nome = req.getParameter("nome");
+		String cpf = req.getParameter("cpf");
+		String senha = req.getParameter("senha");
 		String email = req.getParameter("email");
 
-		Administrador adm = new Administrador(cpf, senha, nome, email);
+		Administrador adm = new Administrador(nome, cpf, senha, email);
 		try {
 			admBO.cadastrarAdm(adm);
 			req.setAttribute("mensagem", "Administrador cadastrado com sucesso");
@@ -148,7 +149,7 @@ public class AdministradorController extends HttpServlet {
 
 		String nome = req.getParameter("nome");
 		String cpf = req.getParameter("cpf");
-		String senha = req.getParameter("password");
+		String senha = req.getParameter("senha");
 		String email = req.getParameter("email");
 
 		Funcionario f = new Funcionario(nome, cpf, senha, email);
