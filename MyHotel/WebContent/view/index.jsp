@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ page import="java.io.*,java.sql.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="connection.ConexaoFactory"%>
-<%@ page import="br.com.start.myhotel.model.Pessoa"%>
-<%@ page import="br.com.start.myhotel.model.Funcionario"%>
-<%@ page import="dao.FuncionarioDao"%>
+<%@ page import="br.com.start.myhotel.model.*"%>
+<%@ page import="dao.*"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +31,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <form action="/sistemacontroller" id="sign_in" method="POST">
                     <div class="msg">Insira suas credenciais para iniciar a sessão.</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -48,7 +46,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                            <input type="password" class="form-control" name="senha" placeholder="Senha" required>
                         </div>
                     </div>
                     <div class="row">
@@ -58,6 +56,21 @@
                         </div>
                     </div>
                 </form>
+            <%
+                String email= request.getParameter("email");
+                String senha= request.getParameter("senha");
+                
+                if (email!= null && senha!= null && !email.isEmpty() && !senha.isEmpty()){
+                	session.setAttribute("email", email);
+                	response.sendRedirect("index.jsp");
+                }
+                
+                
+            
+            
+            %>
+            
+            
             </div>
         </div>
     </div>

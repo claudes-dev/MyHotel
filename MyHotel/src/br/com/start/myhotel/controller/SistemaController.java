@@ -31,13 +31,13 @@ public class SistemaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated constructor stub
-		String nome = request.getParameter("nome");
+		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
-		String cpf = request.getParameter("cpf");		
+				
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		RequestDispatcher rd = null;
-		request.setAttribute(nome, "nome");
+		request.setAttribute(email, "nome");
 		if (nome.equals("nome") && senha.equals("senha")) {
 			rd = request.getRequestDispatcher("/WelcomeServlet");
 			rd.forward(request, response);
