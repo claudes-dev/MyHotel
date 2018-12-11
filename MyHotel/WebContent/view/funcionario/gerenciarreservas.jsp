@@ -4,12 +4,8 @@
 <%@ page import="java.util.*"%>
 <%@ page import="connection.ConexaoFactory"%>
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
-<%@ page import="br.com.start.myhotel.model.Funcionario"%>
-<%@ page import="br.com.start.myhotel.model.Administrador"%>
+<%@ page import="br.com.start.myhotel.model.Cliente"%>
 <%@ page import="dao.FuncionarioDao"%>
-<%@ page import="dao.AdministradorDao"%>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +16,7 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
-<title>MyHotel - Gerenciar Usuários</title>
+<title>MyHotel - Gerenciar Clientes</title>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -41,6 +37,8 @@
     rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/sweetalert.css"
 	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/bootstrap-select.css"
+	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
 <link
@@ -118,39 +116,48 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="<%=request.getContextPath()%>view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- #User Info -->
 			<!-- Menu -->
-			<div class="menu">
-				<ul class="list">
-					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="<%=request.getContextPath()%>view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
-							<span>Início</span>
-					</a></li>
-					
-					<li class="active"><a href="javascript:void(0);"> <i
-							class="material-icons">person</i> <span>Usuários</span>
-					</a></li>
-					<li><a href="javascript:void(0);"> <i class="material-icons">attach_money</i>
-							<span>Faturamento</span>
-					</a></li>
-					<li class="header">GERENCIAR CLIENTES</li>
-					<li><a href="javascript:void(0);" class="menu-toggle"> <i
-							class="material-icons">people</i> <span>Clientes</span>
-					</a>
-						<ul class="ml-menu">
-							<li><a href="javascript:void(0);">Hospedados</a></li>
-							<li><a href="javascript:void(0);">Histórico</a></li>
-						</ul></li>
-				</ul>
-			</div>
-			<!-- #Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                    <li>
+                        <a href="painelfunc.jsp">
+                            <i class="material-icons">home</i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">hotel</i>
+                            <span>Hospedagem</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp">
+                                    <span>Clientes</span>
+                                </a>
+
+                            </li>
+                            <li class="active">
+                                <a href="Javascript:void(0);">
+                                    <span>Reservas</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                </ul>
+            </div>
+            <!-- #Menu -->
 			<!-- Rodap� -->
 			<div class="legal">
 				<div class="copyright">
@@ -168,19 +175,22 @@
 	<section class="content">
 		<div class="container-fluid">
 
+<!-- Advanced Select -->
+
+            <!-- #END# Advanced Select -->
+
 			<!-- Tabela de usu�rios -->
 			<div class="row clearfix">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="card">
 						<div class="header">
-							<h2>LISTAGEM DE USUÁRIOS CADASTRADOS</h2>
+							<h2>LISTAGEM DE TODAS AS RESERVAS</h2>
 							<ul class="header-dropdown">
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
-									data-target="#adicionar">ADICIONAR</button>
-								<button type="button"
-									class="btn btn-default waves-effect m-r-20" data-toggle="modal"
-									data-target="#gerenciar">GERENCIAR</button>
+									data-target="#adicionar">ADICIONAR RESERVA</button>
+								<button type="button" data-toggle="modal"
+									class="btn btn-default waves-effect m-r-20" data-target="#gerenciar"">ENCERRAR RESERVA</button>
 							</ul>
 						</div>
 						<div class="body">
@@ -189,47 +199,49 @@
 									class="table table-bordered table-striped table-hover js-basic-example dataTable">
 									<thead>
 										<tr>
-											<th>Nome Completo</th>
+											<th>Nome</th>
 											<th>CPF</th>
-											<th>E-mail</th>
-											<th>Função</th>
-											<th>Status</th>
+											<th>Telefone</th>
+										
 											
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Nome Completo</th>
+											<th>Nome</th>
 											<th>CPF</th>
-											<th>E-mail</th>
-											<th>Função</th>
-											<th>Status</th>
+											<th>Telefone</th>
+										
 										</tr>
 									</tfoot>
 									<tbody>
 										<%
+								
+											
 											FuncionarioDao dao = new FuncionarioDao();
-
-											List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
-
-											listaFuncionario = dao.listarFunc();
-											for (Funcionario f : listaFuncionario) {
+											
+											List<Cliente> lista = new ArrayList<Cliente>();
+											
+												lista = dao.listarCliente();
+												
+												for (Cliente cliente : lista) {
+													System.out.println(lista);
+											
+											
 										%>
 										
 										
 
 										<tr>
-											<td><%=f.getNome()%></td>
-											<td><%=f.getCpf()%></td>
-											<td><%=f.getEmail() %></td>
-											<td><%=f.getTipoConta() %></td>
-											<td><%=f.getStatus() %> </td>
+											<td><%=cliente.getNome()%></td>
+											<td><%=cliente.getCpf()%></td>
+											<td><%=cliente.getEmail()%></td>
+										
 										</tr>
 										
 										<%
 											}
 										%>
-										
 										
 									</tbody>
 								</table>
@@ -244,86 +256,6 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-
-
-                <div class="card">
-                    <div class="header">
-                        <h2>ADICIONAR NOVO USUÁRIO AO SISTEMA</h2>
-                        <ul class="header-dropdown">
-
-                            <a style="margin-right: 5px;" data-dismiss="modal" role="button" aria-haspopup="true"
-                                aria-expanded="false">
-                                <i class="material-icons">close</i>
-                            </a>
-
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
-                            <h3>Informações de login</h3>
-                            <fieldset>
-                            <div class="form-group">
-                                    <input type="radio" name="operacao" id="op1" value="CADASTRAR_ADM" class="with-gap" required>
-                                    <label for="op1">Esse usuário TERÁ permissões administrativas.</label>
-                                    <input type="radio" name="operacao" id="op2" value="CADASTRAR_FUNCIONARIO" class="with-gap" required>
-                                    <label for="op2">Esse usuário NÃO terá permissões
-                                        administrativas.</label>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="email" class="form-control" name="email" required>
-                                        <label class="form-label">E-mail*</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" minlength="6" class="form-control" name="senha" id="senha"
-                                            required>
-                                        <label class="form-label">Senha*</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" minlength="6" class="form-control" name="confirmar"
-                                            required>
-                                        <label class="form-label">Confirmar Senha*</label>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <h3>Informações de perfil</h3>
-                            <fieldset>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="nome" class="form-control" required>
-                                        <label class="form-label">Nome*</label>
-                                    </div>
-                                </div>
-                                <div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: 123.456.789-10</div>
-                                        </div>
-                                </div>
-                                <input id="acceptTerms-2" name="acceptTerms" class="form-control" type="checkbox" required>
-                                <label for="acceptTerms-2">Estou ciente que não poderei excluir o usuário criado caso
-                                    ele realize ao menos uma alteração dentro do sistema.</label>
-                            </fieldset>
-
-                        </form>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-	
-	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -333,26 +265,69 @@
 				<div class="modal-body">
 					<div class="body">
 						<form id="form_validation" method="post">
-							<div class="form-group">
-								<input type="radio" name="operacao" value="desativar" id="desativarConta"
-									class="with-gap" required> <label for="desativarConta">Desejo
-									DESATIVAR a conta vinculada ao CPF abaixo.</label> <input
-									type="radio" name="operacao" value="reativar" id="reativarConta"
-									class="with-gap" required> <label for="reativarConta">Desejo
-									REATIVAR a conta vinculada ao CPF abaixo.</label>
-							</div>
-								<div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" minlength=14 name="cpf" class="form-control cpf" placeholder="CPF*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: 123.456.789-10</div>
-                                        </div>
+<br>
+                                <div class="col-md-6">
+									<select class="form-control show-tick" data-live-search="true" required>
+                                        <option value="">-- SELECIONE O FUNCIONÁRIO --</option>
+                                        <option value="1">Saulo Lessa</option>
+                                        <option value="0">Gabriel de Jesus</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+									<select class="form-control show-tick" data-live-search="true" required>
+                                        <option value="">-- SELECIONE O CLIENTE --</option>
+                                        <option value="1">Saulo Lessa</option>
+                                        <option value="0">Gabriel de Jesus</option>
+                                    </select>
                                 </div>
 
 							<div class="form-group">
 								<input type="checkbox" id="checkbox" name="checkbox"> <label
 									for="checkbox" required>Estou ciente que a conta poderá ser
+									desativada/reativada a qualquer momento.</label>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-primary waves-effect"
+									type="submit">CONFIRMAR</button>
+								<button type="button" class="btn btn-default waves-effect"
+									data-dismiss="modal">FECHAR</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="defaultModalLabel">Gerenciar
+						contas de usuários:</h4>
+				</div>
+				<div class="modal-body">
+					<div class="body">
+						<form id="form_validation" method="POST">
+								<div class="form-group form-float">
+									 <div class="form-line">
+										<input minlength="11" type="number" maxlength="11" name="cpf"
+											class="form-control" required> <label
+											class="form-label">CPF*</label>
+									 </div>
+									  <div class="help-info">Digite apenas os números do seu CPF.</div>
+								</div>
+							<div class="form-group">
+								<input type="radio" name="escolhaConta" id="desativarConta"
+									class="with-gap" required> <label for="desativarConta">Desejo
+									desativar a conta vinculada ao e-mail acima.</label> <input
+									type="radio" name="escolhaConta" id="reativarConta"
+									class="with-gap" required> <label for="reativarConta">Desejo
+									reativar a conta vinculada ao e-mail acima.</label>
+							</div>
+							<div class="form-group">
+								<input type="checkbox" id="checkbox" name="checkbox"> <label
+									for="checkbox">Estou ciente que a conta poderá ser
 									desativada/reativada a qualquer momento.</label>
 							</div>
 							<div class="modal-footer">

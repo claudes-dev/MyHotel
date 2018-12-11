@@ -287,7 +287,7 @@
                                 <div class="demo-masked-input">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
+                                                <input type="text"  minlength="15" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
                                             </div>
                                             <div class="help-info">Ex.: (99) 99999-9999</div>
                                         </div>
@@ -304,50 +304,6 @@
             </div>
         </div>
     </div>
-    
-	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="defaultModalLabel">Gerenciar
-						contas de usuários:</h4>
-				</div>
-				<div class="modal-body">
-					<div class="body">
-						<form id="form_validation" method="POST">
-								<div class="form-group form-float">
-									 <div class="form-line">
-										<input minlength="11" type="number" maxlength="11" name="cpf"
-											class="form-control" required> <label
-											class="form-label">CPF*</label>
-									 </div>
-									  <div class="help-info">Digite apenas os números do seu CPF.</div>
-								</div>
-							<div class="form-group">
-								<input type="radio" name="escolhaConta" id="desativarConta"
-									class="with-gap" required> <label for="desativarConta">Desejo
-									desativar a conta vinculada ao e-mail acima.</label> <input
-									type="radio" name="escolhaConta" id="reativarConta"
-									class="with-gap" required> <label for="reativarConta">Desejo
-									reativar a conta vinculada ao e-mail acima.</label>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" id="checkbox" name="checkbox"> <label
-									for="checkbox">Estou ciente que a conta poderá ser
-									desativada/reativada a qualquer momento.</label>
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary waves-effect"
-									type="submit">CONFIRMAR</button>
-								<button type="button" class="btn btn-default waves-effect"
-									data-dismiss="modal">FECHAR</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<script 
