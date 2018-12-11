@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.*,java.sql.*"%>
 <%@ page import="java.util.*"%>
@@ -31,13 +32,15 @@
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/animate.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
+<link
+	href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/css/dropzone.css" 
-    rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/css/dropzone.css"
+	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/sweetalert.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap-select.css"
+<link
+	href="<%=request.getContextPath()%>/resources/css/bootstrap-select.css"
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
@@ -116,48 +119,39 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a
+								href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i
+									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
+									class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- #User Info -->
 			<!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">GERENCIAR HOSPEDAGENS</li>
-                    <li>
-                        <a href="painelfunc.jsp">
-                            <i class="material-icons">home</i>
-                            <span>Início</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">hotel</i>
-                            <span>Hospedagem</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp">
-                                    <span>Clientes</span>
-                                </a>
-
-                            </li>
-                            <li class="active">
-                                <a href="Javascript:void(0);">
-                                    <span>Reservas</span>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="header">GERENCIAR HOSPEDAGENS</li>
-                </ul>
-            </div>
-            <!-- #Menu -->
+			<div class="menu">
+				<ul class="list">
+					<li class="header">GERENCIAR HOSPEDAGENS</li>
+					<li><a href="painelfunc.jsp"> <i class="material-icons">home</i>
+							<span>Início</span>
+					</a></li>
+					<li class="active"><a href="javascript:void(0);"
+						class="menu-toggle"> <i class="material-icons">hotel</i> <span>Hospedagem</span>
+					</a>
+						<ul class="ml-menu">
+							<li><a
+								href="<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp">
+									<span>Clientes</span>
+							</a></li>
+							<li class="active"><a href="Javascript:void(0);"> <span>Reservas</span>
+							</a></li>
+						</ul></li>
+					<li class="header">GERENCIAR HOSPEDAGENS</li>
+				</ul>
+			</div>
+			<!-- #Menu -->
 			<!-- Rodap� -->
 			<div class="legal">
 				<div class="copyright">
@@ -175,9 +169,9 @@
 	<section class="content">
 		<div class="container-fluid">
 
-<!-- Advanced Select -->
+			<!-- Advanced Select -->
 
-            <!-- #END# Advanced Select -->
+			<!-- #END# Advanced Select -->
 
 			<!-- Tabela de usu�rios -->
 			<div class="row clearfix">
@@ -189,8 +183,6 @@
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
 									data-target="#adicionar">ADICIONAR RESERVA</button>
-								<button type="button" data-toggle="modal"
-									class="btn btn-default waves-effect m-r-20" data-target="#gerenciar"">ENCERRAR RESERVA</button>
 							</ul>
 						</div>
 						<div class="body">
@@ -204,7 +196,7 @@
 											<th>Telefone</th>
 											<th>Entrada</th>
 											<th>Saída</th>
-											<th>Status</th>
+											<th>Serviço</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -214,38 +206,32 @@
 											<th>Telefone</th>
 											<th>Entrada</th>
 											<th>Saída</th>
-											<th>Status</th>
+											<th>Serviço</th>
 										</tr>
 									</tfoot>
 									<tbody>
 										<%
-								
-											
 											FuncionarioDao dao = new FuncionarioDao();
-											
+
 											List<Cliente> lista = new ArrayList<Cliente>();
-											
-												lista = dao.listarCliente();
-												
-												for (Cliente cliente : lista) {
-													System.out.println(lista);
-											
-											
+
+											for (Cliente cliente : lista) {
+												System.out.println(lista);
 										%>
-										
-										
+
+
 
 										<tr>
 											<td><%=cliente.getNome()%></td>
 											<td><%=cliente.getCpf()%></td>
 											<td><%=cliente.getEmail()%></td>
-										
+
 										</tr>
-										
+
 										<%
 											}
 										%>
-										
+
 									</tbody>
 								</table>
 							</div>
@@ -259,135 +245,104 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="defaultModalLabel">FAZER NOVA RESERVA</h4>
+					<h4 class="modal-title" id="defaultModalLabel">NOVA RESERVA:</h4>
 				</div>
 				<div class="modal-body">
 					<div class="body">
-						<form id="form_validation" method="post">
-<br>
-                                <div class="col-md-6">
-									<select class="form-control show-tick" data-live-search="true" required>
-                                        <option value="">-- SELECIONE O FUNCIONÁRIO --</option>
-                                        <option value="1">Saulo Lessa</option>
-                                        <option value="0">Gabriel de Jesus</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-									<select class="form-control show-tick" data-live-search="true" required>
-                                        <option value="">-- SELECIONE O CLIENTE --</option>
-                                        <option value="1">Saulo Lessa</option>
-                                        <option value="0">Gabriel de Jesus</option>
-                                    </select>
-                                </div>
-
-							<div class="form-group">
-								<input type="checkbox" id="checkbox" name="checkbox"> <label
-									for="checkbox" required>Estou ciente que a conta poderá ser
-									desativada/reativada a qualquer momento.</label>
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary waves-effect"
-									type="submit">CONFIRMAR</button>
-								<button type="button" class="btn btn-default waves-effect"
-									data-dismiss="modal">FECHAR</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    
-	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="defaultModalLabel">Gerenciar
-						contas de usuários:</h4>
-				</div>
-				<div class="modal-body">
-					<div class="body">
-						<form id="form_validation" method="POST">
-								<div class="form-group form-float">
-									 <div class="form-line">
-										<input minlength="11" type="number" maxlength="11" name="cpf"
-											class="form-control" required> <label
-											class="form-label">CPF*</label>
-									 </div>
-									  <div class="help-info">Digite apenas os números do seu CPF.</div>
+						<form id="form_advanced_validation" method="POST">
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="text" class="form-control" name="minmaxlength"
+										maxlength="10" minlength="3" required> <label
+										class="form-label">Min/Max Length</label>
 								</div>
-							<div class="form-group">
-								<input type="radio" name="escolhaConta" id="desativarConta"
-									class="with-gap" required> <label for="desativarConta">Desejo
-									desativar a conta vinculada ao e-mail acima.</label> <input
-									type="radio" name="escolhaConta" id="reativarConta"
-									class="with-gap" required> <label for="reativarConta">Desejo
-									reativar a conta vinculada ao e-mail acima.</label>
+								<div class="help-info">Min. 3, Max. 10 characters</div>
 							</div>
-							<div class="form-group">
-								<input type="checkbox" id="checkbox" name="checkbox"> <label
-									for="checkbox">Estou ciente que a conta poderá ser
-									desativada/reativada a qualquer momento.</label>
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="text" class="form-control" name="minmaxvalue"
+										min="10" max="200" required> <label class="form-label">Min/Max
+										Value</label>
+								</div>
+								<div class="help-info">Min. Value: 10, Max. Value: 200</div>
 							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary waves-effect"
-									type="submit">CONFIRMAR</button>
-								<button type="button" class="btn btn-default waves-effect"
-									data-dismiss="modal">FECHAR</button>
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="url" class="form-control" name="url" required>
+									<label class="form-label">Url</label>
+								</div>
+								<div class="help-info">Starts with http://, https://,
+									ftp:// etc</div>
 							</div>
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="text" class="form-control" name="date" required>
+									<label class="form-label">Date</label>
+								</div>
+								<div class="help-info">YYYY-MM-DD format</div>
+							</div>
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="number" class="form-control" name="number"
+										required> <label class="form-label">Number</label>
+								</div>
+								<div class="help-info">Numbers only</div>
+							</div>
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="text" class="form-control" name="creditcard"
+										pattern="[0-9]{13,16}" required> <label
+										class="form-label">Credit Card</label>
+								</div>
+								<div class="help-info">Ex: 1234-5678-9012-3456</div>
+							</div>
+							<button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.inputmask.bundle.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/tabelas/jquery.dataTables.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
-	<script 
-	    src="js/demo.js"></script>
+
+
+		<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/jquery.inputmask.bundle.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/tabelas/jquery.dataTables.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+		<script src="js/demo.js"></script>
 </body>
 
 </html>
