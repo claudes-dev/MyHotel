@@ -245,104 +245,117 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="defaultModalLabel">NOVA RESERVA:</h4>
 				</div>
 				<div class="modal-body">
-					<div class="body">
-						<form id="form_advanced_validation" method="POST">
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="text" class="form-control" name="minmaxlength"
-										maxlength="10" minlength="3" required> <label
-										class="form-label">Min/Max Length</label>
-								</div>
-								<div class="help-info">Min. 3, Max. 10 characters</div>
+
+					<form id="form_advanced_validation" method="POST">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="text" class="form-control" name="minmaxlength"
+									maxlength="10" minlength="3" required> <label
+									class="form-label">Número do quarto</label>
 							</div>
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="text" class="form-control" name="minmaxvalue"
-										min="10" max="200" required> <label class="form-label">Min/Max
-										Value</label>
-								</div>
-								<div class="help-info">Min. Value: 10, Max. Value: 200</div>
+							<div class="help-info">Min. 3, Max. 10 characters</div>
+						</div>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="text" class="form-control" name="minmaxvalue"
+									min="10" max="200" required> <label class="form-label">Min/Max
+									Value</label>
 							</div>
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="url" class="form-control" name="url" required>
-									<label class="form-label">Url</label>
-								</div>
-								<div class="help-info">Starts with http://, https://,
-									ftp:// etc</div>
+							<div class="help-info">Min. Value: 10, Max. Value: 200</div>
+						</div>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="url" class="form-control" name="url" required>
+								<label class="form-label">Url</label>
 							</div>
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="text" class="form-control" name="date" required>
-									<label class="form-label">Date</label>
-								</div>
-								<div class="help-info">YYYY-MM-DD format</div>
+							<div class="help-info">Starts with http://, https://,
+								ftp:// etc</div>
+						</div>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="text" class="form-control" name="date" required>
+								<label class="form-label">Date</label>
 							</div>
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="number" class="form-control" name="number"
-										required> <label class="form-label">Number</label>
-								</div>
-								<div class="help-info">Numbers only</div>
+							<div class="help-info">YYYY-MM-DD format</div>
+						</div>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="number" class="form-control" name="number" required>
+								<label class="form-label">Number</label>
 							</div>
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input type="text" class="form-control" name="creditcard"
-										pattern="[0-9]{13,16}" required> <label
-										class="form-label">Credit Card</label>
-								</div>
-								<div class="help-info">Ex: 1234-5678-9012-3456</div>
+							<div class="help-info">Numbers only</div>
+						</div>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="text" class="form-control" name="creditcard"
+									pattern="[0-9]{13,16}" required> <label
+									class="form-label">Credit Card</label>
 							</div>
-							<button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
-						</form>
-					</div>
+							<div class="help-info">Ex: 1234-5678-9012-3456</div>
+						</div>
+
+						<select class="form-control show-tick" data-live-search="true">
+							<option>Hot Dog, Fries and a Soda</option>
+							<option>Burger, Shake and a Smile</option>
+							<option>Sugar, Spice and all things nice</option>
+						</select>
+
+						<div style="margin-top: 20px;"></div>
+						<div class="modal-footer">
+							<button class="btn btn-primary waves-effect" type="submit">CONFIRMAR</button>
+							<button type="button" class="btn btn-default waves-effect"
+								data-dismiss="modal">FECHAR</button>
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-
-
-		<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/jquery.inputmask.bundle.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/tabelas/jquery.dataTables.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
-		<script
-			src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
-		<script src="js/demo.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.validate.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.inputmask.bundle.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/tabelas/jquery.dataTables.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
+	<script 
+		src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+	<script src="js/demo.js"></script>
 </body>
 
 </html>
