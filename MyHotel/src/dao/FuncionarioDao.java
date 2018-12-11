@@ -66,10 +66,17 @@ public class FuncionarioDao {
 		} catch (SQLException excecao) {
 			throw new ExcecaoExclusao("Reserva não foi suspensa");
 		}
+		
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+
 	}
 
 	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
-	public ArrayList<Reserva> listar() throws ExcecaoBusca {
+	public ArrayList<Reserva> listarReserva() throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select id_reserva, id_cliente ");
 		sql.append("from reserva");
@@ -112,9 +119,10 @@ public class FuncionarioDao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select id_reserva,id_cliente ");
 		sql.append("from reserva");
-
+		
+		Connection conexao = ConexaoFactory.getConnection();
 		try {
-			Connection conexao = ConexaoFactory.getConnection();
+
 
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setInt(1, reserva.getIdReserva());
@@ -125,6 +133,14 @@ public class FuncionarioDao {
 		} catch (SQLException excecao) {
 			throw new ExcecaoBusca("Erro ao busca administrador");
 		}
+		
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+
+		
 	}
 
 	public ArrayList<Funcionario> listarFunc() throws SQLException {
@@ -218,4 +234,5 @@ public class FuncionarioDao {
 //		
 //		
 //	}
+	
 }

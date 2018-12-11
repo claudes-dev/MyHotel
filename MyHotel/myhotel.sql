@@ -60,8 +60,8 @@ create table cliente(
 	cpf_cliente VARCHAR(14) UNIQUE NOT NULL,
 	nome_cliente VARCHAR(25) NOT NULL,
 	id_reserva INT,
-	data_nasc DATE NOT NULL,
 	email varchar(50) NOT NULL,
+	telefone VARCHAR(15)
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
 );
 -- tabela que liga funcionario efetuando reserva
@@ -110,14 +110,7 @@ create table possui(
 
 );
 
-create table telefone(
-	id_cliente INT,
-	id_telefone INT UNIQUE NOT NULL,
-	telene_um VARCHAR(10),
-	telefone_dois VARCHAR(10),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)	
-	
-);
+
 
 ALTER TABLE cliente
 ADD FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
