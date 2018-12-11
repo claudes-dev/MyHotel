@@ -32,7 +32,15 @@
 		<url-pattern>/administradorController</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>sistemaController</servlet-name>
+		<servlet-class>br.com.start.myhotel.controller.SistemaController</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>sistemaController</servlet-name>
+		<url-pattern>/sistemaController</url-pattern>
+	</servlet-mapping>
 
 
 

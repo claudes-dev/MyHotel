@@ -61,7 +61,7 @@ create table cliente(
 	nome_cliente VARCHAR(25) NOT NULL,
 	id_reserva INT,
 	email varchar(50) NOT NULL,
-	telefone VARCHAR(15)
+	telefone VARCHAR(15),
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
 );
 -- tabela que liga funcionario efetuando reserva

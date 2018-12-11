@@ -216,7 +216,7 @@
 											
 											List<Cliente> lista = new ArrayList<Cliente>();
 											
-												lista = dao.listarCliente();
+							//					lista = dao.listarCliente();
 												
 												for (Cliente cliente : lista) {
 													System.out.println(lista);

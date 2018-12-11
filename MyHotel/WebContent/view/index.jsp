@@ -31,7 +31,8 @@
         </div>
         <div class="card">
             <div class="body">
-                <form action="/sistemacontroller" id="sign_in" method="POST">
+                <form action="<%=request.getContextPath()%>/sistemaController" id="sign_in" method="POST">
+                 <input type="radio" name="operacao" id="op1" value="" class="with-gap" required>
                     <div class="msg">Insira suas credenciais para iniciar a sessão.</div>
                     <div class="input-group">
                         <span class="input-group-addon">
