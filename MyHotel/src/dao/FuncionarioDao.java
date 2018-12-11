@@ -13,6 +13,7 @@ import connection.ConexaoFactory;
 import excecoes.ExcecaoBusca;
 import excecoes.ExcecaoCadastro;
 import excecoes.ExcecaoExclusao;
+import br.com.start.myhotel.model.Reserva;
 
 public class FuncionarioDao {
 
@@ -27,12 +28,13 @@ public class FuncionarioDao {
 		Connection conexao = ConexaoFactory.getConnection();
 		try {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+
 			comando.setInt(1, r.getIdReserva());
-			comando.setString(2, r.getIdFuncionario());
+			comando.setInt(2, r.getIdFuncionario());
 			comando.setString(3, r.getDataEntrada());
 			comando.setString(4, r.getDataSaida());
 			comando.setDouble(5, r.getValor());
-			comando.setString(6, r.getIdCliente());
+			comando.setInt(6, r.getIdCliente());
 			comando.setInt(7, r.getIdServico());
 			comando.setInt(8, r.getNumQuarto());
 
@@ -85,9 +87,10 @@ public class FuncionarioDao {
 		ArrayList<Reserva> lista = new ArrayList<Reserva>();
 		try {
 			while (resultado.next()) {
+				Reserva reserva = new Reserva();
 				Reserva r = new Reserva();
 				r.setIdReserva(resultado.getInt("id_reserva"));
-				r.setIdCliente(resultado.getString("id_cliente"));
+				r.setIdCliente(resultado.getInt("id_cliente"));
 
 				lista.add(r);
 			}
@@ -100,47 +103,44 @@ public class FuncionarioDao {
 		return lista;
 
 	}
-	
+
 	// 4- FUNÇÃO PARA BUSCAR UMA RESERVA
 	public void buscarReserva(Reserva reserva) throws ExcecaoBusca {
-		
-			StringBuilder sql = new StringBuilder();
-			sql.append("select id_reserva,id_cliente ");
-			sql.append("from reserva");
 
-			try {
-				Connection conexao = ConexaoFactory.getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id_reserva,id_cliente ");
+		sql.append("from reserva");
 
-				PreparedStatement comando = conexao.prepareStatement(sql.toString());
-				comando.setInt(1, reserva.getIdReserva());
-				comando.setString(2, reserva.getIdCliente());
+		try {
+			Connection conexao = ConexaoFactory.getConnection();
 
-				ResultSet resultado = comando.executeQuery();
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setInt(1, reserva.getIdReserva());
+			comando.setInt(2, reserva.getIdCliente());
 
-			} catch (SQLException excecao) {
-				throw new ExcecaoBusca("Erro ao busca administrador");
-			}
+			ResultSet resultado = comando.executeQuery();
+
+		} catch (SQLException excecao) {
+			throw new ExcecaoBusca("Erro ao busca administrador");
 		}
-	
+	}
+
 	public ArrayList<Funcionario> listarFunc() throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_func,senha, nome_func, tipo_conta, email, status ");
 		sql.append("from funcionario");
-		
 
 		Connection conexao = ConexaoFactory.getConnection();
 		PreparedStatement comando = null;
 		ResultSet resultado = null;
-		
-	 comando = conexao.prepareStatement(sql.toString());
-		
-	 resultado = comando.executeQuery();
 
+		comando = conexao.prepareStatement(sql.toString());
 
-		
+		resultado = comando.executeQuery();
+
 		ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
 
-		while(resultado.next()) {
+		while (resultado.next()) {
 			Funcionario f = new Funcionario();
 			f.setCpf(resultado.getString("cpf_func"));
 			f.setSenha(resultado.getString("senha"));
@@ -148,17 +148,16 @@ public class FuncionarioDao {
 			f.setTipoConta(resultado.getString("tipo_conta"));
 			f.setEmail(resultado.getString("email"));
 			f.setStatus(resultado.getInt("status"));
-			
+
 			lista.add(f);
 		}
-		
 
 		try {
 			conexao.close();
 		} catch (SQLException e) {
 		}
-		
+
 		return lista;
 
 	}
-	}
+}

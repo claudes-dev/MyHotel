@@ -3,13 +3,19 @@ package br.com.start.myhotel.model;
 public class Reserva {
 
 	private int idReserva;
-	private String idFuncionario;
+	private int idFuncionario;
 	private String DataEntrada;
 	private String DataSaida;
 	private double valor;
-	private String idCliente;
+	private int idCliente;
 	private int idServico;
 	private int numQuarto;
+	
+	public Reserva() {
+		
+	}
+	
+	//GETTERS E SETERS
 	
 	public int getIdReserva() {
 		return idReserva;
@@ -17,10 +23,10 @@ public class Reserva {
 	public void setIdReserva(int idReserva) {
 		this.idReserva = idReserva;
 	}
-	public String getIdFuncionario() {
+	public int getIdFuncionario() {
 		return idFuncionario;
 	}
-	public void setIdFuncionario(String idFuncionario) {
+	public void setIdFuncionario(int idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
 	public String getDataEntrada() {
@@ -41,10 +47,10 @@ public class Reserva {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	public String getIdCliente() {
+	public int getIdCliente() {
 		return idCliente;
 	}
-	public void setIdCliente(String idCliente) {
+	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
 	public int getIdServico() {
@@ -59,10 +65,6 @@ public class Reserva {
 	public void setNumQuarto(int numQuarto) {
 		this.numQuarto = numQuarto;
 	}
-	
-	
-	//GETTERS E SETERS
-	
 	
 	
 	
