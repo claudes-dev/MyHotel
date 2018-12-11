@@ -130,7 +130,7 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="<%=request.getContextPath()%>view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
+					<li><a href="<%=request.getContextPath()%>/view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					
