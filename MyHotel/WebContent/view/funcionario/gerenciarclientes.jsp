@@ -178,14 +178,13 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="card">
 						<div class="header">
-							<h2>LISTAGEM DE TODAS AS RESERVAS</h2>
+							<h2>LISTAGEM DE TODOS OS CLIENTES</h2>
 							<ul class="header-dropdown">
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
-									data-target="#adicionar">NOVA RESERVA</button>
-								<button type="button"
-									class="btn btn-default waves-effect m-r-20" data-toggle="modal"
-									data-target="#gerenciar">GERENCIAR</button>
+									data-target="#adicionar">NOVO CLIENTE</button>
+								<button type="button" onclick="location.href='<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp'"
+									class="btn btn-default waves-effect m-r-20" >NOVA RESERVA</button>
 							</ul>
 						</div>
 						<div class="body">
@@ -194,18 +193,18 @@
 									class="table table-bordered table-striped table-hover js-basic-example dataTable">
 									<thead>
 										<tr>
-											<th>Nome Completo</th>
+											<th>Nome</th>
 											<th>CPF</th>
-											<th>E-mail</th>
+											<th>Telefone</th>
 										
 											
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Nome Completo</th>
+											<th>Nome</th>
 											<th>CPF</th>
-											<th>E-mail</th>
+											<th>Telefone</th>
 										
 										</tr>
 									</tfoot>
@@ -251,100 +250,61 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
 
 
-				<div class="card">
-					<div class="header">
-						<h2>ADICIONAR NOVO USUÁRIO AO SISTEMA</h2>
-						<ul class="header-dropdown">
+                <div class="card">
+                    <div class="header">
+                        <h2>ADICIONAR NOVO CLIENTE AO SISTEMA</h2>
+                        <ul class="header-dropdown">
 
-							<a style="margin-right: 5px;" data-dismiss="modal" role="button"
-								aria-haspopup="true" aria-expanded="false"> <i
-								class="material-icons">close</i>
-							</a>
+                            <a style="margin-right: 5px;" data-dismiss="modal" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="material-icons">close</i>
+                            </a>
 
-						</ul>
-					</div>
-					<div class="body">
-						<form id="wizard_with_validation" action="/administradorController" method="POST">
-							<h3>INFORMAÇÕES DE LOGIN</h3>
-							<fieldset>
-							
-							<input type="hidden" name="operacao" value="CADASTRAR_FUNCIONARIO"/>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input type="email" class="form-control" name="email" required>
-										<label class="form-label">E-mail*</label>
-									</div>
-								</div>
-								<div class="form-group form-float"> 
-									<div class="form-line">
-										<input type="password" minlength="6" class="form-control"
-											name="password" id="password" required> <label
-											class="form-label">Senha*</label>
-									</div>
-								</div>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input type="password" minlength="6" class="form-control"
-											name="confirm" required> <label class="form-label">Confirmar
-											Senha*</label>
-									</div>
-								</div>
-							</fieldset>
-
-							<h3>INFORMAÇÕES DE PERFIL</h3>
-							<fieldset>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input type="text" name="nome" class="form-control" required>
-										<label class="form-label">Nome*</label>
-									</div>
-								</div>
-								<div class="form-group form-float">
-									<div class="form-line">
-										<input minlength="11" type="number" maxlength="11" name="cpf"
-											class="form-control" required> <label
-											class="form-label">CPF*</label>
-									</div>
-									<div class="help-info">Digite apenas os números do seu
-										CPF.</div>
-								</div>
-								<div class="demo-masked-input">
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
+                            <h3>INFORMAÇÕES PESSOAIS</h3>
+                            <fieldset>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="nome" class="form-control" required>
+                                        <label class="form-label">Nome*</label>
+                                    </div>
+                                </div>
+                                <div class="demo-masked-input">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="dataNascimento" class="form-control date" placeholder="Ex.: 30/07/2016">
+                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
                                             </div>
-                                            <div class="help-info">Data de nascimento.</div>
+                                            <div class="help-info">Ex.: 123.456.789-10</div>
                                         </div>
                                 </div>
-							</fieldset>
+                                <div class="demo-masked-input">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="text" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
+                                            </div>
+                                            <div class="help-info">Ex.: (99) 99999-9999</div>
+                                        </div>
+                                </div>
+                                <input id="acceptTerms-2" name="acceptTerms" class="form-control" type="checkbox" required>
+                                <label for="acceptTerms-2">Estou ciente que não poderei excluir o registro de cliente.</label>
+                            </fieldset>
 
-							<h3>TERMOS & TIPO DA CONTA</h3>
-							<fieldset>
-								<div class="form-group">
-									<input type="radio" name="tipoConta" id="ContaAdm"
-										class="with-gap"> <label for="ContaAdm">Esse
-										usuário terá permissões administrativas.</label> <input type="radio"
-										name="tipoConta" id="ContaFunc" class="with-gap"> <label
-										for="ContaFunc" class="m-l-20">Esse
-										usuário NÃO terá permissões administrativas.</label>
-								</div>
-								<input id="acceptTerms-2" name="acceptTerms" type="checkbox"
-									required> <label for="acceptTerms-2">Estou
-									ciente que não poderei excluir o usuário criado caso ele
-									realize ao menos uma alteração dentro do sistema.</label>
-							</fieldset>
-						</form>
-					</div>
-				</div>
+                        </form>
+                    </div>
+                </div>
 
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
+    
 	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

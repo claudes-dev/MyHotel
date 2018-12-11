@@ -23,7 +23,7 @@ $(function () {
     $demoMaskedInput.find('.datetime').inputmask('d/m/y h:s', { placeholder: '__/__/____ __:__', alias: "datetime", hourFormat: '24' });
 
     //Mobile Phone Number
-    $demoMaskedInput.find('.mobile-phone-number').inputmask('+99 (999) 999-99-99', { placeholder: '+__ (___) ___-__-__' });
+    $demoMaskedInput.find('.telefone').inputmask('(99) 99999-9999', { placeholder: '(__) _____-____' });
     //Phone Number
     $demoMaskedInput.find('.phone-number').inputmask('+99 (999) 999-99-99', { placeholder: '+__ (___) ___-__-__' });
 
