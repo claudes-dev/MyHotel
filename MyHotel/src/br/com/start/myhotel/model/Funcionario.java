@@ -1,7 +1,7 @@
 package br.com.start.myhotel.model;
 
 public class Funcionario extends Pessoa{
-	
+		
 	public Funcionario() {
 		
 	}
