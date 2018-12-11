@@ -6,16 +6,18 @@ public class Cliente extends Pessoa{
 	private String dataNascimento;
 	private String email;
 	private int idServicos;
+	private String telefone;
 	
 	public Cliente() {
 		
 	}
 	
-	public Cliente(String nome, String cpf, String senha, String dataNascimento, String email, int idServicos) {
+	public Cliente(String nome, String cpf, String senha, String dataNascimento, String email,String telefone , int idServicos) {
 		//CONSTRUTOR CONTENDO ATRIBUTOS DA CLASSE CLIENTE, E DA SUPER CLASSE PESSOA
 		super(nome, cpf);
 		this.dataNascimento = dataNascimento;
 		this.email = email;
+		this.telefone = telefone;
 		this.idServicos = idServicos;
 	}
 	 
@@ -42,6 +44,14 @@ public class Cliente extends Pessoa{
 		this.idServicos = idServicos;
 	}
 	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	@Override
 	public String toString() {
 		String saida = this.getCpf() + "  -  " + this.getNome() + "  -  " + this.getEmail();
