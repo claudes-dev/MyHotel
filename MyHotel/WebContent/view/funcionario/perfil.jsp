@@ -121,15 +121,14 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="gerenciarclientes.jsp">
-
-                                    <span>Reservas</span>
+                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp">
+                                    <span>Clientes</span>
                                 </a>
 
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
-                                    <span>Histórico</span>
+                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp">
+                                    <span>Reservas</span>
                                 </a>
 
                             </li>

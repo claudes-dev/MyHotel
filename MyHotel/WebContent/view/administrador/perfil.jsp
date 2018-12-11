@@ -98,7 +98,7 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons active">person</i>Perfil</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+                            <li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,11 +108,11 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
+					<li><a href="<%=request.getContextPath()%>/view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					
-					<li><a href="view/administrador/gerenciarusuarios.jsp"> <i
+					<li><a href="<%=request.getContextPath()%>/view/administrador/gerenciarusuarios.jsp"> <i
 							class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
 					<li><a href="javascript:void(0);"> <i class="material-icons">attach_money</i>

@@ -116,34 +116,48 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- #User Info -->
 			<!-- Menu -->
-			<div class="menu">
-				<ul class="list">
-					<li class="header">GERENCIAR HOSPEDAGENS</li>
-					<li class="active"><a href="javascript:void(0);"> <i
-							class="material-icons">home</i> <span>Início</span>
-					</a></li>
-					<li><a href="javascript:void(0);" class="menu-toggle"> <i
-							class="material-icons">hotel</i> <span>Hospedagem</span>
-					</a>
-						<ul class="ml-menu">
-							<li><a href="gerenciarclientes.jsp"> <span>Reservas</span>
-							</a></li>
-							<li><a href="javascript:void(0);"> <span>Histórico</span>
-							</a></li>
-						</ul></li>
-					<li class="header">GERENCIAR HOSPEDAGENS</li>
-				</ul>
-			</div>
-			<!-- #Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                    <li class="active">
+                        <a href="painelfunc.jsp">
+                            <i class="material-icons">home</i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">hotel</i>
+                            <span>Hospedagem</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp">
+                                    <span>Clientes</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp">
+                                    <span>Reservas</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header">GERENCIAR HOSPEDAGENS</li>
+                </ul>
+            </div>
+            <!-- #Menu -->
 
 			<!-- Footer -->
 			<div class="legal">

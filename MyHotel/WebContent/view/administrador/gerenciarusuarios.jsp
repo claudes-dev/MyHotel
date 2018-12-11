@@ -118,9 +118,9 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="<%=request.getContextPath()%>view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -130,7 +130,7 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
+					<li><a href="<%=request.getContextPath()%>view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					
