@@ -208,11 +208,21 @@
 											FuncionarioDao dao = new FuncionarioDao();
 
 											List<Cliente> lista = new ArrayList<Cliente>();
+<<<<<<< HEAD
 
 											//					lista = dao.listarCliente();
 
 											for (Cliente cliente : lista) {
 												System.out.println(lista);
+=======
+											
+								lista = dao.listarCliente();
+												
+												for (Cliente cliente : lista) {
+													System.out.println(lista);
+											
+											
+>>>>>>> branch 'master' of https://github.com/ClaudesGo/MyHotel.git
 										%>
 
 

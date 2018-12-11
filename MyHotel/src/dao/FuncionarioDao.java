@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.start.myhotel.model.Administrador;
+import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.Funcionario;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
@@ -150,6 +151,40 @@ public class FuncionarioDao {
 			f.setStatus(resultado.getInt("status"));
 
 			lista.add(f);
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return lista;
+
+	}
+	
+	public ArrayList<Cliente> listarCliente() throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select cpf_cliente, nome_cliente, email, telefone ");
+		sql.append("from cliente");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+
+		comando = conexao.prepareStatement(sql.toString());
+
+		resultado = comando.executeQuery();
+
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+
+		while (resultado.next()) {
+			Cliente c = new Cliente();
+			c.setCpf(resultado.getString("cpf_cliente"));
+			c.setNome(resultado.getString("nome_cliente"));
+			c.setEmail(resultado.getString("email"));
+			c.setTelefone(resultado.getString("telefone"));
+
+			lista.add(c);
 		}
 
 		try {

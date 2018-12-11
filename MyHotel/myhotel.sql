@@ -36,11 +36,6 @@ create table quarto(
 	qtd_banheiro INT (1) NOT NULL
 );
 
-create table servico (
-	id_servico INT AUTO_INCREMENT PRIMARY KEY,
-	nome_servico VARCHAR(20) NOT NULL,
-	preco_servico DOUBLE NOT NULL
-);
 
 
 create table reserva(
@@ -49,8 +44,7 @@ create table reserva(
 	id_func INT,
 	id_cliente INT,
 	id_quarto INT,
-	id_servico INT,
-	data_saída DATE NOT NULL,
+	data_saida DATE NOT NULL,
 	data_entrada DATE NOT NULL,
 	pagamento DOUBLE NOT NULL
 );
@@ -59,7 +53,6 @@ create table cliente(
 	id_cliente INT AUTO_INCREMENT PRIMARY KEY,
 	cpf_cliente VARCHAR(14) UNIQUE NOT NULL,
 	nome_cliente VARCHAR(25) NOT NULL,
-	id_reserva INT,
 	email varchar(50) NOT NULL,
 	telefone VARCHAR(15),
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
@@ -85,9 +78,8 @@ create table check_in (
 -- ligacao de reservas com servicos
 
 create table contem(
-	id_servico INT,
 	id_reserva INT,
-	FOREIGN KEY (id_servico) REFERENCES servico(id_servico),
+	
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
 	
 );
@@ -119,5 +111,4 @@ ALTER TABLE reserva
 
 ADD FOREIGN KEY (id_func) REFERENCES funcionario(id_func),
 ADD	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-ADD	FOREIGN KEY (id_quarto) REFERENCES quarto(id_quarto),
-ADD	FOREIGN KEY (id_servico) REFERENCES servico(id_servico);
+ADD	FOREIGN KEY (id_quarto) REFERENCES quarto(id_quarto);

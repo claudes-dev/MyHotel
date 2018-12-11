@@ -42,6 +42,15 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/bootstrap-select.css"
 	rel="stylesheet">
+
+<link
+	href="<%=request.getContextPath()%>/resources/css/bootstrap-datepicker.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/css/bootstrap-material-datetimepicker.css"
+	rel="stylesheet">
+
+
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
 <link
@@ -171,7 +180,6 @@
 
 			<!-- Advanced Select -->
 
-			<!-- #END# Advanced Select -->
 
 			<!-- Tabela de usu�rios -->
 			<div class="row clearfix">
@@ -248,65 +256,64 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="defaultModalLabel">NOVA RESERVA:</h4>
+					<h4 class="modal-title" id="defaultModalLabel">REALIZAR NOVA
+						RESERVA:</h4>
 				</div>
 				<div class="modal-body">
 
 					<form id="form_advanced_validation" method="POST">
-						<div class="form-group form-float">
+						<div style="margin-top: 40px;"></div>
+						<div class="input-daterange input-group"
+							id="bs_datepicker_range_container">
 							<div class="form-line">
-								<input type="text" class="form-control" name="minmaxlength"
-									maxlength="10" minlength="3" required> <label
-									class="form-label">Número do quarto</label>
+								<input name="dataEntrada" type="text" class="form-control"
+									placeholder="Data de entrada..." required>
 							</div>
-							<div class="help-info">Min. 3, Max. 10 characters</div>
-						</div>
-						<div class="form-group form-float">
+							<span class="input-group-addon">até</span>
 							<div class="form-line">
-								<input type="text" class="form-control" name="minmaxvalue"
-									min="10" max="200" required> <label class="form-label">Min/Max
-									Value</label>
+								<input name="dataSaida" type="text" class="form-control"
+									placeholder="Data de saída..." required>
 							</div>
-							<div class="help-info">Min. Value: 10, Max. Value: 200</div>
-						</div>
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input type="url" class="form-control" name="url" required>
-								<label class="form-label">Url</label>
-							</div>
-							<div class="help-info">Starts with http://, https://,
-								ftp:// etc</div>
-						</div>
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input type="text" class="form-control" name="date" required>
-								<label class="form-label">Date</label>
-							</div>
-							<div class="help-info">YYYY-MM-DD format</div>
-						</div>
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input type="number" class="form-control" name="number" required>
-								<label class="form-label">Number</label>
-							</div>
-							<div class="help-info">Numbers only</div>
-						</div>
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input type="text" class="form-control" name="creditcard"
-									pattern="[0-9]{13,16}" required> <label
-									class="form-label">Credit Card</label>
-							</div>
-							<div class="help-info">Ex: 1234-5678-9012-3456</div>
 						</div>
 
-						<select class="form-control show-tick" data-live-search="true">
-							<option>Hot Dog, Fries and a Soda</option>
-							<option>Burger, Shake and a Smile</option>
-							<option>Sugar, Spice and all things nice</option>
+						<div style="margin-top: 30px;"></div>
+						<p>
+							<b>Funcionário responsável pela reserva (selecionar)</b>
+						</p>
+						<select name="funcionarioReserva" class="form-control show-tick"
+							data-live-search="true" required>
+							<option disabled selected></option>
+							<option>Saulo Lessa</option>
+							<option>Claudes Trapstar</option>
 						</select>
+						<div style="margin-top: 30px;"></div>
+						<p>
+							<b>Cliente (selecionar)</b>
+						</p>
+						<select name="clienteReserva" class="form-control show-tick"
+							data-live-search="true" required>
+							<option disabled selected></option>
+							<option>Burguês Safado</option>
+							<option>Gabriel de Jesus</option>
+						</select>
+						<div style="margin-top: 30px;"></div>
+						<p>
+							<b>Número do quarto (selecionar)</b>
+						</p>
+						<select name="numQuarto" class="form-control show-tick"
+							data-live-search="true" required>
+							<option disabled selected></option>
+							<option>105</option>
+							<option>106</option>
+							<option>107</option>
+							<option>108</option>
+							<option>109</option>
+							<option>110</option>
+							<option>111</option>
+							<option>112</option>
 
-						<div style="margin-top: 20px;"></div>
+						</select>
+						<div style="margin-top: 30px;"></div>
 						<div class="modal-footer">
 							<button class="btn btn-primary waves-effect" type="submit">CONFIRMAR</button>
 							<button type="button" class="btn btn-default waves-effect"
@@ -327,6 +334,13 @@
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+
+	<script src="<%=request.getContextPath()%>/resources/js/autosize.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/moment.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-datepicker.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-material-datetimepicker.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
@@ -345,16 +359,17 @@
 	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+
+	<script
+		src="<%=request.getContextPath()%>/resources/js/basic-form-elements.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+
 	<script src="js/demo.js"></script>
 </body>
 
