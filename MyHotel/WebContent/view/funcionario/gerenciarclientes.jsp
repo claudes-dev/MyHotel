@@ -230,7 +230,6 @@
 											<td><%=cliente.getNome()%></td>
 											<td><%=cliente.getCpf()%></td>
 											<td><%=cliente.getEmail()%></td>
-										
 										</tr>
 										
 										<%
@@ -287,7 +286,7 @@
                                 <div class="demo-masked-input">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text"  minlength="15" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
+                                                <input type="text" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
                                             </div>
                                             <div class="help-info">Ex.: (99) 99999-9999</div>
                                         </div>

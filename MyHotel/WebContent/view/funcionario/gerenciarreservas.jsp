@@ -199,19 +199,22 @@
 									class="table table-bordered table-striped table-hover js-basic-example dataTable">
 									<thead>
 										<tr>
-											<th>Nome</th>
+											<th>Hóspede</th>
 											<th>CPF</th>
 											<th>Telefone</th>
-										
-											
+											<th>Entrada</th>
+											<th>Saída</th>
+											<th>Status</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Nome</th>
+											<th>Hóspede</th>
 											<th>CPF</th>
 											<th>Telefone</th>
-										
+											<th>Entrada</th>
+											<th>Saída</th>
+											<th>Status</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -259,8 +262,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="defaultModalLabel">Gerenciar
-						contas de usuários:</h4>
+					<h4 class="modal-title" id="defaultModalLabel">FAZER NOVA RESERVA</h4>
 				</div>
 				<div class="modal-body">
 					<div class="body">
