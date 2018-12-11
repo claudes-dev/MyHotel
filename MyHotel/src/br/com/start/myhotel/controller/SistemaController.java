@@ -38,7 +38,7 @@ public class SistemaController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher rd = null;
 		request.setAttribute(email, "nome");
-		if (nome.equals("nome") && senha.equals("senha")) {
+		if (email.equals("nome") && senha.equals("senha")) {
 			rd = request.getRequestDispatcher("/WelcomeServlet");
 			rd.forward(request, response);
 		} else {

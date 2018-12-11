@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Funcionario;
@@ -20,8 +21,8 @@ public class AdministradorDao {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into administrador ");
-		sql.append("(cpf_adm,senha,nome_adm) ");
-		sql.append("values (?,?,?)");
+		sql.append("(cpf_adm,senha,nome_adm,email) ");
+		sql.append("values (?,?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
 
@@ -30,6 +31,7 @@ public class AdministradorDao {
 			comando.setString(1, pessoa.getCpf());
 			comando.setString(2, pessoa.getSenha());
 			comando.setString(3, pessoa.getNome());
+			comando.setString(4, pessoa.getEmail());
 
 			comando.executeUpdate();
 
@@ -152,7 +154,7 @@ public class AdministradorDao {
 	}
 
 	// 7- FUNÇÃO QUE EDITA/ALTERA FUNCIONARIO
-	public void editarFuncionario(Funcionario pessoa) throws ExcecaoEdicao{
+	public void editarFuncionario(Funcionario pessoa) throws ExcecaoEdicao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("update funcionario ");
 		sql.append("set senha = ? ");
@@ -200,37 +202,37 @@ public class AdministradorDao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_func, nome_func ");
 		sql.append("from funcionario ");
-		//sql.append("where cpf_func = ? ");
+		// sql.append("where cpf_func = ? ");
 
 		Connection conexao = ConexaoFactory.getConnection();
-		
-		try {
-		PreparedStatement comando = conexao.prepareStatement(sql.toString());
-		comando.setString(1, pessoa.getCpf());
-		comando.setString(2, pessoa.getNome());
 
-		ResultSet resultado = comando.executeQuery();
-		}catch(SQLException excecao) {
-			throw new ExcecaoBusca("Funcionários não listados");	
+		try {
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, pessoa.getCpf());
+			comando.setString(2, pessoa.getNome());
+
+			ResultSet resultado = comando.executeQuery();
+		} catch (SQLException excecao) {
+			throw new ExcecaoBusca("Funcionários não listados");
 		}
 	}
-	
+
 	// 10-BUSCAR UM FUNCIONARIO
-	public void buscarFuncionario(Funcionario f)  throws ExcecaoBusca {
+	public void buscarFuncionario(Funcionario f) throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_func ");
 		sql.append("from funcionario ");
 		sql.append("where cpf_func = ? ");
-		
+
 		try {
-		Connection conexao = ConexaoFactory.getConnection();
+			Connection conexao = ConexaoFactory.getConnection();
 
-		PreparedStatement comando = conexao.prepareStatement(sql.toString());
-		comando.setString(1, f.getCpf());
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, f.getCpf());
 
-		ResultSet resultado = comando.executeQuery();
-		}catch(SQLException excecao) {
-			throw new ExcecaoBusca("Funcionário não encontrado");	
+			ResultSet resultado = comando.executeQuery();
+		} catch (SQLException excecao) {
+			throw new ExcecaoBusca("Funcionário não encontrado");
 		}
 
 	}
@@ -256,4 +258,39 @@ public class AdministradorDao {
 		}
 	}
 
+	public ArrayList<Administrador> listarAdm() throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select cpf_adm,senha, nome_adm, tipo_conta, email, status ");
+		sql.append("from administrador");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+
+		comando = conexao.prepareStatement(sql.toString());
+
+		resultado = comando.executeQuery();
+
+		ArrayList<Administrador> lista = new ArrayList<Administrador>();
+
+		while (resultado.next()) {
+			Administrador f = new Administrador();
+			f.setCpf(resultado.getString("cpf_adm"));
+			f.setSenha(resultado.getString("senha"));
+			f.setNome(resultado.getString("nome_adm"));
+			f.setTipoConta(resultado.getString("tipo_conta"));
+			f.setEmail(resultado.getString("email"));
+			f.setStatus(resultado.getInt("status"));
+
+			lista.add(f);
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return lista;
+
+	}
 }

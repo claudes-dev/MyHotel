@@ -62,7 +62,10 @@ $(function () {
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            swal("Tudo certo!", "O usuário foi criado com sucesso! Use as credenciais informadas para ter acesso ao painel.", "success");
+        	var form = $(this);
+
+            form.submit();
+            //swal("Tudo certo!", "O usuário foi criado com sucesso! Use as credenciais informadas para ter acesso ao painel.", "success");
         }
     });
 
@@ -77,8 +80,8 @@ $(function () {
             $(element).parents('.form-group').append(error);
         },
         rules: {
-            'confirm': {
-                equalTo: '#password'
+            'confirmar': {
+                equalTo: '#senha'
             },
 
             'nome': {

@@ -1,7 +1,7 @@
 create table administrador (
 	id_adm INT(5) AUTO_INCREMENT PRIMARY KEY,
 	cpf_adm VARCHAR(14) UNIQUE,
-	senha VARCHAR(1000) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	nome_adm VARCHAR(45) NOT NULL,
 	tipo_conta varchar(13) DEFAULT 'Administrador'
@@ -10,7 +10,7 @@ create table administrador (
 create table funcionario (
 	id_func INT(5) AUTO_INCREMENT PRIMARY KEY,
 	cpf_func VARCHAR(14) UNIQUE,
-	senha VARCHAR(10) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	nome_func VARCHAR(45) NOT NULL,
 	tipo_conta varchar(13) DEFAULT 'Funcionario',
