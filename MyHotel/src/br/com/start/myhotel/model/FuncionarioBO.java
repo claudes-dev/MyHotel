@@ -1,5 +1,7 @@
 package br.com.start.myhotel.model;
 
+import java.util.List;
+
 import dao.FuncionarioDao;
 import excecoes.ExcecaoBusca;
 import excecoes.ExcecaoCadastro;
@@ -12,7 +14,6 @@ public class FuncionarioBO {
 	// 1- FUN플O PARA CADASTRAR RESERVA
 	public void fazerReserva(Reserva r) throws ExcecaoCadastro {
 		dao.cadastrarReserva(r);
-		
 	}
 
 	// 2- FUN플O PARA SUSPENDER RESERVA
@@ -21,8 +22,8 @@ public class FuncionarioBO {
 	}
 
 	// 3- FUN플O PARA BUSCAR TODAS RESERVAS
-	public void buscarReservas(Reserva r) throws ExcecaoBusca {
-		dao.buscarReserva(r);
+	public List<Reserva> buscarReservas(Reserva r) throws ExcecaoBusca {
+		return dao.listarReservas();
 	}
 
 	// 4- FUN플O PARA BUSCAR UMA RESERVA

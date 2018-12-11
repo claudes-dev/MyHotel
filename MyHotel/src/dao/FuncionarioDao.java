@@ -5,10 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.start.myhotel.model.Administrador;
-import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.Funcionario;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
@@ -66,19 +64,12 @@ public class FuncionarioDao {
 		} catch (SQLException excecao) {
 			throw new ExcecaoExclusao("Reserva não foi suspensa");
 		}
-		
-		try {
-			conexao.close();
-		} catch (SQLException e) {
-			System.out.println(e);
-		}
-
 	}
 
 	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
-	public ArrayList<Reserva> listarReserva() throws ExcecaoBusca {
+	public ArrayList<Reserva> listarReservas() throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select id_reserva,id_cliente ");
+		sql.append("select id_reserva, id_cliente ");
 		sql.append("from reserva");
 
 		Connection conexao = ConexaoFactory.getConnection();
@@ -119,10 +110,9 @@ public class FuncionarioDao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select id_reserva,id_cliente ");
 		sql.append("from reserva");
-		
-		Connection conexao = ConexaoFactory.getConnection();
-		try {
 
+		try {
+			Connection conexao = ConexaoFactory.getConnection();
 
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setInt(1, reserva.getIdReserva());
@@ -133,14 +123,6 @@ public class FuncionarioDao {
 		} catch (SQLException excecao) {
 			throw new ExcecaoBusca("Erro ao busca administrador");
 		}
-		
-		try {
-			conexao.close();
-		} catch (SQLException e) {
-		}
-
-
-		
 	}
 
 	public ArrayList<Funcionario> listarFunc() throws SQLException {
@@ -178,61 +160,5 @@ public class FuncionarioDao {
 		return lista;
 
 	}
-	
-	public ArrayList<Cliente> listarCliente() throws SQLException {
-		StringBuilder sql = new StringBuilder();
-		sql.append("select nome_cliente, cpf_cliente, email ");
-		sql.append("from cliente");
 
-		Connection conexao = ConexaoFactory.getConnection();
-		PreparedStatement comando = null;
-		ResultSet resultado = null;
-
-		comando = conexao.prepareStatement(sql.toString());
-
-		resultado = comando.executeQuery();
-
-		ArrayList<Cliente> lista = new ArrayList<Cliente>();
-
-		while (resultado.next()) {
-			Cliente c = new Cliente();
-			
-			c.setNome(resultado.getString("nome_cliente"));
-			c.setCpf(resultado.getString("cpf_cliente"));
-			c.setEmail(resultado.getString("email"));
-			
-
-			lista.add(c);
-		}
-
-		try {
-			conexao.close();
-		} catch (SQLException e) {
-		}
-
-		return lista;
-
-	}
-	
-//	public static void main(String[] args) {
-//		FuncionarioDao dao = new FuncionarioDao();
-//		
-//		List<Cliente> lista = new ArrayList<Cliente>();
-//		try {
-//			lista = dao.listarCliente();
-//			
-//			for (Cliente cliente : lista) {
-//				System.out.println(lista);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		
-//		
-//		
-//		
-//	}
-	
 }
