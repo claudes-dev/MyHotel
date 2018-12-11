@@ -116,9 +116,9 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -131,7 +131,7 @@
 					<li class="active"><a href="javascript:void(0);"> <i
 							class="material-icons">home</i> <span>Início</span>
 					</a></li>
-					<li><a href="gerenciarusuarios.jsp"> <i
+					<li><a href="view/administrador/gerenciarusuarios.jsp"> <i
 							class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
 					<li><a href="javascript:void(0);"> <i

@@ -130,8 +130,8 @@ public class AdministradorDao {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into funcionario ");
-		sql.append("(cpf_func,senha,nome_func) ");
-		sql.append("values (?,?,?)");
+		sql.append("(cpf_func,senha,nome_func,email) ");
+		sql.append("values (?,?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
 
@@ -140,6 +140,7 @@ public class AdministradorDao {
 			comando.setString(1, pessoa.getCpf());
 			comando.setString(2, pessoa.getSenha());
 			comando.setString(3, pessoa.getNome());
+			comando.setString(4, pessoa.getEmail());
 
 			comando.executeUpdate();
 

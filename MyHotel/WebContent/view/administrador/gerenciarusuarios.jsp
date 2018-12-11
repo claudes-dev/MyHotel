@@ -116,9 +116,9 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a href="view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="../index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -128,7 +128,7 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="paineladmin.jsp"> <i class="material-icons">home</i>
+					<li><a href="view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					
@@ -175,7 +175,10 @@
 							<ul class="header-dropdown">
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
-									data-target="#adicionar">ADICIONAR</button>
+									data-target="#adicionarAdmin">+ Administrador</button>
+								<button type="button"
+									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
+									data-target="#adicionarFunc">+ Funcionário</button>
 								<button type="button"
 									class="btn btn-default waves-effect m-r-20" data-toggle="modal"
 									data-target="#gerenciar">GERENCIAR</button>
@@ -240,8 +243,8 @@
 	</section>
 
 
-	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
+	<div class="modal fade" id="adicionarFunc" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
 
@@ -258,16 +261,22 @@
 						</ul>
 					</div>
 					<div class="body">
-						<form id="wizard_with_validation" action="AdministradorController" method="POST">
-							<h3>INFORMAÇÕES DE LOGIN</h3>
-							<fieldset>
+						<form id="form_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
+						<input type="hidden" name="operacao" value="CADASTRAR_FUNCIONARIO"/>
 							
-							<input type="hidden" name="operacao" value="CADASTRAR_FUNCIONARIO"/>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="text" name="nome" class="form-control" required>
+										<label class="form-label">Nome*</label>
+									</div>
+								</div>
+							
 								<div class="form-group form-float">
 									<div class="form-line">
 										<input type="email" class="form-control" name="email" required>
 										<label class="form-label">E-mail*</label>
 									</div>
+									<div class="help-info">Ex.: exemplo@exemplo.com</div>
 								</div>
 								<div class="form-group form-float"> 
 									<div class="form-line">
@@ -275,6 +284,7 @@
 											name="password" id="password" required> <label
 											class="form-label">Senha*</label>
 									</div>
+									<div class="help-info">Precisa ter mais de 6 dígitos.</div>
 								</div>
 								<div class="form-group form-float">
 									<div class="form-line">
@@ -283,14 +293,81 @@
 											Senha*</label>
 									</div>
 								</div>
-							</fieldset>
+								
+                                    <div class="input-group">
+                                        <div class="demo-masked-input">
+                                            <div class="form-line">
+                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
+                                            </div>
+                                            <div class="help-info">Ex.: 123.456.789-10</div>
+                                        </div>
+                                    </div>
+<br>
+								<input id="acceptTerms-2" name="acceptTerms" type="checkbox"
+									required> <label for="acceptTerms-2">Estou
+									ciente que não poderei excluir o usuário criado caso ele
+									realize ao menos uma alteração dentro do sistema.</label>
+									
+							<div class="modal-footer">
+								<button class="btn btn-primary waves-effect"
+									type="submit">CONFIRMAR</button>
+								<button type="button" class="btn btn-default waves-effect"
+									data-dismiss="modal">FECHAR</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="adicionarAdmin" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 
-							<h3>INFORMAÇÕES DE PERFIL</h3>
-							<fieldset>
+
+				<div class="card">
+					<div class="header">
+						<h2>ADICIONAR NOVO USUÁRIO AO SISTEMA</h2>
+						<ul class="header-dropdown">
+
+							<a style="margin-right: 5px;" data-dismiss="modal" role="button"
+								aria-haspopup="true" aria-expanded="false"> <i
+								class="material-icons">close</i>
+							</a>
+
+						</ul>
+					</div>
+					<div class="body">
+						<form id="form_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
+						<input type="hidden" name="operacao" value="CADASTRAR_FUNCIONARIO"/>
+							
 								<div class="form-group form-float">
 									<div class="form-line">
 										<input type="text" name="nome" class="form-control" required>
 										<label class="form-label">Nome*</label>
+									</div>
+								</div>
+							
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="email" class="form-control" name="email" required>
+										<label class="form-label">E-mail*</label>
+									</div>
+									<div class="help-info">Ex.: exemplo@exemplo.com</div>
+								</div>
+								<div class="form-group form-float"> 
+									<div class="form-line">
+										<input type="password" minlength="6" class="form-control"
+											name="password" id="password" required> <label
+											class="form-label">Senha*</label>
+									</div>
+									<div class="help-info">Precisa ter mais de 6 dígitos.</div>
+								</div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="password" minlength="6" class="form-control"
+											name="confirm" required> <label class="form-label">Confirmar
+											Senha*</label>
 									</div>
 								</div>
 								
@@ -299,39 +376,24 @@
                                             <div class="form-line">
                                                 <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
                                             </div>
+                                            <div class="help-info">Ex.: 123.456.789-10</div>
                                         </div>
                                     </div>
-					
-                                    <div class="input-group">
-                                        <div class="demo-masked-input">
-                                            <div class="form-line">
-                                                <input type="text" name="dataNascimento" class="form-control date" placeholder="Data de nascimento*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: dd/mm/aaaa</div>
-                                        </div>
-                                    </div>
-							</fieldset>
-
-							<h3>TERMOS & TIPO DA CONTA</h3>
-							<fieldset>
-								<div class="form-group">
-									<input type="radio" name="tipoConta" id="ContaAdm"
-										class="with-gap"> <label for="ContaAdm">Esse
-										usuário terá permissões administrativas.</label> <input type="radio"
-										name="tipoConta" id="ContaFunc" class="with-gap"> <label
-										for="ContaFunc" class="m-l-20">Esse
-										usuário NÃO terá permissões administrativas.</label>
-								</div>
+<br>
 								<input id="acceptTerms-2" name="acceptTerms" type="checkbox"
 									required> <label for="acceptTerms-2">Estou
 									ciente que não poderei excluir o usuário criado caso ele
 									realize ao menos uma alteração dentro do sistema.</label>
-							</fieldset>
+									
+							<div class="modal-footer">
+								<button class="btn btn-primary waves-effect"
+									type="submit">CONFIRMAR</button>
+								<button type="button" class="btn btn-default waves-effect"
+									data-dismiss="modal">FECHAR</button>
+							</div>
 						</form>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>

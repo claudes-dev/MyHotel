@@ -2,6 +2,7 @@ package br.com.start.myhotel.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,7 @@ public class AdministradorController extends HttpServlet {
 			// 6
 		} else if (operacao.equals("CADASTRAR_FUNCIONARIO")) {
 			cadastrarFuncionario(req, res);
+			redirecionar(req, res, "administrador/perfil.jsp");
 			// 7
 		} else if (operacao.equals("EDITAR_FUNCIONARIO")) {
 			editarFuncionario(req, res);
@@ -62,12 +64,20 @@ public class AdministradorController extends HttpServlet {
 			gerenciarStatus(req, res);
 
 		}
+		
+
 	}
 
+	
+	private void redirecionar(HttpServletRequest req, HttpServletResponse res, String pagina) throws ServletException, IOException {
+	RequestDispatcher rd=req.getRequestDispatcher("/view/"+pagina);  
+	rd.forward(req, res);//method may be include or forward  
+}
+	
 	// 1-MÉTODO PARA CRIAR ADMINISTRADOR
 	private void cadastrarAdm(HttpServletRequest req, HttpServletResponse res) {
 		String cpf = req.getParameter("cpf");
-		String senha = req.getParameter("senha");
+		String senha = req.getParameter("password");
 		String nome = req.getParameter("nome");
 		String email = req.getParameter("email");
 
@@ -138,7 +148,7 @@ public class AdministradorController extends HttpServlet {
 
 		String nome = req.getParameter("nome");
 		String cpf = req.getParameter("cpf");
-		String senha = req.getParameter("senha");
+		String senha = req.getParameter("password");
 		String email = req.getParameter("email");
 
 		Funcionario f = new Funcionario(nome, cpf, senha, email);
