@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.start.myhotel.model.Administrador;
+import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.Funcionario;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
@@ -160,4 +162,60 @@ public class FuncionarioDao {
 		return lista;
 
 	}
+	
+	public ArrayList<Cliente> listarCliente() throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select nome_cliente, cpf_cliente, email ");
+		sql.append("from cliente");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+
+		comando = conexao.prepareStatement(sql.toString());
+
+		resultado = comando.executeQuery();
+
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+
+		while (resultado.next()) {
+			Cliente c = new Cliente();
+			
+			c.setNome(resultado.getString("nome_cliente"));
+			c.setCpf(resultado.getString("cpf_cliente"));
+			c.setEmail(resultado.getString("email"));
+			
+
+			lista.add(c);
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return lista;
+
+	}
+	
+//	public static void main(String[] args) {
+//		FuncionarioDao dao = new FuncionarioDao();
+//		
+//		List<Cliente> lista = new ArrayList<Cliente>();
+//		try {
+//			lista = dao.listarCliente();
+//			
+//			for (Cliente cliente : lista) {
+//				System.out.println(lista);
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		
+//		
+//		
+//	}
 }

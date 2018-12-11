@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="connection.ConexaoFactory"%>
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
-<%@ page import="br.com.start.myhotel.model.Funcionario"%>
+<%@ page import="br.com.start.myhotel.model.Cliente"%>
 <%@ page import="dao.FuncionarioDao"%>
 
 <!DOCTYPE html>
@@ -198,8 +198,7 @@
 											<th>Nome Completo</th>
 											<th>CPF</th>
 											<th>E-mail</th>
-											<th>Função</th>
-											<th>Status</th>
+										
 											
 										</tr>
 									</thead>
@@ -208,27 +207,32 @@
 											<th>Nome Completo</th>
 											<th>CPF</th>
 											<th>E-mail</th>
-											<th>Função</th>
-											<th>Status</th>
+										
 										</tr>
 									</tfoot>
 									<tbody>
 										<%
-										FuncionarioDao dao = new FuncionarioDao();
-
-										List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
-
-										listaFuncionario = dao.listarFunc();
-										for (Funcionario f : listaFuncionario) {
+								
+											
+											FuncionarioDao dao = new FuncionarioDao();
+											
+											List<Cliente> lista = new ArrayList<Cliente>();
+											
+												lista = dao.listarCliente();
+												
+												for (Cliente cliente : lista) {
+													System.out.println(lista);
+											
+											
 										%>
 										
 										
 
 										<tr>
-											<td><%=f.getNome()%></td>
-											<td><%=f.getCpf()%></td>
-											<td><%=f.getSenha() %></td>
-											<td><%=f.getTipoConta() %></td>
+											<td><%=cliente.getNome()%></td>
+											<td><%=cliente.getCpf()%></td>
+											<td><%=cliente.getEmail()%></td>
+										
 										</tr>
 										
 										<%

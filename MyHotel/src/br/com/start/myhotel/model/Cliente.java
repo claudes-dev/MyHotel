@@ -7,6 +7,10 @@ public class Cliente extends Pessoa{
 	private String email;
 	private int idServicos;
 	
+	public Cliente() {
+		
+	}
+	
 	public Cliente(String nome, String cpf, String senha, String dataNascimento, String email, int idServicos) {
 		//CONSTRUTOR CONTENDO ATRIBUTOS DA CLASSE CLIENTE, E DA SUPER CLASSE PESSOA
 		super(nome, cpf);
@@ -36,6 +40,12 @@ public class Cliente extends Pessoa{
 
 	public void setIdServicos(int idServicos) {
 		this.idServicos = idServicos;
+	}
+	
+	@Override
+	public String toString() {
+		String saida = this.getCpf() + "  -  " + this.getNome() + "  -  " + this.getEmail();
+		return saida;
 	}
 	 
 }
