@@ -224,7 +224,7 @@ public class AdministradorController extends HttpServlet {
 
 		try {
 			admBO.buscarFunc(f);
-			req.setAttribute("mensagem", "Funcionário encontrado");
+			req.setAttribute("mensagem", " Funcionário encontrado");
 		} catch (ExcecaoBusca excecao) {
 			req.setAttribute("mensagem", "Funcionário não encontrado");
 		}

@@ -78,7 +78,7 @@ public class FuncionarioDao {
 	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
 	public ArrayList<Reserva> listarReserva() throws ExcecaoBusca {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select id_reserva, id_cliente ");
+		sql.append("select id_reserva,id_cliente ");
 		sql.append("from reserva");
 
 		Connection conexao = ConexaoFactory.getConnection();

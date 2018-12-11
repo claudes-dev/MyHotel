@@ -20,7 +20,7 @@ create table funcionario (
 -- TABELA DE LIGAÇÃO ENTRE ADM E FUNCIONARIO
 create table cadastra(
 	id_func INT,
-	id_adm INT,
+	id_adm INT, 
 	FOREIGN KEY (id_func) REFERENCES funcionario(id_func),
 	FOREIGN KEY (id_adm) REFERENCES administrador(id_adm)
 );
