@@ -1,3 +1,4 @@
+<%@page import="br.com.start.myhotel.model.Quarto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -7,6 +8,9 @@
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
 <%@ page import="br.com.start.myhotel.model.Funcionario"%>
 <%@ page import="br.com.start.myhotel.model.Administrador"%>
+<%@ page import="br.com.start.myhotel.model.Cliente"%>
+<%@ page import="br.com.start.myhotel.model.Reserva"%>
+<%@ page import="br.com.start.myhotel.model.Quarto"%>
 <%@ page import="dao.FuncionarioDao"%>
 <%@ page import="dao.AdministradorDao"%>
 
@@ -124,18 +128,21 @@
 				</div>
 				<div class="info-container">
 					<div class="name" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"><%= request.getSession().getAttribute("nome")%></div>
-					<div class="email"><%= request.getSession().getAttribute("email")%></div>
+						aria-expanded="false"><%=request.getSession().getAttribute("nome")%></div>
+					<div class="email"><%=session.getAttribute("email")%>
+					</div>
 					<div class="btn-group user-helper-dropdown">
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
 							<li><a
-								href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i
+								href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i
 									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
-									class="material-icons">input</i>Sair</a></li>
+
+							<form id="meuform" action="<%=request.getContextPath()%>/sistemaController"">
+								<input type="hidden" name="tipo" value="FAZER_LOGOUT"></form>
+						  	<li><a href="javascript:void(0);" onclick="document.getElementById('meuform').submit()">Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -145,7 +152,7 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOSPEDAGENS</li>
-					<li><a href="painelfunc.jsp"> <i class="material-icons">home</i>
+					<li><a href="<%=request.getContextPath()%>/view/funcionario/painelfunc.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					<li class="active"><a href="javascript:void(0);"
@@ -312,8 +319,22 @@
 						<select name="clienteReserva" class="form-control show-tick"
 							data-live-search="true" required>
 							<option disabled selected></option>
-							<option>Burguês Safado</option>
-							<option>Gabriel de Jesus</option>
+							
+							<%
+									FuncionarioDao daoCliente = new FuncionarioDao();
+
+					        		List<Cliente> listaCliente = daoCliente.listarCliente();
+
+									for (Cliente f : listaCliente) {
+									System.out.println(f);
+							%>
+							
+							<option value="<%= f.getCpf()%>"><%= f.getNome() %></option>
+
+							<%
+								}
+							%>
+
 						</select>
 						<div style="margin-top: 30px;"></div>
 						<p>
@@ -322,14 +343,16 @@
 						<select name="numQuarto" class="form-control show-tick"
 							data-live-search="true" required>
 							<option disabled selected></option>
-							<option>105</option>
-							<option>106</option>
-							<option>107</option>
-							<option>108</option>
-							<option>109</option>
-							<option>110</option>
-							<option>111</option>
-							<option>112</option>
+							<%--  <%
+									FuncionarioDao daoCliente = new FuncionarioDao();
+
+					        		List<Quarto> listaQuarto = daoCliente.listarQuartos();
+
+									for (Quarto f : listaQuarto) {
+									System.out.println(f);
+							%> --%>
+							<option>123123</option>
+
 
 						</select>
 						<div style="margin-top: 30px;"></div>

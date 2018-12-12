@@ -106,7 +106,7 @@ public class SistemaController extends HttpServlet {
 					redirecionar(request, response, "administrador/gerenciarusuarios.jsp");
 
 				} else {
-					request.setAttribute("mensagem", "Usuário não encontrado");
+					request.setAttribute("mensagem", "Usuário ou senha incorretos.");
 					redirecionar(request, response, "index.jsp");
 				}
 
@@ -115,8 +115,12 @@ public class SistemaController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (tipo.equals("FAZER_LOGOUT")) {
+			fazerLogout(request, response);
+			request.setAttribute("mensagem", "Deslogado com sucesso!");
+			redirecionar(request, response, "index.jsp");
 		}
-
+	}
 //		if (email.equals("nome") && senha.equals("senha")) {
 //			rd = request.getRequestDispatcher("/view/administrador/paineladmin.jsp");
 //			HttpSession session = request.getSession();
@@ -130,7 +134,19 @@ public class SistemaController extends HttpServlet {
 //		out.close();
 //
 //	}
-	}
+
+	 private void fazerLogout(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
+
+	        HttpSession session = request.getSession();
+
+
+	        session.invalidate();
+
+	        session = request.getSession(false);
+
+}
+	
 	
 	private void redirecionar(HttpServletRequest req, HttpServletResponse res, String pagina) throws ServletException, IOException {
 		RequestDispatcher rd=req.getRequestDispatcher("/view/"+pagina);  

@@ -13,6 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.tagext.TryCatchFinally;
+import javax.websocket.Session;
 
 import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.FuncionarioBO;
@@ -48,8 +51,7 @@ public class FuncionarioController extends HttpServlet {
 //		} else if (operacao.equals("BUSCAR_RESERVA")) {
 //			buscarReserva(req, res);
 		}
-	}
-	
+}
 	
 	private void redirecionar(HttpServletRequest req, HttpServletResponse res, String pagina) throws ServletException, IOException {
 		RequestDispatcher rd=req.getRequestDispatcher("/view/"+pagina);  
@@ -155,4 +157,5 @@ public class FuncionarioController extends HttpServlet {
 //		}
 //	}
 
-}
+	   
+}	    

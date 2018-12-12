@@ -1,5 +1,6 @@
 package br.com.start.myhotel.model;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import dao.FuncionarioDao;
@@ -18,7 +19,13 @@ public class FuncionarioBO {
 
 	// LISTAR QUARTOS
 	public List<Quarto> listarQuartos() throws ExcecaoBusca {
-		return dao.listarQuartos();
+		try {
+			return dao.listarQuartos();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	// 1- FUNÇÃO PARA CADASTRAR RESERVA

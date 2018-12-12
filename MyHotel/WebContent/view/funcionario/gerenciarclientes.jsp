@@ -111,17 +111,20 @@
 				<div class="info-container">
 					<div class="name" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"><%=request.getSession().getAttribute("nome")%></div>
-					<div class="email"><%=request.getSession().getAttribute("email")%></div>
+					<div class="email"><%=session.getAttribute("email")%>
+					</div>
 					<div class="btn-group user-helper-dropdown">
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
 							<li><a
-								href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i
+								href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i
 									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
-									class="material-icons">input</i>Sair</a></li>
+
+							<form id="meuform" action="<%=request.getContextPath()%>/sistemaController"">
+								<input type="hidden" name="tipo" value="FAZER_LOGOUT"></form>
+						  	<li><a href="javascript:void(0);" onclick="document.getElementById('meuform').submit()">Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -131,7 +134,7 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOSPEDAGENS</li>
-					<li><a href="painelfunc.jsp"> <i class="material-icons">home</i>
+					<li><a href="<%=request.getContextPath()%>/view/funcionario/painelfunc.jsp"> <i class="material-icons">home</i>
 							<span>Início</span>
 					</a></li>
 					<li class="active"><a href="javascript:void(0);"
@@ -215,7 +218,7 @@
 												System.out.println(f);
 										%>
 										<tr>
-											<td><%=f.getCpf()%></td>
+											<td><%=f.getNome()%></td>
 											<td><%=f.getCpf()%></td>
 											<td><%=f.getEmail()%></td>
 											<td><%=f.getTelefone()%></td>

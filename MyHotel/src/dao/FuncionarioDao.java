@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.Funcionario;
+import br.com.start.myhotel.model.Quarto;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
 import excecoes.ExcecaoBusca;
@@ -268,6 +269,38 @@ public class FuncionarioDao {
 			c.setTelefone(resultado.getString("telefone"));
 			
 			lista.add(c);
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return lista;
+
+	}
+
+	public List<Quarto> listarQuartos() throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id_quarto, num_quarto, andar_quarto ");
+		sql.append("from quarto");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+
+		resultado = comando.executeQuery();
+
+		ArrayList<Quarto> lista = new ArrayList<Quarto>();
+
+		while (resultado.next()) {
+			Quarto q = new Quarto();
+			q.setIdQuarto(resultado.getInt("id_quarto"));
+			q.setIdQuarto(resultado.getInt("num_quarto"));
+			q.setIdQuarto(resultado.getInt("andar_quarto"));
+
+			
+			lista.add(q);
 		}
 
 		try {

@@ -86,24 +86,33 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="<%=request.getContextPath()%>/resources/images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= request.getSession().getAttribute("nome")%></div>
-                    <div class="email"><%= request.getSession().getAttribute("email")%><br></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons active">person</i>Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
+			<div class="user-info">
+				<div class="image">
+					<img src="<%=request.getContextPath()%>/resources/images/user.png"
+						width="48" height="48" alt="User" />
+				</div>
+				<div class="info-container">
+					<div class="name" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><%=request.getSession().getAttribute("nome")%></div>
+					<div class="email"><%=session.getAttribute("email")%>
+					</div>
+					<div class="btn-group user-helper-dropdown">
+						<i class="material-icons" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+						<ul class="dropdown-menu pull-right">
+							<li><a
+								href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i
+									class="material-icons">person</i>Perfil</a></li>
+							<li role="separator" class="divider"></li>
+
+							<form id="meuform" action="<%=request.getContextPath()%>/sistemaController"">
+								<input type="hidden" name="tipo" value="FAZER_LOGOUT"></form>
+						  	<li><a href="javascript:void(0);" onclick="document.getElementById('meuform').submit()">Sair</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- #User Info -->
             <!-- Menu -->
 			<div class="menu">
 				<ul class="list">
