@@ -30,9 +30,7 @@ create table cadastra(
 create table quarto(
 	id_quarto INT (5) AUTO_INCREMENT PRIMARY KEY,
 	num_quarto INT (3) NOT NULL,
-	andar_quarto INT (3) NOT NULL,
-	preco_diaria DOUBLE NOT NULL,
-	qtd_banheiro INT (1) NOT NULL
+	andar_quarto INT (3) NOT NULL
 );
 
 
