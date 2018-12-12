@@ -209,33 +209,16 @@
 										<%
 											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Cliente> lista = new ArrayList<Cliente>();
+											List<Cliente> lista = dao.listarCliente();
 
 											for (Cliente f : lista) {
-												System.out.println(lista);
+												System.out.println(f);
 										%>
 										<tr>
-											<td>
-												<%
-													f.getNome();
-												%>
-											</td>
-											<td>
-												<%
-													f.getCpf();
-												%>
-											</td>
-											<td>
-												<%
-													f.getEmail();
-												%>
-											</td>
-											<td>
-												<%
-													f.getTelefone();
-												%>
-											</td>
-
+											<td><%=f.getCpf()%></td>
+											<td><%=f.getCpf()%></td>
+											<td><%=f.getEmail()%></td>
+											<td><%=f.getTelefone()%></td>
 										</tr>
 
 										<%

@@ -217,17 +217,17 @@
 										<%
 											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Funcionario> lista = new ArrayList<Funcionario>();
+											List<Funcionario> lista = dao.listarFunc();
 
 											for (Funcionario f : lista) {
 												System.out.println(lista);
 										%> 
 										<tr>
-											<td><%f.getNome();%></td>
-											<td><%f.getCpf();%></td>
-											<td><%f.getEmail();%></td>
-											<td><%f.getTipoConta();%></td>
-											<td><%f.getStatus();%></td>
+											<td><%=f.getNome()%></td>
+											<td><%=f.getCpf()%></td>
+											<td><%=f.getEmail()%></td>
+											<td><%=f.getTipoConta()%></td>
+											<td><%=f.getStatus()%></td>
 											
 										</tr>
 

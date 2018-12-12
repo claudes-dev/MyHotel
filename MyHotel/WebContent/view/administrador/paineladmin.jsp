@@ -6,6 +6,7 @@
 <%@ page import="connection.ConexaoFactory"%>
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
 <%@ page import="br.com.start.myhotel.model.Funcionario"%>
+<%@ page import="br.com.start.myhotel.model.Reserva"%>
 <%@ page import="dao.FuncionarioDao"%>
 
 <!DOCTYPE html>
@@ -259,34 +260,32 @@
 										<tfoot>
 											<tr>
 												<th>Nome Completo</th>
-												<th>CPF</th>
+											
 												<th>Data de entrada</th>
 												<th>Data de saída</th>
-												<th>Status</th>
+												
 											</tr>
 										</tfoot>
-										<%--<%
+										<%
 											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Cliente> lista = new ArrayList<Cliente>();
+											List<Reserva> lista = dao.listarReservas();
 
-											for (Cliente cliente : lista) {
+											for (Reserva r : lista) {
 												System.out.println(lista);
-										%> --%>
-
+										%>
 
 
 										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
+											<td><%=r.getIdCliente()%></td>
+											<td><%=r.getDataEntrada()%></td>
+											<td><%=r.getDataSaida()%></td>
+											<td><%=r.getNumQuarto()%></td>
 
 										</tr>
-										<%--	<%
+											<%
 											}
-										%> --%>
+										%> 
 									</table>
 								</div>
 							</div>

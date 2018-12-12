@@ -241,7 +241,7 @@
 							<div class="header">
 								<h2>ÚLTIMOS HÓSPEDES</h2>
 								<ul class="header-dropdown">
-									<button onclick="location.href='gerenciarclientes.jsp'"
+									<button onclick="location.href='<%=request.getContextPath()%>/view/funcionario/gerenciarclientes.jsp'"
 										type="button" class="btn btn-primary waves-effect m-r-20">ADICIONAR</button>
 								</ul>
 							</div>
