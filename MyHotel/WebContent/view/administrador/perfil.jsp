@@ -224,7 +224,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-line">
                                                         <input type="text" class="form-control" id="NameSurname" name="NameSurname"
-                                                            placeholder="Nome" value="114.094.084-85" disabled>
+                                                            placeholder="Nome" value="<%= request.getSession().getAttribute("cpf")%>" disabled>
                                                     </div>
                                                 </div>
                                             </div>

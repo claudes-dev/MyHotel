@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.*,java.sql.*"%>
 <%@ page import="java.util.*"%>
@@ -31,10 +32,11 @@
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/animate.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
+<link
+	href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/css/dropzone.css" 
-    rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/css/dropzone.css"
+	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/sweetalert.css"
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
@@ -108,54 +110,45 @@
 				</div>
 				<div class="info-container">
 					<div class="name" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Saulo Lessa</div>
-					<div class="email">exemplo@exemplo.com</div>
+						aria-expanded="false"><%=request.getSession().getAttribute("nome")%></div>
+					<div class="email"><%=request.getSession().getAttribute("email")%></div>
 					<div class="btn-group user-helper-dropdown">
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a
+								href="<%=request.getContextPath()%>/view/funcionario/perfil.jsp"><i
+									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
+									class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- #User Info -->
 			<!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">GERENCIAR HOSPEDAGENS</li>
-                    <li>
-                        <a href="painelfunc.jsp">
-                            <i class="material-icons">home</i>
-                            <span>Início</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">hotel</i>
-                            <span>Hospedagem</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li class="active">
-                                <a href="javascript:void(0);">
-                                    <span>Clientes</span>
-                                </a>
-
-                            </li>
-                            <li>
-                                <a href="<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp">
-                                    <span>Reservas</span>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="header">GERENCIAR HOSPEDAGENS</li>
-                </ul>
-            </div>
-            <!-- #Menu -->
+			<div class="menu">
+				<ul class="list">
+					<li class="header">GERENCIAR HOSPEDAGENS</li>
+					<li><a href="painelfunc.jsp"> <i class="material-icons">home</i>
+							<span>Início</span>
+					</a></li>
+					<li class="active"><a href="javascript:void(0);"
+						class="menu-toggle"> <i class="material-icons">hotel</i> <span>Hospedagem</span>
+					</a>
+						<ul class="ml-menu">
+							<li class="active"><a href="javascript:void(0);"> <span>Clientes</span>
+							</a></li>
+							<li><a
+								href="<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp">
+									<span>Reservas</span>
+							</a></li>
+						</ul></li>
+					<li class="header">GERENCIAR HOSPEDAGENS</li>
+				</ul>
+			</div>
+			<!-- #Menu -->
 			<!-- Rodap� -->
 			<div class="legal">
 				<div class="copyright">
@@ -183,8 +176,10 @@
 								<button type="button"
 									class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
 									data-target="#adicionar">NOVO CLIENTE</button>
-								<button type="button" onclick="location.href='<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp'"
-									class="btn btn-default waves-effect m-r-20" >NOVA RESERVA</button>
+								<button type="button"
+									onclick="location.href='<%=request.getContextPath()%>/view/funcionario/gerenciarreservas.jsp'"
+									class="btn btn-default waves-effect m-r-20">NOVA
+									RESERVA</button>
 							</ul>
 						</div>
 						<div class="body">
@@ -197,7 +192,7 @@
 											<th>CPF</th>
 											<th>E-mail</th>
 											<th>Telefone</th>
-											
+
 										</tr>
 									</thead>
 									<tfoot>
@@ -206,30 +201,46 @@
 											<th>CPF</th>
 											<th>E-mail</th>
 											<th>Telefone</th>
-										
+
 										</tr>
 									</tfoot>
 
 									<tbody>
-			                            <%
+										<%
 											FuncionarioDao dao = new FuncionarioDao();
 
 											List<Cliente> lista = new ArrayList<Cliente>();
 
 											for (Cliente f : lista) {
 												System.out.println(lista);
-										%> 
+										%>
 										<tr>
-											<td><%f.getNome();%></td>
-											<td><%f.getCpf();%></td>
-											<td><%f.getEmail();%></td>
-											<td><%f.getTelefone();%></td>
-											
+											<td>
+												<%
+													f.getNome();
+												%>
+											</td>
+											<td>
+												<%
+													f.getCpf();
+												%>
+											</td>
+											<td>
+												<%
+													f.getEmail();
+												%>
+											</td>
+											<td>
+												<%
+													f.getTelefone();
+												%>
+											</td>
+
 										</tr>
 
-											<%
+										<%
 											}
-										    %>
+										%>
 
 									</tbody>
 
@@ -245,77 +256,86 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 
 
-                <div class="card">
-                    <div class="header">
-                        <h2>ADICIONAR NOVO CLIENTE AO SISTEMA</h2>
-                        <ul class="header-dropdown">
+				<div class="card">
+					<div class="header">
+						<h2>ADICIONAR NOVO CLIENTE AO SISTEMA</h2>
+						<ul class="header-dropdown">
 
-                            <a style="margin-right: 5px;" data-dismiss="modal" role="button" aria-haspopup="true"
-                                aria-expanded="false">
-                                <i class="material-icons">close</i>
-                            </a>
+							<a style="margin-right: 5px;" data-dismiss="modal" role="button"
+								aria-haspopup="true" aria-expanded="false"> <i
+								class="material-icons">close</i>
+							</a>
 
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/funcionarioController" method="post">
-                        <input type="hidden" name="operacao" value="CADASTRAR_CLIENTE">
-                            <h3>INFORMAÇÕES PESSOAIS</h3>
-                            <fieldset>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="nome" class="form-control" required>
-                                        <label class="form-label">Nome*</label>
-                                    </div>
-                                </div>
-                                <div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: 123.456.789-10</div>
-                                        </div>
-                                </div>
-                                <div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" name="telefone" class="form-control telefone" placeholder="Telefone*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: (99) 99999-9999</div>
-                                        </div>
-                                </div>
-                                <input id="acceptTerms-2" name="acceptTerms" class="form-control" type="checkbox" required>
-                                <label for="acceptTerms-2">Estou ciente que não poderei excluir o registro de cliente.</label>
-                            </fieldset>
+						</ul>
+					</div>
+					<div class="body">
+						<form id="wizard_with_validation"
+							action="<%=request.getContextPath()%>/funcionarioController"
+							method="post">
+							<input type="hidden" name="operacao" value="CADASTRAR_CLIENTE">
+							<h3>INFORMAÇÕES PESSOAIS</h3>
+							<fieldset>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="text" name="nome" class="form-control" required>
+										<label class="form-label">Nome*</label>
+									</div>
+								</div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="email" name="email" class="form-control" required>
+										<label class="form-label">E-mail*</label>
+									</div>
+								</div>
+								<div class="demo-masked-input">
+									<div class="input-group">
+										<div class="form-line">
+											<input type="text" name="cpf" class="form-control cpf"
+												placeholder="CPF*" required>
+										</div>
+										<div class="help-info">Ex.: 123.456.789-10</div>
+									</div>
+								</div>
+								<div class="demo-masked-input">
+									<div class="input-group">
+										<div class="form-line">
+											<input type="text" name="telefone"
+												class="form-control telefone" placeholder="Telefone*"
+												required>
+										</div>
+										<div class="help-info">Ex.: (99) 99999-9999</div>
+									</div>
+								</div>
+								<input id="acceptTerms-2" name="acceptTerms"
+									class="form-control" type="checkbox" required> <label
+									for="acceptTerms-2">Estou ciente que não poderei
+									excluir o registro de cliente.</label>
+							</fieldset>
 
-                        </form>
-                    </div>
-                </div>
+						</form>
+					</div>
+				</div>
 
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
 
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
 	<script
@@ -328,22 +348,17 @@
 		src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
-	<script 
-	    src="js/demo.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+	<script src="js/demo.js"></script>
 </body>
 
 </html>
