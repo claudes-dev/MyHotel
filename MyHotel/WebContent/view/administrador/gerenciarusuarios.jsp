@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.*,java.sql.*"%>
 <%@ page import="java.util.*"%>
@@ -35,10 +36,11 @@
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/animate.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
+<link
+	href="<%=request.getContextPath()%>/resources/css/dataTables.bootstrap.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/css/dropzone.css" 
-    rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/css/dropzone.css"
+	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/css/sweetalert.css"
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
@@ -118,9 +120,12 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a
+								href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i
+									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
+									class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -130,15 +135,16 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOTEL</li>
-					<li><a href="<%=request.getContextPath()%>/view/administrador/paineladmin.jsp"> <i class="material-icons">home</i>
-							<span>Início</span>
+					<li><a
+						href="<%=request.getContextPath()%>/view/administrador/paineladmin.jsp">
+							<i class="material-icons">home</i> <span>Início</span>
 					</a></li>
-					
+
 					<li class="active"><a href="javascript:void(0);"> <i
 							class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
-					<li><a href="javascript:void(0);"> <i class="material-icons">attach_money</i>
-							<span>Faturamento</span>
+					<li><a href="javascript:void(0);"> <i
+							class="material-icons">attach_money</i> <span>Faturamento</span>
 					</a></li>
 					<li class="header">GERENCIAR CLIENTES</li>
 					<li><a href="javascript:void(0);" class="menu-toggle"> <i
@@ -194,7 +200,7 @@
 											<th>E-mail</th>
 											<th>Função</th>
 											<th>Status</th>
-											
+
 										</tr>
 									</thead>
 									<tfoot>
@@ -207,30 +213,32 @@
 										</tr>
 									</tfoot>
 									<tbody>
-										<%
+
+										<%--<%
 											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+											List<Cliente> lista = new ArrayList<Cliente>();
 
-											listaFuncionario = dao.listarFunc();
-											for (Funcionario f : listaFuncionario) {
-										%>
-										
-										
+											for (Cliente cliente : lista) {
+												System.out.println(lista);
+										%> --%>
+
+
 
 										<tr>
-											<td><%=f.getNome()%></td>
-											<td><%=f.getCpf()%></td>
-											<td><%=f.getEmail() %></td>
-											<td><%=f.getTipoConta() %></td>
-											<td><%=f.getStatus() %> </td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
 										</tr>
-										
-										<%
+
+										<%--	<%
 											}
-										%>
-										
-										
+										%> --%>
+
 									</tbody>
 								</table>
 							</div>
@@ -244,85 +252,92 @@
 
 
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 
 
-                <div class="card">
-                    <div class="header">
-                        <h2>ADICIONAR NOVO USUÁRIO AO SISTEMA</h2>
-                        <ul class="header-dropdown">
+				<div class="card">
+					<div class="header">
+						<h2>ADICIONAR NOVO USUÁRIO AO SISTEMA</h2>
+						<ul class="header-dropdown">
 
-                            <a style="margin-right: 5px;" data-dismiss="modal" role="button" aria-haspopup="true"
-                                aria-expanded="false">
-                                <i class="material-icons">close</i>
-                            </a>
+							<a style="margin-right: 5px;" data-dismiss="modal" role="button"
+								aria-haspopup="true" aria-expanded="false"> <i
+								class="material-icons">close</i>
+							</a>
 
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
-                            <h3>Informações de login</h3>
-                            <fieldset>
-                            <div class="form-group">
-                                    <input type="radio" name="operacao" id="op1" value="CADASTRAR_ADM" class="with-gap" required>
-                                    <label for="op1">Esse usuário TERÁ permissões administrativas.</label>
-                                    <input type="radio" name="operacao" id="op2" value="CADASTRAR_FUNCIONARIO" class="with-gap" required>
-                                    <label for="op2">Esse usuário NÃO terá permissões
-                                        administrativas.</label>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="email" class="form-control" name="email" required>
-                                        <label class="form-label">E-mail*</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" minlength="6" class="form-control" name="senha" id="senha"
-                                            required>
-                                        <label class="form-label">Senha*</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" minlength="6" class="form-control" name="confirmar"
-                                            required>
-                                        <label class="form-label">Confirmar Senha*</label>
-                                    </div>
-                                </div>
-                            </fieldset>
+						</ul>
+					</div>
+					<div class="body">
+						<form id="wizard_with_validation"
+							action="<%=request.getContextPath()%>/administradorController"
+							method="post">
+							<h3>Informações de login</h3>
+							<fieldset>
+								<div class="form-group">
+									<input type="radio" name="operacao" id="op1"
+										value="CADASTRAR_ADM" class="with-gap" required> <label
+										for="op1">Esse usuário TERÁ permissões
+										administrativas.</label> <input type="radio" name="operacao" id="op2"
+										value="CADASTRAR_FUNCIONARIO" class="with-gap" required>
+									<label for="op2">Esse usuário NÃO terá permissões
+										administrativas.</label>
+								</div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="email" class="form-control" name="email" required>
+										<label class="form-label">E-mail*</label>
+									</div>
+								</div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="password" minlength="6" class="form-control"
+											name="senha" id="senha" required> <label
+											class="form-label">Senha*</label>
+									</div>
+								</div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="password" minlength="6" class="form-control"
+											name="confirmar" required> <label class="form-label">Confirmar
+											Senha*</label>
+									</div>
+								</div>
+							</fieldset>
 
-                            <h3>Informações de perfil</h3>
-                            <fieldset>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="nome" class="form-control" required>
-                                        <label class="form-label">Nome*</label>
-                                    </div>
-                                </div>
-                                <div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" name="cpf" class="form-control cpf" placeholder="CPF*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: 123.456.789-10</div>
-                                        </div>
-                                </div>
-                                <input id="acceptTerms-2" name="acceptTerms" class="form-control" type="checkbox" required>
-                                <label for="acceptTerms-2">Estou ciente que não poderei excluir o usuário criado caso
-                                    ele realize ao menos uma alteração dentro do sistema.</label>
-                            </fieldset>
+							<h3>Informações de perfil</h3>
+							<fieldset>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<input type="text" name="nome" class="form-control" required>
+										<label class="form-label">Nome*</label>
+									</div>
+								</div>
+								<div class="demo-masked-input">
+									<div class="input-group">
+										<div class="form-line">
+											<input type="text" name="cpf" class="form-control cpf"
+												placeholder="CPF*" required>
+										</div>
+										<div class="help-info">Ex.: 123.456.789-10</div>
+									</div>
+								</div>
+								<input id="acceptTerms-2" name="acceptTerms"
+									class="form-control" type="checkbox" required> <label
+									for="acceptTerms-2">Estou ciente que não poderei
+									excluir o usuário criado caso ele realize ao menos uma
+									alteração dentro do sistema.</label>
+							</fieldset>
 
-                        </form>
-                    </div>
-                </div>
+						</form>
+					</div>
+				</div>
 
 
-            </div>
-        </div>
-    </div>
-	
+			</div>
+		</div>
+	</div>
+
 	<div class="modal fade" id="gerenciar" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -334,30 +349,31 @@
 					<div class="body">
 						<form id="form_validation" method="post">
 							<div class="form-group">
-								<input type="radio" name="operacao" value="desativar" id="desativarConta"
-									class="with-gap" required> <label for="desativarConta">Desejo
-									DESATIVAR a conta vinculada ao CPF abaixo.</label> <input
-									type="radio" name="operacao" value="reativar" id="reativarConta"
-									class="with-gap" required> <label for="reativarConta">Desejo
-									REATIVAR a conta vinculada ao CPF abaixo.</label>
+								<input type="radio" name="operacao" value="desativar"
+									id="desativarConta" class="with-gap" required> <label
+									for="desativarConta">Desejo DESATIVAR a conta vinculada
+									ao CPF abaixo.</label> <input type="radio" name="operacao"
+									value="reativar" id="reativarConta" class="with-gap" required>
+								<label for="reativarConta">Desejo REATIVAR a conta
+									vinculada ao CPF abaixo.</label>
 							</div>
-								<div class="demo-masked-input">
-                                        <div class="input-group">
-                                            <div class="form-line">
-                                                <input type="text" minlength=14 name="cpf" class="form-control cpf" placeholder="CPF*" required>
-                                            </div>
-                                            <div class="help-info">Ex.: 123.456.789-10</div>
-                                        </div>
-                                </div>
+							<div class="demo-masked-input">
+								<div class="input-group">
+									<div class="form-line">
+										<input type="text" minlength=14 name="cpf"
+											class="form-control cpf" placeholder="CPF*" required>
+									</div>
+									<div class="help-info">Ex.: 123.456.789-10</div>
+								</div>
+							</div>
 
 							<div class="form-group">
 								<input type="checkbox" id="checkbox" name="checkbox"> <label
-									for="checkbox" required>Estou ciente que a conta poderá ser
-									desativada/reativada a qualquer momento.</label>
+									for="checkbox" required>Estou ciente que a conta poderá
+									ser desativada/reativada a qualquer momento.</label>
 							</div>
 							<div class="modal-footer">
-								<button class="btn btn-primary waves-effect"
-									type="submit">CONFIRMAR</button>
+								<button class="btn btn-primary waves-effect" type="submit">CONFIRMAR</button>
 								<button type="button" class="btn btn-default waves-effect"
 									data-dismiss="modal">FECHAR</button>
 							</div>
@@ -369,20 +385,16 @@
 	</div>
 
 
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap-select.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.slimscroll.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/waves.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap-colorpicker.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dropzone.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.steps.js"></script>
 	<script
@@ -395,22 +407,17 @@
 		src="<%=request.getContextPath()%>/resources/js/tabelas/dataTables.bootstrap.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
-	<script 
-		src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-datatable.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/modals.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/dialogs.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/form-validation.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
-	<script 
-	    src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
-	<script 
-	    src="js/demo.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/form-wizard.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/advanced-form-elements.js"></script>
+	<script src="js/demo.js"></script>
 </body>
 
 </html>

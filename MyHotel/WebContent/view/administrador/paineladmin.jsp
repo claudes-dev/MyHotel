@@ -85,8 +85,8 @@
 				<a href="javascript:void(0);" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar-collapse"
 					aria-expanded="false"></a> <a href="javascript:void(0);"
-					class="bars"></a> <a class="navbar-brand" href="javascript:void(0);">MyHotel
-					- Gerencie seu negócio!</a>
+					class="bars"></a> <a class="navbar-brand"
+					href="javascript:void(0);">MyHotel - Gerencie seu negócio!</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -116,9 +116,12 @@
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i class="material-icons">person</i>Perfil</a></li>
+							<li><a
+								href="<%=request.getContextPath()%>/view/administrador/perfil.jsp"><i
+									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i class="material-icons">input</i>Sair</a></li>
+							<li><a href="<%=request.getContextPath()%>/view/index.jsp"><i
+									class="material-icons">input</i>Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -131,8 +134,9 @@
 					<li class="active"><a href="javascript:void(0);"> <i
 							class="material-icons">home</i> <span>Início</span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/view/administrador/gerenciarusuarios.jsp"> <i
-							class="material-icons">person</i> <span>Usuários</span>
+					<li><a
+						href="<%=request.getContextPath()%>/view/administrador/gerenciarusuarios.jsp">
+							<i class="material-icons">person</i> <span>Usuários</span>
 					</a></li>
 					<li><a href="javascript:void(0);"> <i
 							class="material-icons">attach_money</i> <span>Faturamento</span>
