@@ -293,4 +293,46 @@ public class AdministradorDao {
 		return lista;
 
 	}
+
+	public Administrador buscarPorEmail(String a) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * ");
+		sql.append("from administrador ");
+		sql.append("where email = ?");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = null;
+		ResultSet resultado = null;
+
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM administrador WHERE email = ?");
+
+		// comando = conexao.prepareStatement(sql.toString());
+		
+		stmt.setString(1, a);
+		resultado = stmt.executeQuery();
+
+		Administrador retorno = null;
+
+		if (resultado.next()) {
+
+			retorno = new Administrador();
+			retorno.setCpf(resultado.getString("cpf_adm"));
+			retorno.setSenha(resultado.getString("senha"));
+			retorno.setNome(resultado.getString("nome_adm"));
+			retorno.setTipoConta(resultado.getString("tipo_conta"));
+			retorno.setEmail(resultado.getString("email"));
+			
+			//retorno.setStatus(resultado.getInt("status"));
+
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return retorno;
+
+	}
+
 }

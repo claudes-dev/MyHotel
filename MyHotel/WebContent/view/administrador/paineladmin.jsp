@@ -110,8 +110,8 @@
 				</div>
 				<div class="info-container">
 					<div class="name" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Saulo Lessa</div>
-					<div class="email">exemplo@exemplo.com</div>
+						aria-expanded="false"><%= session.getAttribute("nome")%></div>
+					<div class="email"><%= session.getAttribute("email")%>/div>
 					<div class="btn-group user-helper-dropdown">
 						<i class="material-icons" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

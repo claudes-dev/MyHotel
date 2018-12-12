@@ -91,8 +91,8 @@
                     <img src="<%=request.getContextPath()%>/resources/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Saulo Lessa</div>
-                    <div class="email">exemplo@exemplo.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= request.getSession().getAttribute("nome")%></div>
+                    <div class="email"><%= request.getSession().getAttribute("email")%></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -165,7 +165,7 @@
                                 <img src="<%=request.getContextPath()%>/resources/images/user-lg.jpg" alt="AdminBSB - Profile Image" />
                             </div>
                             <div class="content-area">
-                                <h3>Saulo Lessa</h3>
+                                <h3><%= request.getSession().getAttribute("nome")%></h3>
                                 <p>MyHotel - Painel Administrativo</p>
                                 <p>Administrador</p>
                             </div>

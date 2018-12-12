@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Cliente;
@@ -126,6 +127,44 @@ public class FuncionarioDao {
 		}
 	}
 
+	// Função pra buscar
+
+	public Funcionario buscarPorEmail(String f) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * ");
+		sql.append("from funcionario ");
+		sql.append("where email = ?");
+
+		Connection conexao = ConexaoFactory.getConnection();
+		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+		comando.setString(1, f);
+		ResultSet resultado = comando.executeQuery();
+
+//		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM funcionario WHERE email = ?");
+
+		Funcionario retorno = null;
+
+		if (resultado.next()) {
+
+			retorno = new Funcionario();
+			retorno.setCpf(resultado.getString("cpf_func"));
+			retorno.setSenha(resultado.getString("senha"));
+			retorno.setNome(resultado.getString("nome_func"));
+			retorno.setTipoConta(resultado.getString("tipo_conta"));
+			retorno.setEmail(resultado.getString("email"));
+			retorno.setStatus(resultado.getInt("status"));
+			
+		}
+
+		try {
+			conexao.close();
+		} catch (SQLException e) {
+		}
+
+		return retorno;
+
+	}
+
 	public ArrayList<Funcionario> listarFunc() throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_func,senha, nome_func, tipo_conta, email, status ");
@@ -161,7 +200,7 @@ public class FuncionarioDao {
 		return lista;
 
 	}
-	
+
 	public ArrayList<Cliente> listarCliente() throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select cpf_cliente, nome_cliente, email, telefone ");
@@ -183,7 +222,7 @@ public class FuncionarioDao {
 			c.setNome(resultado.getString("nome_cliente"));
 			c.setEmail(resultado.getString("email"));
 			c.setTelefone(resultado.getString("telefone"));
-
+			
 			lista.add(c);
 		}
 
@@ -195,5 +234,6 @@ public class FuncionarioDao {
 		return lista;
 
 	}
+
 
 }

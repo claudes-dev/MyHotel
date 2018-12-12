@@ -1,3 +1,5 @@
+
+
 create table administrador (
 	id_adm INT(5) AUTO_INCREMENT PRIMARY KEY,
 	cpf_adm VARCHAR(14) UNIQUE,
