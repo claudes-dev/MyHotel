@@ -47,8 +47,6 @@
 			<div class="body">
 				<form action="<%=request.getContextPath()%>/sistemaController"
 					id="sign_in" method="POST">
-					<input type="radio" name="operacao" id="op1" value=""
-						class="with-gap" required>
 					<div class="msg">Insira suas credenciais para iniciar a
 						sessão.</div>
 					<div class="input-group">
@@ -61,7 +59,7 @@
 						<%
 							if (mensagem != null) {
 						%>
-						<p>
+						<p style="color: red;">
 							<%=mensagem%>
 						</p>
 						<%
@@ -77,17 +75,16 @@
 						</div>
 					</div>
 					<div class="row">
-						<input type="radio" name="tipo" id="op1" value="f" class="with-gap" >
-						<label for="op1">Funcionário</label>
-						
-						<input type="radio" name="tipo" id="op2" value="a" class="with-gap" >
+						<input type="radio" name="tipo" id="op1" value="f"
+							class="with-gap"> <label for="op1">Funcionário</label> <input
+							type="radio" name="tipo" id="op2" value="a" class="with-gap">
 						<label for="op2">Administrador</label>
 						<div class="col-xs-12">
 							<button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
 						</div>
 					</div>
 				</form>
-				
+
 
 
 			</div>

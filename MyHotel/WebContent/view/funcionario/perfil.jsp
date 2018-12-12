@@ -167,7 +167,7 @@
                             <div class="content-area">
                                 <h3><%= request.getSession().getAttribute("nome")%></h3>
                                 <p>MyHotel - Painel Administrativo</p>
-                                <p>Administrador</p>
+                                <p>Funcionário</p>
                             </div>
                             <div class="profile-footer">
                                 <ul>
@@ -215,7 +215,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-line">
                                                         <input type="text" class="form-control" id="NameSurname" name="NameSurname"
-                                                            placeholder="Nome" value="Saulo Lessa" required>
+                                                            placeholder="Nome" value="<%= request.getSession().getAttribute("nome")%>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,7 +224,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-line">
                                                         <input type="email" class="form-control" id="Email" name="Email"
-                                                            placeholder="Email" value="exemplo@examplo.com" required>
+                                                            placeholder="Email" value="<%= request.getSession().getAttribute("email")%>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -233,7 +233,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-line">
                                                         <input type="text" class="form-control" id="NameSurname" name="NameSurname"
-                                                            placeholder="Nome" value="114.094.084-85" disabled>
+                                                            placeholder="Nome" value="<%= request.getSession().getAttribute("cpf")%>" disabled>
                                                     </div>
                                                 </div>
                                             </div>

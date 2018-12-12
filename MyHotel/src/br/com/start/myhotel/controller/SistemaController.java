@@ -67,6 +67,7 @@ public class SistemaController extends HttpServlet {
 					session.setAttribute("email", loga.getEmail());
 					session.setAttribute("status", loga.getStatus());
 					session.setAttribute("tipo", loga.getTipoConta());
+					session.setAttribute("cpf", loga.getCpf());
 					
 				
 					
@@ -76,7 +77,7 @@ public class SistemaController extends HttpServlet {
 				} else {
 					request.setAttribute("mensagem", "Usuário não encontrado");
 					
-					redirecionar(request, response, "/view/index.jsp");
+					redirecionar(request, response, "index.jsp");
 				}
 
 			} catch (SQLException e) {
@@ -98,6 +99,7 @@ public class SistemaController extends HttpServlet {
 					session.setAttribute("nome", loga.getNome());
 					session.setAttribute("email", loga.getEmail());
 					session.setAttribute("tipo", loga.getTipoConta());
+					session.setAttribute("cpf", loga.getCpf());
 					
 					
 					
@@ -105,7 +107,7 @@ public class SistemaController extends HttpServlet {
 
 				} else {
 					request.setAttribute("mensagem", "Usuário não encontrado");
-					redirecionar(request, response, "/view/index.jsp");
+					redirecionar(request, response, "index.jsp");
 				}
 
 			} catch (SQLException e) {
