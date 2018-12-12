@@ -265,30 +265,29 @@
 												<th>Status</th>
 											</tr>
 										</tfoot>
-										<tbody>
-											<%
-												FuncionarioDao dao = new FuncionarioDao();
+										<%--<%
+											FuncionarioDao dao = new FuncionarioDao();
 
-												List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+											List<Cliente> lista = new ArrayList<Cliente>();
 
-												listaFuncionario = dao.listarFunc();
-												for (Funcionario f : listaFuncionario) {
-											%>
-
+											for (Cliente cliente : lista) {
+												System.out.println(lista);
+										%> --%>
 
 
-											<tr>
-												<td><%=f.getNome()%></td>
-												<td><%=f.getCpf()%></td>
-												<td><%=f.getSenha()%></td>
-												<td><%=f.getTipoConta()%></td>
-											</tr>
 
-											<%
-												}
-											%>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
 
-										</tbody>
+										</tr>
+										<%--	<%
+											}
+										%> --%>
 									</table>
 								</div>
 							</div>
