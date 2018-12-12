@@ -36,8 +36,9 @@ public class AdministradorController extends HttpServlet {
 		} else if (operacao.equals("EXCLUIR_ADM")) {
 			excluirAdm(req, res);
 			// 3
-		} else if (operacao.equals("ATUALIZAR_ADM")) {
-			atualizarAdm(req, res);
+		} else if (operacao.equals("ATUALIZAR_PERFIL_ADM")) {
+			atualizarPerfilAdm(req, res);
+			redirecionar(req, res, "administrador/perfil.jsp");
 			// 4
 		} else if (operacao.equals("BUSCAR_ADMS")) {
 			buscarAdms(req, res);
@@ -64,8 +65,7 @@ public class AdministradorController extends HttpServlet {
 		} else if (operacao.equals("GERENCIAR_STATUS")) {
 			gerenciarStatus(req, res);
 
-		}
-		
+		}		
 
 	}
 
@@ -107,9 +107,27 @@ public class AdministradorController extends HttpServlet {
 		}
 	}
 
-	// 3-FUNÇÃO, ATUALIZAR ADM
-	private void atualizarAdm(HttpServletRequest req, HttpServletResponse res) {
-
+	// 3-FUNÇÃO, ATUALIZAR PERFIL ADM
+	private void atualizarPerfilAdm(HttpServletRequest req, HttpServletResponse res) {
+        String nomeAdm = req.getParameter("nome");
+        String emailAdm	= req.getParameter("email");
+        String emailCpf	= req.getParameter("cpf");
+        
+        Administrador adm = new Administrador();
+        
+        adm.setNome(nomeAdm);
+        adm.setEmail(emailAdm);
+        adm.setCpf(emailCpf);
+        
+        try {
+        	admBO.atualizarPerfilAdm(adm);
+        	req.setAttribute("mensagem", "Nome e e-mail alterado com sucesso!");
+        } catch (ExcecaoEdicao e) {
+        	req.setAttribute("mensagem", "Erro ao mudar o perfil.");
+        }
+        
+        
+        
 	}
 
 	// 4-BUSCAR TODOS ADMS

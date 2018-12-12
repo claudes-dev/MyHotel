@@ -25,80 +25,26 @@ create table cadastra(
 	FOREIGN KEY (id_adm) REFERENCES administrador(id_adm)
 );
 
-
-
-create table quarto(
-	id_quarto INT (5) AUTO_INCREMENT PRIMARY KEY,
-	num_quarto INT (3) NOT NULL,
-	andar_quarto INT (3) NOT NULL
-);
-
-
-
 create table reserva(
 
-	id_reserva INT AUTO_INCREMENT PRIMARY KEY,
+	id_reserva INT AUTO_INCREMENT UNIQUE KEY,
 	id_func INT,
-	id_cliente INT,
-	id_quarto INT,
-	data_saida DATE NOT NULL,
-	data_entrada DATE NOT NULL
+	cpf_cliente VARCHAR(50),
+	num_quarto INT (3) PRIMARY KEY KEY,
+	data_saida VARCHAR(10) NOT NULL,
+	data_entrada VARCHAR(10) NOT NULL
 );
 
 create table cliente(
-	id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-	cpf_cliente VARCHAR(14) UNIQUE NOT NULL,
+	id_cliente INT AUTO_INCREMENT UNIQUE KEY,
+	cpf_cliente VARCHAR(14) PRIMARY KEY NOT NULL,
 	nome_cliente VARCHAR(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	telefone VARCHAR(15)
 );
--- tabela que liga funcionario efetuando reserva
 
-create table efetua(
-	id_reserva INT,
-	id_func INT,
-	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
-	FOREIGN KEY (id_func) REFERENCES funcionario(id_func)
-);
-
-/*tabela que liga funcionario ao cliente ou seja check in*/
-	
-create table check_in (
-	id_cliente INT,
-	id_func INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-	FOREIGN KEY (id_func) REFERENCES funcionario(id_func)
-);
-
--- ligacao de reservas com servicos
-
-create table contem(
-	id_reserva INT,
-	
-	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
-	
-);
-
--- ligacao de reserva com cliente 
-create table tem(
-	id_cliente INT,
-	id_reserva INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
-	
-);
-	
--- ligacao de reserva com quarto
-create table possui(
-	id_quarto INT,
-	id_reserva INT,
-	FOREIGN KEY (id_quarto) REFERENCES quarto(id_quarto),
-	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
-
-);
 
 ALTER TABLE reserva
 
 ADD FOREIGN KEY (id_func) REFERENCES funcionario(id_func),
-ADD	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-ADD	FOREIGN KEY (id_quarto) REFERENCES quarto(id_quarto);
+ADD FOREIGN KEY(cpf_cliente) REFERENCES cliente(cpf_cliente);

@@ -6,9 +6,9 @@ public class Reserva {
 	private int idFuncionario;
 	private String DataEntrada;
 	private String DataSaida;
-	private double valor;
-	private int idCliente;
-	private int idServico;
+//	private double valor;
+	private String cpfCliente;
+//	private int idServico;
 	private int numQuarto;
 	
 	public Reserva() {
@@ -41,24 +41,24 @@ public class Reserva {
 	public void setDataSaida(String dataSaida) {
 		DataSaida = dataSaida;
 	}
-	public double getValor() {
-		return valor;
+//	public double getValor() {
+//		return valor;
+//	}
+//	public void setValor(double valor) {
+//		this.valor = valor;
+//	}
+	public String getcpfCliente() {
+		return cpfCliente;
 	}
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setcpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
 	}
-	public int getIdCliente() {
-		return idCliente;
-	}
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
-	}
-	public int getIdServico() {
-		return idServico;
-	}
-	public void setIdServico(int idServico) {
-		this.idServico = idServico;
-	}
+//	public int getIdServico() {
+//		return idServico;
+//	}
+//	public void setIdServico(int idServico) {
+//		this.idServico = idServico;
+//	}
 	public int getNumQuarto() {
 		return numQuarto;
 	}

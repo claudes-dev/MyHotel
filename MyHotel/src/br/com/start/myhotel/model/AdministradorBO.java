@@ -22,8 +22,13 @@ public class AdministradorBO {
 	} 
 	
 	// 3-FUNÇÃO, ATUALIZAR ADM
-	public void atualizarAdm(Administrador adm) throws ExcecaoEdicao {
-		dao.editarAdm(adm);
+	public void atualizarPerfilAdm(Administrador adm) throws ExcecaoEdicao {
+		dao.editarPerfilAdm(adm);
+	}
+	
+	// 3-FUNÇÃO, ATUALIZAR ADM
+	public void atualizarSenhaAdm(Administrador adm) throws ExcecaoEdicao {
+		dao.editarSenhaAdm(adm);
 	}
 	
 	// 4-BUSCAR TODOS ADMS

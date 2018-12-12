@@ -54,7 +54,7 @@ public class FuncionarioDao {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into reserva ");
-		sql.append("(id_func, data_entrada, data_saida, id_cliente, id_quarto) ");
+		sql.append("(id_func, data_entrada, data_saida, cpf_cliente, num_quarto) ");
 		sql.append("values (?,?,?,?,?)");
 
 		Connection conexao = ConexaoFactory.getConnection();
@@ -65,7 +65,7 @@ public class FuncionarioDao {
 			comando.setInt(1, r.getIdFuncionario());
 			comando.setString(2, r.getDataEntrada());
 			comando.setString(3, r.getDataSaida());
-			comando.setInt(4, r.getIdCliente());
+			comando.setString(4, r.getcpfCliente());
 			comando.setInt(5, r.getNumQuarto());
 
 			comando.executeUpdate();
@@ -130,7 +130,7 @@ public class FuncionarioDao {
 				Reserva reserva = new Reserva();
 				Reserva r = new Reserva();
 				r.setIdReserva(resultado.getInt("id_reserva"));
-				r.setIdCliente(resultado.getInt("id_cliente"));
+				r.setcpfCliente(resultado.getString("cpf_cliente"));
 
 				lista.add(r);
 			}
@@ -157,7 +157,7 @@ public class FuncionarioDao {
 			
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setInt(1, reserva.getIdReserva());
-			comando.setInt(2, reserva.getIdCliente());
+			comando.setString(2, reserva.getcpfCliente());
 
 			ResultSet resultado = comando.executeQuery();
 

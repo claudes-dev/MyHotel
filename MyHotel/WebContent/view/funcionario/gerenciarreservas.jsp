@@ -140,9 +140,12 @@
 									class="material-icons">person</i>Perfil</a></li>
 							<li role="separator" class="divider"></li>
 
-							<form id="meuform" action="<%=request.getContextPath()%>/sistemaController"">
-								<input type="hidden" name="tipo" value="FAZER_LOGOUT"></form>
-						  	<li><a href="javascript:void(0);" onclick="document.getElementById('meuform').submit()">Sair</a></li>
+							<form id="meuform"
+								action="<%=request.getContextPath()%>/sistemaController"">
+								<input type="hidden" name="tipo" value="FAZER_LOGOUT">
+							</form>
+							<li><a href="javascript:void(0);"
+								onclick="document.getElementById('meuform').submit()">Sair</a></li>
 						</ul>
 					</div>
 				</div>
@@ -152,8 +155,9 @@
 			<div class="menu">
 				<ul class="list">
 					<li class="header">GERENCIAR HOSPEDAGENS</li>
-					<li><a href="<%=request.getContextPath()%>/view/funcionario/painelfunc.jsp"> <i class="material-icons">home</i>
-							<span>Início</span>
+					<li><a
+						href="<%=request.getContextPath()%>/view/funcionario/painelfunc.jsp">
+							<i class="material-icons">home</i> <span>Início</span>
 					</a></li>
 					<li class="active"><a href="javascript:void(0);"
 						class="menu-toggle"> <i class="material-icons">hotel</i> <span>Hospedagem</span>
@@ -208,51 +212,47 @@
 									class="table table-bordered table-striped table-hover js-basic-example dataTable">
 									<thead>
 										<tr>
-											<th>Hóspede</th>
-											<th>CPF</th>
-											<th>Telefone</th>
-											<th>Entrada</th>
-											<th>Saída</th>
-											<th>Serviço</th>
+											<th>ID Funcionário</th>
+											<th>CPF Cliente</th>
+											<th>Nº Quarto</th>
+											<th>Data de entrada</th>
+											<th>Data de saída</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Hóspede</th>
-											<th>CPF</th>
-											<th>Telefone</th>
-											<th>Entrada</th>
-											<th>Saída</th>
-											<th>Serviço</th>
+											<th>ID Funcionário</th>
+											<th>CPF Cliente</th>
+											<th>Nº Quarto</th>
+											<th>Data de entrada</th>
+											<th>Data de saída</th>
 										</tr>
 									</tfoot>
 									<tbody>
-									
-					   			<%--<%
-											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Cliente> lista = new ArrayList<Cliente>();
+										<%
+											FuncionarioDao reserva = new FuncionarioDao();
 
-											for (Cliente cliente : lista) {
-												System.out.println(lista);
-										%> --%>
+											List<Reserva> listareserva = new ArrayList<Reserva>();
+
+											for (Reserva r : listareserva) {
+												System.out.println(r);
+										%> 
 
 
 
 										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-
+											<td><%=r.getIdFuncionario()%></td>
+											<td><%=r.getcpfCliente()%><td>
+											<td><%=r.getNumQuarto()%></td>
+											<td><%=r.getDataEntrada()%></td>
+											<td><%=r.getDataSaida()%></td>
 										</tr>
 
-									<%--	<%
+										<%
 											}
-										%> --%>
-
+										%>
+										
 									</tbody>
 								</table>
 							</div>
@@ -274,7 +274,8 @@
 				</div>
 				<div class="modal-body">
 
-					<form id="form_advanced_validation" method="POST">
+					<form id="form_advanced_validation" action="<%=request.getContextPath()%>/funcionarioController" method="post">
+					<input type="hidden" name="operacao" value="FAZER_RESERVA">
 						<div style="margin-top: 40px;"></div>
 						<div class="input-daterange input-group"
 							id="bs_datepicker_range_container">
@@ -305,7 +306,7 @@
 								for (Funcionario f : listaFuncionario) {
 							%>
 
-							<option>ID: <%=f.getIdFunc()%> / <%=f.getNome()%></option>
+							<option value="<%=f.getIdFunc()%>"><%=f.getNome()%></option>
 
 							<%
 								}
@@ -319,17 +320,17 @@
 						<select name="clienteReserva" class="form-control show-tick"
 							data-live-search="true" required>
 							<option disabled selected></option>
-							
+
 							<%
-									FuncionarioDao daoCliente = new FuncionarioDao();
+								FuncionarioDao daoCliente = new FuncionarioDao();
 
-					        		List<Cliente> listaCliente = daoCliente.listarCliente();
+								List<Cliente> listaCliente = daoCliente.listarCliente();
 
-									for (Cliente f : listaCliente) {
+								for (Cliente f : listaCliente) {
 									System.out.println(f);
 							%>
-							
-							<option value="<%= f.getCpf()%>"><%= f.getNome() %></option>
+
+							<option value="<%=f.getCpf()%>"><%=f.getNome()%></option>
 
 							<%
 								}
@@ -337,24 +338,13 @@
 
 						</select>
 						<div style="margin-top: 30px;"></div>
-						<p>
-							<b>Número do quarto (selecionar)</b>
-						</p>
-						<select name="numQuarto" class="form-control show-tick"
-							data-live-search="true" required>
-							<option disabled selected></option>
-							<%--  <%
-									FuncionarioDao daoCliente = new FuncionarioDao();
-
-					        		List<Quarto> listaQuarto = daoCliente.listarQuartos();
-
-									for (Quarto f : listaQuarto) {
-									System.out.println(f);
-							%> --%>
-							<option>123123</option>
-
-
-						</select>
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input type="number" maxlength=4 name="numQuarto" class="form-control"
+									required> <label class="form-label">Número do
+									quarto*</label>
+							</div>
+						</div>
 						<div style="margin-top: 30px;"></div>
 						<div class="modal-footer">
 							<button class="btn btn-primary waves-effect" type="submit">CONFIRMAR</button>

@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Funcionario;
 import connection.ConexaoFactory;
@@ -66,7 +69,7 @@ public class AdministradorDao {
 
 	// 3-FUNÇÃO, ATUALIZAR ADM
 
-	public void editarAdm(Administrador pessoa) throws ExcecaoEdicao {
+	public void editarSenhaAdm(Administrador pessoa) throws ExcecaoEdicao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("update administrador ");
 		sql.append("set senha = ? ");
@@ -78,6 +81,29 @@ public class AdministradorDao {
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setString(1, pessoa.getSenha());
 			comando.setString(2, pessoa.getNome());
+
+			comando.executeUpdate();
+
+			System.out.println("Administrador alterado");
+		} catch (SQLException excecao) {
+			throw new ExcecaoEdicao("Administrador não alterado");
+
+		}
+	}
+	
+	public void editarPerfilAdm(Administrador adm) throws ExcecaoEdicao {
+		StringBuilder sql = new StringBuilder();
+		sql.append("update administrador ");
+		sql.append("set nome_adm='?', email='?' ");
+		sql.append("where cpf = '?' ");
+
+		Connection conexao = ConexaoFactory.getConnection();
+
+		try {
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			comando.setString(1, adm.getNome());
+			comando.setString(2, adm.getEmail());
+			comando.setString(3, adm.getCpf());
 
 			comando.executeUpdate();
 

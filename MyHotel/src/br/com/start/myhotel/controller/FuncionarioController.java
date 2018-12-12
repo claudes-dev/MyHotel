@@ -83,21 +83,21 @@ public class FuncionarioController extends HttpServlet {
 	}
 	private void fazerReserva(HttpServletRequest req, HttpServletResponse res) {
 
-		int idReserva = Integer.parseInt(req.getParameter("idReserva"));
-		int idFuncionario = Integer.parseInt(req.getParameter("idFuncionario"));
-		String dataEntrada = req.getParameter("dataEntrada");
-		int idCliente = Integer.parseInt(req.getParameter("idCliente"));
-		int idServico = Integer.parseInt(req.getParameter("idServico"));
+		String dataEntrada = req.getParameter(req.getParameter("dataEntrada"));
+		String dataSaida = req.getParameter(req.getParameter("dataSaida"));
+		int IdFunc = Integer.parseInt(req.getParameter("funcionarioReserva"));
 		int numQuarto = Integer.parseInt(req.getParameter("numQuarto"));
+		String cpfCliente = req.getParameter(req.getParameter("clienteReserva"));
+	
+		
 
 		Reserva reserva = new Reserva();
 
-		reserva.setIdReserva(idReserva);
-		reserva.setIdFuncionario(idFuncionario);
 		reserva.setDataEntrada(dataEntrada);
-		reserva.setIdCliente(idCliente);
-		reserva.setIdServico(idServico);
+		reserva.setDataSaida(dataSaida);
+		reserva.setIdFuncionario(IdFunc);
 		reserva.setNumQuarto(numQuarto);
+		reserva.setcpfCliente(cpfCliente);
 
 		try {
 			funcBO.fazerReserva(reserva);
