@@ -208,35 +208,24 @@
 										
 										</tr>
 									</tfoot>
+
 									<tbody>
-										<%
-								
-											
-											FuncionarioDao dao = new FuncionarioDao();
-											
-											List<Cliente> lista = new ArrayList<Cliente>();
-											
-								lista = dao.listarCliente();
-												
-												for (Cliente cliente : lista) {
-													System.out.println(lista);
-											
-											
-										%>
-										
-										
+			
 
 										<tr>
-											<td><%=cliente.getNome()%></td>
-											<td><%=cliente.getCpf()%></td>
-											<td><%=cliente.getEmail()%></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
 										</tr>
-										
-										<%
-											}
-										%>
+
+						
 										
 									</tbody>
+
 								</table>
 							</div>
 						</div>
