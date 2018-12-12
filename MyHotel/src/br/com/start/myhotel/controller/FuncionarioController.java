@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.FuncionarioBO;
 
 public class FuncionarioController extends HttpServlet {
@@ -25,10 +26,13 @@ public class FuncionarioController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		
 		String operacao = req.getParameter("operacao");
-		// 1
-		if (operacao.equals("FAZER_RESERVA")) {
+		
+			//ADICIONAL
+		if(operacao.equals("CADASTRAR_CLIENTE")) {
+			// 1
+		}else if (operacao.equals("FAZER_RESERVA")) {
 			fazerReserva(req, res);
 			// 2
 		} else if (operacao.equals("SUSPENDER_RESERVA")) {
@@ -40,9 +44,26 @@ public class FuncionarioController extends HttpServlet {
 		} else if (operacao.equals("BUSCAR_RESERVA")) {
 			buscarReserva(req, res);
 		}
-
 	}
-
+		
+	
+	private void cadastrarCliente(HttpServletRequest req, HttpServletResponse res) {
+		
+		String nomeCliente = req.getParameter("nomeCliente");
+		String cpfCliente = req.getParameter("cpfCliente");
+		String email = req.getParameter("email");
+		String telefone = req.getParameter("telefone");
+		
+		Cliente cliente = new Cliente();
+		
+		try {
+			funcBO.cadastrarCliente(cliente);
+			req.setAttribute("mensagem", "Cliente cadastrado com sucesso");
+		}catch(ExcecaoCadastro excecao) {
+			req.setAttribute("mensagem", "Falha ao cadastrar cliente");
+		}
+		
+	}
 	private void fazerReserva(HttpServletRequest req, HttpServletResponse res) {
 
 		int idReserva = Integer.parseInt(req.getParameter("idReserva"));

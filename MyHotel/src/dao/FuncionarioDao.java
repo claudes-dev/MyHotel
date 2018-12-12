@@ -19,6 +19,27 @@ import br.com.start.myhotel.model.Reserva;
 
 public class FuncionarioDao {
 
+	
+	// ADICIONAL CLIENTE
+		public void adicionarCliente(Cliente c) throws ExcecaoCadastro{
+			StringBuilder sql = new StringBuilder();
+			sql.append("insert into cliente ");
+			sql.append("(nome_cliente, cpf_cliente, email, telefone) ");
+			sql.append("values(?,?,?,?)");
+			
+			Connection conexao = ConexaoFactory.getConnection();
+			
+			try {
+				PreparedStatement comando = conexao.prepareStatement(sql.toString());
+				comando.setString(1, c.getNome());
+				comando.setString(2, c.getCpf());
+				comando.setString(3, c.getEmail());
+				comando.setString(4, c.getTelefone());
+			}catch(SQLException excecao) {
+				throw new ExcecaoCadastro("Cliente não foi inserido");
+			}
+		}
+		
 	// 1- FUNÇÃO PARA CADASTRAR RESERVA
 	public void cadastrarReserva(Reserva r) throws ExcecaoCadastro {
 
