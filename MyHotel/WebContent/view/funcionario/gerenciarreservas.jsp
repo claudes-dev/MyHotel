@@ -5,8 +5,10 @@
 <%@ page import="java.util.*"%>
 <%@ page import="connection.ConexaoFactory"%>
 <%@ page import="br.com.start.myhotel.model.Pessoa"%>
-<%@ page import="br.com.start.myhotel.model.Cliente"%>
+<%@ page import="br.com.start.myhotel.model.Funcionario"%>
+<%@ page import="br.com.start.myhotel.model.Administrador"%>
 <%@ page import="dao.FuncionarioDao"%>
+<%@ page import="dao.AdministradorDao"%>
 
 <!DOCTYPE html>
 <html>
@@ -287,8 +289,21 @@
 						<select name="funcionarioReserva" class="form-control show-tick"
 							data-live-search="true" required>
 							<option disabled selected></option>
-							<option>Saulo Lessa</option>
-							<option>Claudes Trapstar</option>
+							<%
+								FuncionarioDao dao = new FuncionarioDao();
+
+								List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+
+								listaFuncionario = dao.listarFunc();
+								for (Funcionario f : listaFuncionario) {
+							%>
+
+							<option>ID: <%=f.getIdFunc()%> / <%=f.getNome()%></option>
+
+							<%
+								}
+							%>
+
 						</select>
 						<div style="margin-top: 30px;"></div>
 						<p>

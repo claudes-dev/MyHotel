@@ -223,15 +223,13 @@
 												System.out.println(lista);
 										%> --%>
 
-
-
 										<tr>
 											<td></td>
 											<td></td>
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											
 
 										</tr>
 

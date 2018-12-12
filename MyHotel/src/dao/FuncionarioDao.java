@@ -167,7 +167,7 @@ public class FuncionarioDao {
 
 	public ArrayList<Funcionario> listarFunc() throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select cpf_func,senha, nome_func, tipo_conta, email, status ");
+		sql.append("select cpf_func,senha, nome_func, tipo_conta, email, status, id_func ");
 		sql.append("from funcionario");
 
 		Connection conexao = ConexaoFactory.getConnection();
@@ -188,6 +188,7 @@ public class FuncionarioDao {
 			f.setTipoConta(resultado.getString("tipo_conta"));
 			f.setEmail(resultado.getString("email"));
 			f.setStatus(resultado.getInt("status"));
+			f.setIdFunc(resultado.getInt("id_func"));
 
 			lista.add(f);
 		}

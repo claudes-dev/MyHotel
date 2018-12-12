@@ -2,6 +2,8 @@ package br.com.start.myhotel.model;
 
 public class Funcionario extends Pessoa{
 		
+	private int IdFunc;
+	
 	public Funcionario() {
 		
 	}
@@ -16,5 +18,13 @@ public class Funcionario extends Pessoa{
 	public String toString() {
 		String saida = this.getCpf()  + this.getNome()  + this.getSenha() + this.getEmail();
 		return saida;
+	}
+
+	public int getIdFunc() {
+		return IdFunc;
+	}
+
+	public void setIdFunc(int idFunc) {
+		IdFunc = idFunc;
 	}
 }
