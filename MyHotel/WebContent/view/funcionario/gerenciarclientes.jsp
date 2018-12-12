@@ -195,8 +195,8 @@
 										<tr>
 											<th>Nome</th>
 											<th>CPF</th>
+											<th>E-mail</th>
 											<th>Telefone</th>
-										
 											
 										</tr>
 									</thead>
@@ -204,23 +204,33 @@
 										<tr>
 											<th>Nome</th>
 											<th>CPF</th>
+											<th>E-mail</th>
 											<th>Telefone</th>
 										
 										</tr>
 									</tfoot>
 
 									<tbody>
-			
+			                            <%
+											FuncionarioDao dao = new FuncionarioDao();
 
+											List<Cliente> lista = new ArrayList<Cliente>();
+
+											for (Cliente f : lista) {
+												System.out.println(lista);
+										%> 
 										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-
+											<td><%f.getNome();%></td>
+											<td><%f.getCpf();%></td>
+											<td><%f.getEmail();%></td>
+											<td><%f.getTelefone();%></td>
+											
 										</tr>
 
-						
-										
+											<%
+											}
+										    %>
+
 									</tbody>
 
 								</table>
@@ -252,7 +262,8 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/administradorController" method="post">
+                        <form id="wizard_with_validation" action="<%=request.getContextPath()%>/funcionarioController" method="post">
+                        <input type="hidden" name="operacao" value="CADASTRAR_CLIENTE">
                             <h3>INFORMAÇÕES PESSOAIS</h3>
                             <fieldset>
                                 <div class="form-group form-float">

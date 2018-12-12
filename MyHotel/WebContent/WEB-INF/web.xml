@@ -41,6 +41,16 @@
 		<servlet-name>sistemaController</servlet-name>
 		<url-pattern>/sistemaController</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>funcionarioController</servlet-name>
+		<servlet-class>br.com.start.myhotel.controller.FuncionarioController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>funcionarioController</servlet-name>
+		<url-pattern>/funcionarioController</url-pattern>
+	</servlet-mapping>
 
 
 

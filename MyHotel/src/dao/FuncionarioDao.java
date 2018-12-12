@@ -24,7 +24,7 @@ public class FuncionarioDao {
 		public void adicionarCliente(Cliente c) throws ExcecaoCadastro{
 			StringBuilder sql = new StringBuilder();
 			sql.append("insert into cliente ");
-			sql.append("(nome_cliente, cpf_cliente, email, telefone) ");
+			sql.append("(nome_cliente,cpf_cliente,email,telefone) ");
 			sql.append("values(?,?,?,?)");
 			
 			Connection conexao = ConexaoFactory.getConnection();
@@ -35,10 +35,18 @@ public class FuncionarioDao {
 				comando.setString(2, c.getCpf());
 				comando.setString(3, c.getEmail());
 				comando.setString(4, c.getTelefone());
+				
+				comando.executeUpdate();
+				
 			}catch(SQLException excecao) {
 				throw new ExcecaoCadastro("Cliente não foi inserido");
+			} try {
+				conexao.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}
+		} 
 		
 	// 1- FUNÇÃO PARA CADASTRAR RESERVA
 	public void cadastrarReserva(Reserva r) throws ExcecaoCadastro {
@@ -66,6 +74,11 @@ public class FuncionarioDao {
 			System.out.println("Inserido no banco");
 		} catch (SQLException excecao) {
 			throw new ExcecaoCadastro("Não foi inserido");
+		} try {
+			conexao.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -86,6 +99,11 @@ public class FuncionarioDao {
 			System.out.println("Reserva suspensa");
 		} catch (SQLException excecao) {
 			throw new ExcecaoExclusao("Reserva não foi suspensa");
+		} try {
+			conexao.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -133,10 +151,11 @@ public class FuncionarioDao {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select id_reserva,id_cliente ");
 		sql.append("from reserva");
-
+		
+		Connection conexao = ConexaoFactory.getConnection();
+		
 		try {
-			Connection conexao = ConexaoFactory.getConnection();
-
+			
 			PreparedStatement comando = conexao.prepareStatement(sql.toString());
 			comando.setInt(1, reserva.getIdReserva());
 			comando.setInt(2, reserva.getIdCliente());
@@ -145,6 +164,11 @@ public class FuncionarioDao {
 
 		} catch (SQLException excecao) {
 			throw new ExcecaoBusca("Erro ao busca administrador");
+		} try {
+			conexao.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -255,7 +279,7 @@ public class FuncionarioDao {
 
 		return lista;
 
-	}
+	} 
 
 
 }

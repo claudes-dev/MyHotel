@@ -3,7 +3,7 @@ create table administrador (
 	cpf_adm VARCHAR(14) UNIQUE,
 	senha VARCHAR(100) NOT NULL,
 	email VARCHAR(50) NOT NULL,
-	nome_adm VARCHAR(45) NOT NULL,
+	nome_adm VARCHAR(50) NOT NULL,
 	tipo_conta varchar(13) DEFAULT 'Administrador'
 );
 
@@ -12,7 +12,7 @@ create table funcionario (
 	cpf_func VARCHAR(14) UNIQUE,
 	senha VARCHAR(100) NOT NULL,
 	email VARCHAR(50) NOT NULL,
-	nome_func VARCHAR(45) NOT NULL,
+	nome_func VARCHAR(50) NOT NULL,
 	tipo_conta varchar(13) DEFAULT 'Funcionario',
 	status INT(1) NOT NULL DEFAULT 1
 );
@@ -30,7 +30,7 @@ create table cadastra(
 create table quarto(
 	id_quarto INT (5) AUTO_INCREMENT PRIMARY KEY,
 	num_quarto INT (3) NOT NULL,
-	andar_quarto INT (1) NOT NULL,
+	andar_quarto INT (3) NOT NULL,
 	preco_diaria DOUBLE NOT NULL,
 	qtd_banheiro INT (1) NOT NULL
 );
@@ -50,7 +50,7 @@ create table reserva(
 create table cliente(
 	id_cliente INT AUTO_INCREMENT PRIMARY KEY,
 	cpf_cliente VARCHAR(14) UNIQUE NOT NULL,
-	nome_cliente VARCHAR(25) NOT NULL,
+	nome_cliente VARCHAR(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	telefone VARCHAR(15)
 );
