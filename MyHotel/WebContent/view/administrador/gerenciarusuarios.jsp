@@ -157,7 +157,7 @@
 				</ul>
 			</div>
 			<!-- #Menu -->
-			<!-- Rodap� -->
+			<!-- Rodapé -->
 			<div class="legal">
 				<div class="copyright">
 					&copy; 2018 <a href="javascript:void(0);">HyHotel</a>.
@@ -214,28 +214,26 @@
 									</tfoot>
 									<tbody>
 
-										<%--<%
+										<%
 											FuncionarioDao dao = new FuncionarioDao();
 
-											List<Cliente> lista = new ArrayList<Cliente>();
+											List<Funcionario> lista = new ArrayList<Funcionario>();
 
-											for (Cliente cliente : lista) {
+											for (Funcionario f : lista) {
 												System.out.println(lista);
-										%> --%>
-
+										%> 
 										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
+											<td><%f.getNome();%></td>
+											<td><%f.getCpf();%></td>
+											<td><%f.getEmail();%></td>
+											<td><%f.getTipoConta();%></td>
+											<td><%f.getStatus();%></td>
 											
-
 										</tr>
 
-										<%--	<%
+											<%
 											}
-										%> --%>
+										    %>
 
 									</tbody>
 								</table>

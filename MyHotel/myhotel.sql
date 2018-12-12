@@ -34,7 +34,6 @@ create table quarto(
 	num_quarto INT (3) NOT NULL,
 	andar_quarto INT (1) NOT NULL,
 	preco_diaria DOUBLE NOT NULL,
-	preco_mensal DOUBLE NOT NULL,
 	qtd_banheiro INT (1) NOT NULL
 );
 
@@ -48,7 +47,6 @@ create table reserva(
 	id_quarto INT,
 	data_saida DATE NOT NULL,
 	data_entrada DATE NOT NULL,
-	pagamento DOUBLE NOT NULL
 );
 
 create table cliente(
