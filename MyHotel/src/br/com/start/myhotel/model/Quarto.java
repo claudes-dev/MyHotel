@@ -3,6 +3,7 @@ package br.com.start.myhotel.model;
 public class Quarto {
 	
 	//ATRIBUTOS DA PRÓRPIA CLASSE QUARTO
+	private int idQuarto;
 	private int numQuarto;
 	private int andar;
 	private int quantidadeCama;
@@ -69,6 +70,14 @@ public class Quarto {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public int getIdQuarto() {
+		return idQuarto;
+	}
+
+	public void setIdQuarto(int idQuarto) {
+		this.idQuarto = idQuarto;
 	}
 	
 	

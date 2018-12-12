@@ -10,12 +10,17 @@ import excecoes.ExcecaoExclusao;
 public class FuncionarioBO {
 
 	private FuncionarioDao dao = new FuncionarioDao();
-	
+
 	// ADICIONAL CLIENTE
-		public void cadastrarCliente(Cliente c) throws ExcecaoCadastro{
-			dao.adicionarCliente(c);
-		}
-		
+	public void cadastrarCliente(Cliente c) throws ExcecaoCadastro {
+		dao.adicionarCliente(c);
+	}
+
+	// LISTAR QUARTOS
+	public List<Quarto> listarQuartos() throws ExcecaoBusca {
+		return dao.listarQuartos();
+	}
+
 	// 1- FUNÇÃO PARA CADASTRAR RESERVA
 	public void fazerReserva(Reserva r) throws ExcecaoCadastro {
 		dao.cadastrarReserva(r);

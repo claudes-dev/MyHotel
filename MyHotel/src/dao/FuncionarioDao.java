@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.start.myhotel.model.Administrador;
 import br.com.start.myhotel.model.Cliente;
 import br.com.start.myhotel.model.Funcionario;
+import br.com.start.myhotel.model.Quarto;
 import br.com.start.myhotel.model.Reserva;
 import connection.ConexaoFactory;
 import excecoes.ExcecaoBusca;
@@ -46,7 +47,47 @@ public class FuncionarioDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} 
+		}
+		
+		
+		
+		// LISTAR
+				public ArrayList<Quarto> listarQuartos() throws ExcecaoBusca {
+					StringBuilder sql = new StringBuilder();
+					sql.append("select id_quarto, num_quarto, andar_quarto ");
+					sql.append("from quarto");
+
+					Connection conexao = ConexaoFactory.getConnection();
+
+					PreparedStatement comando = null;
+					ResultSet resultado = null;
+					try {
+						comando = conexao.prepareStatement(sql.toString());
+
+						resultado = comando.executeQuery();
+						System.out.println("Conexão para inseriri no banco, executada com sucesso");
+					} catch (SQLException excecao) {
+						throw new ExcecaoBusca("Execução da conexão não concluída");
+					}
+					ArrayList<Quarto> lista = new ArrayList<Quarto>();
+					try {
+						while (resultado.next()) {
+							Quarto r = new Quarto();
+							r.setAndar(resultado.getInt("andar_quarto"));
+							r.setIdQuarto(resultado.getInt("id_quarto"));
+							r.setNumQuarto(resultado.getInt("num_quarto"));
+
+							lista.add(r);
+						}
+						conexao.close();
+						System.out.println("Lista buscada com sucesso");
+					} catch (SQLException e) {
+						throw new ExcecaoBusca("Erro ao buscar lista");
+					}
+
+					return lista;
+				}
+				
 		
 	// 1- FUNÇÃO PARA CADASTRAR RESERVA
 	public void cadastrarReserva(Reserva r) throws ExcecaoCadastro {
