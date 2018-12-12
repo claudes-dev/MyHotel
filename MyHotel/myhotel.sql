@@ -1,5 +1,3 @@
-
-
 create table administrador (
 	id_adm INT(5) AUTO_INCREMENT PRIMARY KEY,
 	cpf_adm VARCHAR(14) UNIQUE,
@@ -46,7 +44,7 @@ create table reserva(
 	id_cliente INT,
 	id_quarto INT,
 	data_saida DATE NOT NULL,
-	data_entrada DATE NOT NULL,
+	data_entrada DATE NOT NULL
 );
 
 create table cliente(
@@ -54,8 +52,7 @@ create table cliente(
 	cpf_cliente VARCHAR(14) UNIQUE NOT NULL,
 	nome_cliente VARCHAR(25) NOT NULL,
 	email varchar(50) NOT NULL,
-	telefone VARCHAR(15),
-	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
+	telefone VARCHAR(15)
 );
 -- tabela que liga funcionario efetuando reserva
 
@@ -101,11 +98,6 @@ create table possui(
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
 
 );
-
-
-
-ALTER TABLE cliente
-ADD FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
 
 ALTER TABLE reserva
 
