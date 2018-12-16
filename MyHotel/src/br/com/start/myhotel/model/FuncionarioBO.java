@@ -40,7 +40,13 @@ public class FuncionarioBO {
 
 	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
 	public List<Reserva> buscarReservas(Reserva r) throws ExcecaoBusca {
-		return dao.listarReservas();
+		try {
+			return dao.listarReservas();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	// 4- FUNÇÃO PARA BUSCAR UMA RESERVA

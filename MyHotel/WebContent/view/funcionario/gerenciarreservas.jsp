@@ -10,7 +10,6 @@
 <%@ page import="br.com.start.myhotel.model.Administrador"%>
 <%@ page import="br.com.start.myhotel.model.Cliente"%>
 <%@ page import="br.com.start.myhotel.model.Reserva"%>
-<%@ page import="br.com.start.myhotel.model.Quarto"%>
 <%@ page import="dao.FuncionarioDao"%>
 <%@ page import="dao.AdministradorDao"%>
 
@@ -233,18 +232,16 @@
 										<%
 											FuncionarioDao reserva = new FuncionarioDao();
 
-											List<Reserva> listareserva = new ArrayList<Reserva>();
+											List<Reserva> rs = reserva.listarReservas();
 
-											for (Reserva r : listareserva) {
+											for (Reserva r : rs) {
 												System.out.println(r);
 										%> 
-
-
 
 										<tr>
 											<td><%=r.getIdFuncionario()%></td>
 											<td><%=r.getcpfCliente()%><td>
-											<td><%=r.getNumQuarto()%></td>
+											
 											<td><%=r.getDataEntrada()%></td>
 											<td><%=r.getDataSaida()%></td>
 										</tr>

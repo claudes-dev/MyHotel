@@ -251,44 +251,49 @@
 									<table
 										class="table table-bordered table-striped table-hover js-basic-example dataTable">
 										<thead>
-											<tr>
-												<th>Nome Completo</th>
-												<th>CPF</th>
-												<th>Data de entrada</th>
-												<th>Data de saída</th>
-												<th>Status</th>
+										<tr>
+											<th>ID Funcionário</th>
+											<th>CPF Cliente</th>
+											<th>Nº Quarto</th>
+											<th>Data de entrada</th>
+											<th>Data de saída</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>ID Funcionário</th>
+											<th>CPF Cliente</th>
+											<th>Nº Quarto</th>
+											<th>Data de entrada</th>
+											<th>Data de saída</th>
+										</tr>
+									</tfoot>
+									<tbody>
 
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-												<th>Nome Completo</th>
-											
-												<th>Data de entrada</th>
-												<th>Data de saída</th>
-												
-											</tr>
-										</tfoot>
 										<%
-											FuncionarioDao dao = new FuncionarioDao();
+											FuncionarioDao reserva = new FuncionarioDao();
 
-											List<Reserva> lista = dao.listarReservas();
+											List<Reserva> listareserva = new ArrayList<Reserva>();
 
-											for (Reserva r : lista) {
-												System.out.println(lista);
-										%>
+											for (Reserva r : listareserva) {
+												
+										%> 
+
 
 
 										<tr>
-											<td><%=r.getIdCliente()%></td>
+											<td><%=r.getIdFuncionario()%></td>
+											<td><%=r.getcpfCliente()%><td>
+											<td><%=r.getNumQuarto()%></td>
 											<td><%=r.getDataEntrada()%></td>
 											<td><%=r.getDataSaida()%></td>
-											<td><%=r.getNumQuarto()%></td>
-
 										</tr>
-											<%
+
+										<%
 											}
-										%> 
+										%>
+										
+									</tbody>
 									</table>
 								</div>
 							</div>

@@ -106,38 +106,37 @@ public class FuncionarioDao {
 		}
 	}
 
-	// 3- FUNÇÃO PARA BUSCAR TODAS RESERVAS
-	public ArrayList<Reserva> listarReservas() throws ExcecaoBusca {
+	
+	
+	public ArrayList<Reserva> listarReservas() throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select id_reserva, id_cliente ");
+		sql.append("select id_func, cpf_cliente, num_quarto, data_entrada, data_saida ");
 		sql.append("from reserva");
 
 		Connection conexao = ConexaoFactory.getConnection();
-
 		PreparedStatement comando = null;
 		ResultSet resultado = null;
-		try {
-			comando = conexao.prepareStatement(sql.toString());
 
-			resultado = comando.executeQuery();
-			System.out.println("Conexão para inseriri no banco, executada com sucesso");
-		} catch (SQLException excecao) {
-			throw new ExcecaoBusca("Execução da conexão não concluída");
-		}
+		comando = conexao.prepareStatement(sql.toString());
+
+		resultado = comando.executeQuery();
+
 		ArrayList<Reserva> lista = new ArrayList<Reserva>();
-		try {
-			while (resultado.next()) {
-				Reserva reserva = new Reserva();
-				Reserva r = new Reserva();
-				r.setIdReserva(resultado.getInt("id_reserva"));
-				r.setcpfCliente(resultado.getString("cpf_cliente"));
 
-				lista.add(r);
-			}
+		while (resultado.next()) {
+			Reserva r = new Reserva();
+			r.setIdFuncionario(resultado.getInt("id_func"));
+			r.setcpfCliente(resultado.getString("cpf_cliente"));
+			r.setNumQuarto(resultado.getInt("num_quarto"));
+			r.setDataEntrada(resultado.getString("data_entrada"));
+			r.setDataSaida(resultado.getString("data_saida"));
+
+			lista.add(r);
+		}
+
+		try {
 			conexao.close();
-			System.out.println("Lista buscada com sucesso");
 		} catch (SQLException e) {
-			throw new ExcecaoBusca("Erro ao buscar lista");
 		}
 
 		return lista;

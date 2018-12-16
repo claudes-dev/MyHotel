@@ -76,9 +76,10 @@
 					</div>
 					<div class="row">
 						<input type="radio" name="tipo" id="op1" value="f"
-							class="with-gap"> <label for="op1">Funcionário</label> <input
-							type="radio" name="tipo" id="op2" value="a" class="with-gap">
-						<label for="op2">Administrador</label>
+							class="with-gap" required> <label for="op1">Conta Funcionário</label> <input
+							type="radio" name="tipo" id="op2" value="a" class="with-gap" required>
+						<label for="op2">Conta Administrador</label>
+						<div style="margin-top:20px;"></div>
 						<div class="col-xs-12">
 							<button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
 						</div>

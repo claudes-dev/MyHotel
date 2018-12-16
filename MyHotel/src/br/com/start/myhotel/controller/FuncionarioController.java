@@ -83,11 +83,11 @@ public class FuncionarioController extends HttpServlet {
 	}
 	private void fazerReserva(HttpServletRequest req, HttpServletResponse res) {
 
-		String dataEntrada = req.getParameter(req.getParameter("dataEntrada"));
-		String dataSaida = req.getParameter(req.getParameter("dataSaida"));
+		String dataEntrada = req.getParameter("dataEntrada");
+		String dataSaida = req.getParameter("dataSaida");
 		int IdFunc = Integer.parseInt(req.getParameter("funcionarioReserva"));
 		int numQuarto = Integer.parseInt(req.getParameter("numQuarto"));
-		String cpfCliente = req.getParameter(req.getParameter("clienteReserva"));
+		String cpfCliente = req.getParameter("clienteReserva");
 	
 		
 
